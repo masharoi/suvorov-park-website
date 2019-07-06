@@ -1,0 +1,16 @@
+
+.navbar-brand {
+    font-size: 30px;
+}
+.top-link {
+  margin: 20px;
+  color: black;
+  text-decoration: none;
+}
+.fa-search {
+    position:relative;
+    left: 195px;
+}
+.form-control::-webkit-input-placeholder {
+    margin: 35px;
+}
