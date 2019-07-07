@@ -1,6 +1,7 @@
 #footer {
   background: #f6f6f6;
   padding:30px 0;
+  margin:0;
 }
 .contacts-header {
   font-size: 18px;
@@ -24,7 +25,6 @@
   padding: 20px;
 }
 
-
 #contacts-info {
   margin:0;
 }
@@ -39,22 +39,17 @@ form input {
 
 #submit-button {
   align-self:flex-start;
-  width: 140px;
-  height:55px;
-  background: #fc3c3c;
-  color:white;
-  font-size: 18px;
-  border-radius:5px;
-  border: none;
 }
 #footer-form {
   display: flex;
   flex-direction: column;
   width: 400px;
+  padding: 0 20px;
 }
 #footer-form-header {
   text-align: left;
   color: #3a3a59;
+  padding-left: 20px;
 }
 
 textarea {
@@ -70,4 +65,26 @@ textarea::placeholder {
 ::placeholder {
   padding-left: 10px;
   vertical-align: top;
+}
+@media (max-width:992px) {
+  #footer-form {
+    width: 350px;
+  }
+}
+@media (max-width:768px) {
+  #footer-form-outer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  #contacts-outer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  #contacts-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
 }
