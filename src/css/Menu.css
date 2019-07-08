@@ -1,0 +1,27 @@
+.menu  {
+  margin:0;
+
+}
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  font-size: 24px;
+  padding: 50px;
+}
+.item-caption {
+  padding-left: 6px;
+  color: #3a3a59;
+}
+.item-caption:hover {
+  color: #fc3c3c;
+  border-left: solid #fc3c3c 2px;
+  padding-left: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.menu-content {
+  width: 300px;
+
+}

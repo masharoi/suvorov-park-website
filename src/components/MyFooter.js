@@ -24,9 +24,9 @@ function MyFooter() {
         </div>
       </div>
 
-      <div class="col-lg-5 col-md-6  col-12" id="footer-form-outer">
-        <h2 id="footer-form-header">Обратная связь</h2>
-        <form id="footer-form">
+      <div class="col-lg-5 col-md-6  col-12 contact-form-outer">
+        <h2 class="contact-form-header">Обратная связь</h2>
+        <form class="contact-form">
           <input type="text" name="name" placeholder="Ваше Имя"/>
           <input type="email" name="name" placeholder="Ваш E-mail"/>
           <textarea placeholder="Текст Сообщения"/>

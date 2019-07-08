@@ -1,0 +1,35 @@
+#contacts {
+  display: flex;
+  flex-direction: column;
+  border-left: solid 2px #f6f6f6;
+  margin:0;
+  padding: 20px;
+}
+
+#contacts-general {
+  display: flex;
+  align-items: center;
+}
+#general-contact-info {
+  text-align: left;
+  font-size: 14px;
+  margin: 10px;
+}
+
+#map {
+  width: 400px;
+  height: 300px;
+  background: #3a3a59;
+  margin: 20px;
+  padding: 0 20px 20px 20px;
+  border-radius: 5px;
+}
+#bank-details {
+  text-align:left;
+  margin:10px;
+}
+#contacts-lower {
+  display: flex;
+  align-items: center;
+  border-top: solid 2px #f6f6f6;
+}
