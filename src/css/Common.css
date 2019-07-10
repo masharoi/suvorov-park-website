@@ -68,6 +68,25 @@
   border-radius:5px;
   border: none;
 }
+
+.link {
+  color:#3a3a59;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #fc3c3c;
+}
+
+.link i {
+  font-size: 12px;
+  margin: 0 5px;
+}
+
+.empty-screen {
+  text-align: left;
+  margin: 50px 0;
+}
 @media (max-width:768px) {
   .contact-form-outer {
     display: flex;

@@ -1,0 +1,24 @@
+#all-news {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+#all-news-outer {
+
+}
+#news {
+  padding: 50px;
+}
+ul {
+  padding: 20px 0;
+  list-style: none;
+}
+#latest-documents {
+    padding: 50px;
+}
+.contacts-preview-container {
+  display: flex;
+  background: #f6f6f6;
+  margin: 30px 0;
+  border-radius: 5px;
+}

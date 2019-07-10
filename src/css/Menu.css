@@ -21,6 +21,14 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+.item-active {
+  color: #fc3c3c;
+  border-left: solid #fc3c3c 2px;
+  padding-left: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
 .menu-content {
   width: 300px;
 

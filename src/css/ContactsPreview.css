@@ -1,0 +1,16 @@
+#contacts-preview {
+  text-align: left;
+  background: #f6f6f6;
+  padding: 30px;
+  margin: 30px;
+  border-radius: 5px;
+}
+
+#contacts-preview h3 {
+  color: green;
+}
+
+.contacts-preview-item {
+  display: flex;
+  flex-direction: column;
+}

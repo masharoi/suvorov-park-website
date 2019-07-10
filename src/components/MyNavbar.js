@@ -17,7 +17,7 @@ function MyNavbar() {
             <Link class="top-link" to="/about">
               Компания
             </Link>
-            <Link class="top-link" to="/homes">
+            <Link class="top-link" to="/homes-general">
               Дома
             </Link>
             <Link class="top-link" to="/documents">
@@ -40,7 +40,7 @@ function MyNavbar() {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      
+
     </section>
   );
 }
