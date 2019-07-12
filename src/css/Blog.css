@@ -1,0 +1,35 @@
+#blog {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+#blog-messages {
+  flex-grow: 2;
+}
+.blog-header {
+  font-size: 18px;
+  text-align: left;
+  color: #3a3a59;
+  background: #f6f6f6;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px;
+}
+#blog-messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#blog-filter {
+  background: #3a3a59;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 8px;
+}
+#blog-filter:hover {
+  cursor:pointer;
+}
+#blog-filter i {
+  margin: 0 5px;
+}

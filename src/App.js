@@ -11,6 +11,12 @@ import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import AllNews from "./components/AllNews";
 import About from "./components/About";
+import ContactsPreview from "./components/ContactsPreview";
+import Forum from "./components/Forum";
+import Blog from "./components/Blog";
+import ForumHome from "./components/ForumHome";
+import ForumSearch from "./components/ForumSearch";
+import ForumRules from "./components/ForumRules";
 
 function App() {
   return (
@@ -30,6 +36,10 @@ function App() {
           <Route path="/blogs" component={homesBlog} />
           <Route path="/debts" component={homesDept} />
 
+          <Route path="/search-forums" component={forumSearch} />
+          <Route path="/forum-rules" component={forumRules} />
+          <Route path="/forum-login" component={forumLogin} />
+
           <Route path="/documents" component={documents} />
           <Route path="/profile" component={profile} />
           <Route path="/questionsAndAnswers" component={questionsAndAnswers} />
@@ -39,6 +49,10 @@ function App() {
   );
 }
 const home = () => <Home />;
+
+const forumSearch = () => <Homes content={<Forum content=<ForumSearch/> />}/>;
+const forumRules = () => <Homes content={<Forum content=<ForumRules/> />}/>;
+const forumLogin = () => <Homes content={<Forum content={"forum login"} />}/>;
 
 const about = () => <Company content={<About />} />;
 const newsAbout = () => <Company content={<AllNews />} />;
@@ -68,21 +82,42 @@ const homesVideo = () => (
   <Homes
     content={
       <div class="empty-screen">
-        <h2 >Видео</h2>
+        <h2>Видео</h2>
         <p>Видео отсутствуют.</p>
       </div>
     }
   />
 );
-const homesForum = () => <Homes content="Forum" />;
-const homesBlog = () => <Homes content="Blog" />;
-const homesDept = () => <Homes content={
-  <div class="empty-screen">
-    <h2 >Список должников</h2>
-    <p>В настоящее время должников нет.</p>
-  </div>
-}
- />;
+const homesForum = () => (
+  <Homes
+    content={
+      <div>
+        <Forum content=<ForumHome/>/>
+        <ContactsPreview />
+      </div>
+    }
+  />
+);
+const homesBlog = () => (
+  <Homes
+    content={
+      <div>
+        <Blog/>
+        <ContactsPreview />
+      </div>
+    }
+  />
+);
+const homesDept = () => (
+  <Homes
+    content={
+      <div class="empty-screen">
+        <h2>Список должников</h2>
+        <p>В настоящее время должников нет.</p>
+      </div>
+    }
+  />
+);
 
 const documents = () => <Documents />;
 const profile = () => <Profile />;
