@@ -36,14 +36,53 @@ function MyNavbar() {
             <NavDropdown
               className="nav-dropdown"
               title="Документы и отчетность"
-            />
+            >
+              <NavDropdown.Item href="/documents-general">
+                Общая информация
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/financial-economic-activity">
+                Основные показатели финансово-хозяйственной деятельности
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/work-performed">
+                Сведения о выполняемых работах
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/common-property">
+                Порядок и условия оказания услуг
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/service-prices">
+                Сведения о стоимости работ
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/public-resources">
+                Тарифы на коммунальные ресурсы
+              </NavDropdown.Item>
+            </NavDropdown>
 
-            <NavDropdown className="nav-dropdown" title="Личный кабинет" />
+            <NavDropdown className="nav-dropdown" title="Личный кабинет">
+              <NavDropdown.Item href="/profile-general">
+                Общая информация
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/circulation-sheet">
+                История начислений и оплат
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/receipt">
+                Квитанция на оплату коммунальных услуг
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/meter-data">
+                Показания счетчиков
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/payment">
+                Оплатить услуги онлайн
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/subscription">
+                Управление подпиской
+              </NavDropdown.Item>
+            </NavDropdown>
 
             <Nav.Item>
-              <Nav.Link className="navbar-link" href="/questionsAndAnswers">Вопросы и Ответы</Nav.Link>
+              <Nav.Link className="navbar-link" href="/questions-and-answers">
+                Вопросы и Ответы
+              </Nav.Link>
             </Nav.Item>
-
           </Nav>
           <Form inline>
             <i className="fas fa-search" />

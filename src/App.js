@@ -40,15 +40,30 @@ function App() {
           <Route path="/forum-rules" component={forumRules} />
           <Route path="/forum-login" component={forumLogin} />
 
-          <Route path="/documents" component={documents} />
-          <Route path="/profile" component={profile} />
-          <Route path="/questionsAndAnswers" component={questionsAndAnswers} />
+
+          <Route path="/profile-general" component={profileGeneral} />
+          <Route path="/circulation-sheet" component={circulationSheet} />
+          <Route path="/receipt" component={receipt} />
+          <Route path="/meter-data" component={meterData} />
+          <Route path="/payment" component={payment} />
+          <Route path="/subscription" component={subscription} />
+
+          <Route path="/documents-general" component={documentsGeneral} />
+          <Route path="/financial-economic-activity" component={finEconActivity} />
+          <Route path="/work-performed" component={workPerformed} />
+          <Route path="/common-property" component={commonProperty} />
+          <Route path="/service-prices" component={servicePrices} />
+          <Route path="/public-resources" component={publicResources} />
+
+          <Route path="/questions-and-answers" component={questions} />
+
         </div>
       </Router>
     </div>
   );
 }
 const home = () => <Home />;
+const questions = () => <Questions />;
 
 const forumSearch = () => <Homes content={<Forum content=<ForumSearch/> />}/>;
 const forumRules = () => <Homes content={<Forum content=<ForumRules/> />}/>;
@@ -57,6 +72,20 @@ const forumLogin = () => <Homes content={<Forum content={"forum login"} />}/>;
 const about = () => <Company content={<About />} selectedLink={0}/>;
 const newsAbout = () => <Company content={<AllNews />} selectedLink={1}/>;
 const contactsAbout = () => <Company content={<Contacts />} selectedLink={2}/>;
+
+const profileGeneral = () => <Profile content={"general"} selectedLink={0}/>;
+const circulationSheet = () => <Profile content={"c-sheet"} selectedLink={1}/>;
+const receipt = () => <Profile content={"receipt"} selectedLink={2}/>;
+const meterData = () => <Profile content={"meter-data"} selectedLink={3}/>;
+const payment = () => <Profile content={"payment"} selectedLink={4}/>;
+const subscription = () => <Profile content={"subscription"} selectedLink={5}/>;
+
+const documentsGeneral = () => <Documents content={"general"} selectedLink={0}/>;
+const finEconActivity = () => <Documents content={"activity"} selectedLink={1}/>;
+const workPerformed = () => <Documents content={"work"} selectedLink={2}/>;
+const commonProperty = () => <Documents content={"property"} selectedLink={3}/>;
+const servicePrices = () => <Documents content={"service prices"} selectedLink={4}/>;
+const publicResources = () => <Documents content={"public resources"} selectedLink={5}/>;
 
 const homesGeneral = () => (
   <Homes
@@ -123,8 +152,5 @@ const homesDept = () => (
   />
 );
 
-const documents = () => <Documents />;
-const profile = () => <Profile />
-const questionsAndAnswers = () => <Questions />;
 
 export default App;
