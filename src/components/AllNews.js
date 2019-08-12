@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/AllNews.css";
-import ContactsPreview from "./ContactsPreview";
 import { Link } from "react-router-dom";
 
 function AllNews() {
@@ -28,9 +27,6 @@ function AllNews() {
           </ul>
             <Link class="link" to="/contacts">Все документы <i class="fas fa-chevron-right"></i></Link>
         </div>
-      </div>
-      <div class="contacts-preview-container">
-      <ContactsPreview />
       </div>
     </section>
   );

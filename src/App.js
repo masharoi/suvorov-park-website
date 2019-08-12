@@ -96,7 +96,6 @@ const homesForum = () => (
     content={
       <div>
         <Forum content=<ForumHome/>/>
-        <ContactsPreview />
       </div>
     }
       selectedLink={3}
@@ -107,7 +106,6 @@ const homesBlog = () => (
     content={
       <div>
         <Blog/>
-        <ContactsPreview />
       </div>
     }
       selectedLink={4}

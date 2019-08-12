@@ -69,6 +69,16 @@
   border: none;
 }
 
+.secondary-button {
+  width: 140px;
+  height:50px;
+  background: white;
+  color:#fc3c3c;
+  font-size: 18px;
+  border-radius:5px;
+  border: 2px solid #fc3c3c;
+}
+
 .link {
   color:#3a3a59;
   text-decoration: underline;

@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/About.css";
-import ContactsPreview from "./ContactsPreview";
 import { Link } from "react-router-dom";
 
 function About() {
@@ -20,7 +19,6 @@ function About() {
 
         <Link class="link" to="/news">Все новости УК<i class="fas fa-chevron-right"></i></Link>
         </div>
-      <ContactsPreview />
     </section>
   );
 }

@@ -11,8 +11,8 @@ function ContactsPreview() {
         <br /> 121433, г.Москва</div>
       </div>
       <br/>
+
       <div class="contacts-preview-item">
-        <div class="contacts-header">Телефон:</div> <div> 89265388846 <br/> 89265388846 (диспетчерская) </div> <br/>
         <Link class="link" to="/contacts">Подробнее <i class="fas fa-chevron-right"></i></Link>
       </div>
     </section>

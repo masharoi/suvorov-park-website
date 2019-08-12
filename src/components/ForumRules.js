@@ -177,7 +177,6 @@ function ForumRules() {
           </li>
         </ol>
       </div>
-    <ContactsPreview/>
     </section>
   );
 }

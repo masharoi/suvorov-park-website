@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Forum.css";
-import ContactsPreview from "./ContactsPreview";
 
 function ForumHome() {
   return (
