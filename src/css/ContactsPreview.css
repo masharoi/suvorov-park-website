@@ -6,11 +6,20 @@
   border-radius: 5px;
 }
 
-#contacts-preview h3 {
-  color: #fc3c3c;
+#contacts-preview h2 {
+  color: #3a3a59;
 }
 
 .contacts-preview-item {
   display: flex;
   flex-direction: column;
+  font-size:12px;
+  padding-top:20px;
+}
+
+#contacts-link {
+  font-weight: bold;
+  text-decoration: none;
+  width:110px;
+  font-size: 14px;
 }

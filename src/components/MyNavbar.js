@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
+import logo from './homeLogo.png';
 
 function MyNavbar() {
   return (
@@ -14,6 +15,8 @@ function MyNavbar() {
       <Navbar id="my-navbar" expand="lg">
         <Navbar.Collapse id="my-nav">
           <Nav className="mr-auto">
+          <Navbar.Brand href="/">  <img id="logo" src={logo} alt="Logo" /></Navbar.Brand>
+
             <NavDropdown className="nav-dropdown" title="Компания">
               <NavDropdown.Item href="/about">О нас</NavDropdown.Item>
               <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
@@ -85,7 +88,6 @@ function MyNavbar() {
             </Nav.Item>
           </Nav>
           <Form inline>
-            <i className="fas fa-search" />
             <FormControl
               type="text"
               placeholder="Поиск по сайту"

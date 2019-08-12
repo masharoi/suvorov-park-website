@@ -7,12 +7,13 @@
   flex-direction: column;
   text-align: left;
   align-items: flex-start;
-  font-size: 24px;
+  font-size: 18px;
   padding: 50px;
 }
 .item-caption {
   padding-left: 6px;
   color: #3a3a59;
+  margin: 5px 0;
 }
 .item-caption:hover {
   color: #fc3c3c;
@@ -28,6 +29,7 @@
   padding-left: 4px;
   cursor: pointer;
   text-decoration: none;
+  margin: 5px 0;
 }
 .item-active:hover {
   color: #fc3c3c;

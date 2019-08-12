@@ -9,7 +9,7 @@
   margin: 0px 0px 10px 20px;
   background: #3a3a59;
   color: white;
-  width: 160px;
+  width: 100px;
   padding: 5px 8px;
   border-radius: 2px;
 
@@ -17,7 +17,7 @@
 .contacts-item {
   text-align: left;
   display: inline-block;
-  font-size: 14px;
+  font-size: 12px;
   padding: 20px;
 }
 
@@ -27,7 +27,7 @@
 
 form input {
   margin: 10px 0;
-  height: 45px;
+  height: 40px;
   border-radius:5px;
   box-shadow: none;
   border: none;

@@ -7,25 +7,17 @@ function AllNews() {
     <section id="all-news-outer">
       <div id="all-news">
         <div id="news">
-          <h3>Новости</h3>
+          <h2>Новости</h2>
           <ul>
-            <li>News Item</li>
-            <li>News Item</li>
-            <li>News Item</li>
-            <li>News Item</li>
             <li>News Item</li>
           </ul>
         </div>
         <div id="latest-documents">
-          <h3>Последние документы</h3>
+          <h2>Последние документы</h2>
           <ul>
             <li>Documents Item</li>
-            <li>Documents Item</li>
-            <li>Documents Item</li>
-            <li>Documents Item</li>
-            <li>Documents Item</li>
           </ul>
-            <Link class="link" to="/contacts">Все документы <i class="fas fa-chevron-right"></i></Link>
+            <Link class="link" to="/documents-general">Все документы <i class="fas fa-chevron-right"></i></Link>
         </div>
       </div>
     </section>

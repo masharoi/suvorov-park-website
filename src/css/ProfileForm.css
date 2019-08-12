@@ -17,7 +17,7 @@
 }
 #profile-form-header {
   text-align: left;
-  font-size: 24px;
+  font-size: 18px;
 }
 #profile-form-col {
   display: flex;
@@ -30,7 +30,7 @@
   padding-top: 30px;
 }
 #profile-text-header {
-  font-size: 18px;
+  font-size: 14px;
 }
 #checkbox-label {
   align-self:center;
@@ -47,6 +47,7 @@ input[type="checkbox"] {
 .profile-text-item {
   position: relative;
   margin-left:10px;
+  font-size: 14px;
 }
 .profile-text-item:before {
     content: "";

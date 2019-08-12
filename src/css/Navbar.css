@@ -1,15 +1,18 @@
 .navbar-link {
-  margin: 20px;
+  margin: 20px 20px 20px 0;
 }
-.navbar-brand {
-  font-size: 30px;
+#logo {
+  width:45px;
+  height:40px;
+  margin-top: 15px;
+  margin-left: 20px;
 }
 #my-navbar {
   background: #3a3a59;
 }
 /* dropdown */
 .nav-dropdown {
-  margin: 20px;
+  margin: 20px 20px 20px 0;
 }
 
 .nav-link {
