@@ -10,15 +10,15 @@ function Company(props) {
   return (
     <div>
       <MyNavbar />
-      <Menu sideBarItems={sideBarItems} content={props.content} />
+      <Menu sideBarItems={sideBarItems} content={props.content} selectedLink={props.selectedLink}/>
       <ProfileForm/>
       <MyFooter />
     </div>
   );
 }
 var sideBarItems = [
-  { id:1, title: "О нас", link: "/about" },
-  { id:2, title: "Новости", link: "/news" },
-  { id:3, title: "Контакты", link: "/contacts" }
+  { id:0, title: "О нас", link: "/about" },
+  { id:1, title: "Новости", link: "/news" },
+  { id:2, title: "Контакты", link: "/contacts" }
 ];
 export default Company;

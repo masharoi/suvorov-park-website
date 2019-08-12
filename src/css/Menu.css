@@ -29,6 +29,11 @@
   cursor: pointer;
   text-decoration: none;
 }
+.item-active:hover {
+  color: #fc3c3c;
+  cursor: pointer;
+  text-decoration: none;
+}
 .menu-content {
   width: 300px;
 

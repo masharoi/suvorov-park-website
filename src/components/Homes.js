@@ -8,18 +8,18 @@ function Homes(props) {
   return (
     <div>
     <MyNavbar/>
-    <Menu sideBarItems={sideBarItems} content={props.content} />
+    <Menu sideBarItems={sideBarItems} content={props.content} selectedLink={props.selectedLink}/>
     <ProfileForm/>
     <MyFooter />
     </div>
   );
 }
 var sideBarItems = [
-  { id:1, title: "Общая информация", link: "/homes-general" },
-  { id:2, title: "Фотогалерея", link: "/photogallery" },
-  { id:3, title: "Видео", link: "/video" },
-  { id:4, title: "Форум", link: "/forum" },
-  { id:5, title: "Блоги", link: "/blogs" },
-  { id:6, title: "Должники", link: "/debts" }
+  { id:0, title: "Общая информация", link: "/homes-general" },
+  { id:1, title: "Фотогалерея", link: "/photogallery" },
+  { id:2, title: "Видео", link: "/video" },
+  { id:3, title: "Форум", link: "/forum" },
+  { id:4, title: "Блоги", link: "/blogs" },
+  { id:5, title: "Должники", link: "/debts" }
 ];
 export default Homes;

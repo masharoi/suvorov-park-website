@@ -54,9 +54,9 @@ const forumSearch = () => <Homes content={<Forum content=<ForumSearch/> />}/>;
 const forumRules = () => <Homes content={<Forum content=<ForumRules/> />}/>;
 const forumLogin = () => <Homes content={<Forum content={"forum login"} />}/>;
 
-const about = () => <Company content={<About />} />;
-const newsAbout = () => <Company content={<AllNews />} />;
-const contactsAbout = () => <Company content={<Contacts />} />;
+const about = () => <Company content={<About />} selectedLink={0}/>;
+const newsAbout = () => <Company content={<AllNews />} selectedLink={1}/>;
+const contactsAbout = () => <Company content={<Contacts />} selectedLink={2}/>;
 
 const homesGeneral = () => (
   <Homes
@@ -66,6 +66,7 @@ const homesGeneral = () => (
         <p>У текущего объекта управления отсутствуют дома.</p>
       </div>
     }
+    selectedLink={0}
   />
 );
 const homesPhotoGallery = () => (
@@ -76,6 +77,7 @@ const homesPhotoGallery = () => (
         <p>Список альбомов пуст.</p>
       </div>
     }
+      selectedLink={1}
   />
 );
 const homesVideo = () => (
@@ -86,6 +88,7 @@ const homesVideo = () => (
         <p>Видео отсутствуют.</p>
       </div>
     }
+      selectedLink={2}
   />
 );
 const homesForum = () => (
@@ -96,6 +99,7 @@ const homesForum = () => (
         <ContactsPreview />
       </div>
     }
+      selectedLink={3}
   />
 );
 const homesBlog = () => (
@@ -106,6 +110,7 @@ const homesBlog = () => (
         <ContactsPreview />
       </div>
     }
+      selectedLink={4}
   />
 );
 const homesDept = () => (
@@ -116,11 +121,12 @@ const homesDept = () => (
         <p>В настоящее время должников нет.</p>
       </div>
     }
+      selectedLink={5}
   />
 );
 
 const documents = () => <Documents />;
-const profile = () => <Profile />;
+const profile = () => <Profile />
 const questionsAndAnswers = () => <Questions />;
 
 export default App;

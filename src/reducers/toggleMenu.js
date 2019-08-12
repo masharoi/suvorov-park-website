@@ -1,14 +1,15 @@
-import {TOGGLE_MENU} from "../constants";
-const initialState = 1;
+import { TOGGLE_MENU } from "../constants";
+var initialState = 1;
 const menuOptions = [1, 2, 3];
 
+export function toggleMenu(state = initialState, action) {
+  console.log("db updated " + action.type + " " + initialState);
 
-export function toggleMenu(state=initialState, action) {
+  switch (action.type) {
+    case TOGGLE_MENU:
+      return action.id;
 
-         switch (action.type) {
-             case TOGGLE_MENU:
-                     return action.id;
-
-             default:  return state
-         }
-     }
+    default:
+      return state;
+  }
+}
