@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
-import logo from './homeLogo.png';
+import logo from "./homeLogo.png";
 
 function MyNavbar() {
   return (
@@ -15,85 +15,28 @@ function MyNavbar() {
       <Navbar id="my-navbar" expand="lg">
         <Navbar.Collapse id="my-nav">
           <Nav className="mr-auto">
-          <Navbar.Brand href="/">  <img id="logo" src={logo} alt="Logo" /></Navbar.Brand>
-
-            <NavDropdown className="nav-dropdown" title="Компания">
-              <NavDropdown.Item href="/about">О нас</NavDropdown.Item>
-              <NavDropdown.Item href="/news">Новости</NavDropdown.Item>
-              <NavDropdown.Item href="/contacts">Контакты</NavDropdown.Item>
-            </NavDropdown>
-
-            <NavDropdown className="nav-dropdown" title="Дома">
-              <NavDropdown.Item href="/homes-general">
-                Общая информация
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/photogallery">
-                Фотогалерея
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/video">Видео</NavDropdown.Item>
-              <NavDropdown.Item href="/forum">Форум</NavDropdown.Item>
-              <NavDropdown.Item href="/blogs">Блоги</NavDropdown.Item>
-              <NavDropdown.Item href="/debts">Должники</NavDropdown.Item>
-            </NavDropdown>
-
-            <NavDropdown
-              className="nav-dropdown"
-              title="Документы и отчетность"
-            >
-              <NavDropdown.Item href="/documents-general">
-                Общая информация
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/financial-economic-activity">
-                Основные показатели финансово-хозяйственной деятельности
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/work-performed">
-                Сведения о выполняемых работах
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/common-property">
-                Порядок и условия оказания услуг
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/service-prices">
-                Сведения о стоимости работ
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/public-resources">
-                Тарифы на коммунальные ресурсы
-              </NavDropdown.Item>
-            </NavDropdown>
-
-            <NavDropdown className="nav-dropdown" title="Личный кабинет">
-              <NavDropdown.Item href="/profile-general">
-                Общая информация
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/circulation-sheet">
-                История начислений и оплат
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/receipt">
-                Квитанция на оплату коммунальных услуг
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/meter-data">
-                Показания счетчиков
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/payment">
-                Оплатить услуги онлайн
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/subscription">
-                Управление подпиской
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Navbar.Brand href="/">
+              <img id="logo" src={logo} alt="Logo" />
+            </Navbar.Brand>
 
             <Nav.Item>
-              <Nav.Link className="navbar-link" href="/questions-and-answers">
-                Вопросы и Ответы
-              </Nav.Link>
+              <Nav.Link href="/services">Услуги</Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/vote">Голосование</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/forum">Форум</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/news">Новости</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/forum">Контакты</Nav.Link>
+            </Nav.Item>
+
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Поиск по сайту"
-              className=""
-            />
-          </Form>
+
         </Navbar.Collapse>
       </Navbar>
     </section>
