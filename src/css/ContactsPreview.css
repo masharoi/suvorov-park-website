@@ -1,13 +1,13 @@
 #contacts-preview {
   text-align: left;
-  background: #f6f6f6;
+  background: #012C0B;
   margin: 0 30px;
   padding-top: 10px;
   border-radius: 5px;
 }
 
 #contacts-preview h2 {
-  color: #3a3a59;
+  color: white;
 }
 
 .contacts-preview-item {

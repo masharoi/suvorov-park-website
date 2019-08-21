@@ -24,7 +24,7 @@ p{
 }
 .contact-form-header {
   text-align: left;
-  color: #3a3a59;
+  color: white;
   padding-left: 20px;
 }
 
@@ -47,7 +47,7 @@ p{
 .contacts-header {
   font-size: 14px;
   padding: 0;
-  color: #3a3a59;
+  color: white;
 }
 #main-container {
   background: white;

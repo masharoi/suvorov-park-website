@@ -12,10 +12,6 @@ function ContactsPreview() {
         <br /> 121433, г.Москва</div>
       </div>
       <br/>
-
-      <div class="contacts-preview-item">
-        <Link id="contacts-link" class="link" to="/contacts">Подробнее <i class="fas fa-chevron-right"></i></Link>
-      </div>
     </section>
   );
 }
