@@ -1,24 +1,15 @@
 #all-news {
-  display: flex;
-  justify-content: space-between;
-  text-align: left;
+  margin: 40px 0;
 }
-#all-news-outer {
 
-}
-#news {
-  padding: 50px;
-}
-ul {
-  padding: 20px 0;
-  list-style: none;
-}
-#latest-documents {
-    padding: 50px;
-}
-.contacts-preview-container {
+.news-item {
+  width: 303px;
+  height: 288px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  margin: 20px;
+  padding: 20px;
+  text-align:left;
   display: flex;
-  background: #f6f6f6;
-  margin: 30px 0;
-  border-radius: 5px;
+  flex-direction: column;
 }
