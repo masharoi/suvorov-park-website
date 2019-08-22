@@ -1,30 +1,107 @@
-#main {
-  background: url('http://suvorovpark.ru.opt-images.1c-bitrix-cdn.ru/upload/IMG_0230.PNG?1556004525782753');
-  width: 100%;
-  height: 50vh;
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-position: 0% 20%;
+
+
+/* font size */
+.large-size-text {
+  font-size:18px;
+}
+.medium-size-text {
+  font-size:14px;
+}
+.small-size-text {
+  font-size:12px;
+}
+.tiny-size-text {
+  font-size:10px;
+}
+
+/* font weight  */
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+.medium {
+  font-weight: 500;
+}
+.bold {
+  font-weight: 700;
+}
+
+/* colors */
+.orange-color {
+  color: #C95501;
+}
+.green-color {
+  color: #012C0B;
+}
+.red-color {
+  color: #7D0000;
+}
+.yellow-color {
+  color: #EAA81B;
+}
+.white-color {
+  color: white;
+}
+
+.orange-background {
+  background: #C95501;
+}
+.green-background {
+  background: #012C0B;
+}
+.red-background {
+  background: #7D0000;
+}
+.yellow-background {
+  background: #EAA81B;
+}
+.gray-background {
+  background: #EAE9E9;
+}
+
+/* link */
+.link {
+  cursor:pointer;
+}
+.link i {
+  font-size: 10px;
+  margin: 0 5px;
+}
+
+/* card for news, vote sections*/
+.card {
+  width: 274px;
+  height: 330px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  margin: 20px 10px;
+  padding: 30px;
+  text-align:left;
   display: flex;
-  align-items: flex-end;
-  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-h2 {
-  font-size: 18px;
+/* placholder */
+::-webkit-input-placeholder { /* Edge */
+  padding-left:0;
 }
 
-p{
-  font-size: 12px;
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  padding-left:0;
 }
 
-#main-text {
-  padding: 20px;
-  text-align: left;
+::placeholder {
+  padding-left:0;
 }
+
+/* button sizes */
+.primary-button-size {
+  width: 150px;
+  height: 40px;
+}
+
 .contact-form-header {
   text-align: left;
-  color: white;
   padding-left: 20px;
 }
 
@@ -49,16 +126,7 @@ p{
   padding: 0;
   color: white;
 }
-#main-container {
-  background: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width:35%;
-  border-radius: 10px;
-  margin: 0 20px;
-  position: absolute;
-  top:200px;
-  left:0;
-}
+
 
 .contact-form {
   display: flex;
@@ -67,41 +135,6 @@ p{
   padding: 0 20px;
 }
 
-.submit-button {
-  width: 120px;
-  height:40px;
-  background: #fc3c3c;
-  color:white;
-  font-size: 14px;
-  border-radius:5px;
-  border: none;
-}
-
-.secondary-button {
-  width: 120px;
-  height:40px;
-  background: white;
-  color:#fc3c3c;
-  font-size: 14px;
-  border-radius:5px;
-  border: 1px solid #fc3c3c;
-}
-
-.link {
-  color:#3a3a59;
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.link:hover {
-  color: #fc3c3c;
-  text-decoration: none;
-}
-
-.link i {
-  font-size: 10px;
-  margin: 0 5px;
-}
 
 .empty-screen {
   text-align: left;

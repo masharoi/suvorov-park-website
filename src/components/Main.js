@@ -4,6 +4,8 @@ import MyNavbar from "./MyNavbar";
 import AllNews from "./AllNews";
 import Vote from "./Vote";
 import MyFooter from "./MyFooter";
+import Forum from "./Forum";
+
 
 function Main() {
   return (
@@ -12,6 +14,7 @@ function Main() {
     <Services/>
     <AllNews/>
     <Vote/>
+    <Forum/>
     <MyFooter/>
     </div>
   );

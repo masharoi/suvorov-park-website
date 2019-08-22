@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 function About() {
   return (
-    <section id="about">
+    <section id="about" class="yellow-background">
     <div id="about-info">
-      <h2>О нас</h2>
-      <p>
+      <h2 class="large-size-text">О нас</h2>
+      <p class="medium-size-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -17,7 +17,6 @@ function About() {
         mollit anim id est laborum.
       </p>
 
-        <Link class="link" to="/news">Все новости УК<i class="fas fa-chevron-right"></i></Link>
         </div>
     </section>
   );

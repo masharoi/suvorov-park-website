@@ -7,16 +7,16 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
-import logo from "./homeLogo.png";
+
 
 function MyNavbar() {
   return (
     <section>
       <Navbar id="my-navbar" expand="lg">
         <Navbar.Collapse id="my-nav">
-          <Nav className="mr-auto">
+          <Nav className="ml-auto" >
             <Navbar.Brand href="/">
-              <img id="logo" src={logo} alt="Logo" />
+              <img id="logo"  alt="Logo" />
             </Navbar.Brand>
 
             <Nav.Item>

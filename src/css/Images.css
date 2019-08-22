@@ -1,0 +1,10 @@
+.image {
+  height: 300px;
+  width: 500px;
+  border-radius: 7px;
+}
+
+#images {
+  background: linear-gradient(to bottom,  white 0%,white 50%,#EAA81B 50%,#EAA81B 100%);
+  padding: 100px 0;
+}

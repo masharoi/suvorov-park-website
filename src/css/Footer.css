@@ -2,27 +2,50 @@
   background: #012C0B;
   padding:30px 0;
   margin:0;
+}
+
+#contacts-preview {
+  text-align: left;
+  background: #012C0B;
+  margin: 0 30px;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
+#contacts-preview h2 {
   color: white;
 }
 
+.contacts-preview-item {
+  display: flex;
+  flex-direction: column;
+  font-size:12px;
+  padding-top:20px;
+}
+
+#contacts-link {
+  font-weight: bold;
+  text-decoration: none;
+  width:110px;
+  font-size: 14px;
+}
+/* address */
+.address{
+  text-align: left;
+}
+
+/* contacts */
 #contacts-main-header {
   text-align: left;
   margin: 0px 0px 10px 20px;
-  color: white;
-  width: 100px;
-  border-radius: 2px;
 
 }
 .contacts-item {
   text-align: left;
   display: inline-block;
-  font-size: 12px;
   padding: 20px;
 }
 
-#contacts-info {
-  margin:0;
-}
 
 form input {
   margin: 10px 0;
@@ -30,10 +53,6 @@ form input {
   border-radius:5px;
   box-shadow: none;
   border: none;
-}
-
-#submit-button {
-  align-self:flex-start;
 }
 
 

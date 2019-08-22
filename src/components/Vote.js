@@ -3,6 +3,92 @@ import "react-multi-carousel/lib/styles.css";
 import React, { Component } from "react";
 import "../css/Vote.css";
 
+class Vote extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
+  }
+
+  handleClick(event) {
+    alert("Clicked!");
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <section id="vote" class="gray-background">
+        <Carousel responsive={responsive}>
+          <form class="card" id="new-vote-form" onSubmit={this.handleSubmit}>
+            <div>
+              <input
+              id="vote-question-input"
+                class="vote-input medium-size-text"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+                placeholder="Тема для голосования"
+              />
+            </div>
+
+            <div class="vote-option medium-size-text">
+              <span class="vote-decor" />
+              <input
+                class="vote-input vote-option-inner"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+                placeholder="Вариант ответа"
+              />
+            </div>
+
+            <div class="vote-option medium-size-text">
+              <span class="vote-decor" />
+              <input
+                class="vote-input  vote-option-inner"
+                type="text"
+                value={this.state.value}
+                onChange={this.handleChange}
+                placeholder="Вариант ответа"
+              />
+            </div>
+
+            <div class="vote-option red-color link medium-size-text">
+              <i class="fas fa-plus" />
+              <div id="add-option" onClick={this.handleClick}>
+                Добавить вариант
+              </div>
+            </div>
+
+            <div>
+              <input
+                class="red-background white-color medium-size-text vote-button"
+                type="submit"
+                value="Создать"
+              />
+            </div>
+          </form>
+          <div class="card" />
+          <div class="card" />
+          <div class="card" />
+        </Carousel>
+      </section>
+    );
+  }
+}
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -11,7 +97,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3
+    items: 4
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -22,53 +108,5 @@ const responsive = {
     items: 1
   }
 };
-function Vote() {
-  return (
-    <section id="vote">
-    <Carousel responsive={responsive}>
-      <div class="news-item">
-        <div>Внимание! Отключение горячей воды с 5 по 15 августа!</div>
-        <div>2019-23-07</div>
-        <div>
-          Уважаемые жители! Напоминаем вам, что с 5 августа по 15 августа в
-          наших домах будет отключена горячая вода! На сайте ПАО «МОЭК» размещен
-          график отключения горячей воды в Москве на 2019 год.
-        </div>
-        <div>Подробнее</div>
-      </div>
-      <div class="news-item">
-        <div>Внимание! Отключение горячей воды с 5 по 15 августа!</div>
-        <div>2019-23-07</div>
-        <div>
-          Уважаемые жители! Напоминаем вам, что с 5 августа по 15 августа в
-          наших домах будет отключена горячая вода! На сайте ПАО «МОЭК» размещен
-          график отключения горячей воды в Москве на 2019 год.
-        </div>
-        <div>Подробнее</div>
-      </div>
-      <div class="news-item">
-        <div>Внимание! Отключение горячей воды с 5 по 15 августа!</div>
-        <div>2019-23-07</div>
-        <div>
-          Уважаемые жители! Напоминаем вам, что с 5 августа по 15 августа в
-          наших домах будет отключена горячая вода! На сайте ПАО «МОЭК» размещен
-          график отключения горячей воды в Москве на 2019 год.
-        </div>
-        <div>Подробнее</div>
-      </div>
-      <div class="news-item">
-        <div>Внимание! Отключение горячей воды с 5 по 15 августа!</div>
-        <div>2019-23-07</div>
-        <div>
-          Уважаемые жители! Напоминаем вам, что с 5 августа по 15 августа в
-          наших домах будет отключена горячая вода! На сайте ПАО «МОЭК» размещен
-          график отключения горячей воды в Москве на 2019 год.
-        </div>
-        <div>Подробнее</div>
-      </div>
-    </Carousel>
-    </section>
-  );
-}
 
 export default Vote;

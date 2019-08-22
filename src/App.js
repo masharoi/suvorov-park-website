@@ -5,7 +5,6 @@ import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import Home from "./components/Home";
 import Contacts from "./components/Contacts";
 import AllNews from "./components/AllNews";
-import ContactsPreview from "./components/ContactsPreview";
 import Forum from "./components/Forum";
 import Services from "./components/Services";
 import ForumHome from "./components/ForumHome";

@@ -1,17 +1,19 @@
 import React from "react";
 import MyNavbar from "./MyNavbar";
 import MyFooter from "./MyFooter";
-import MyCarousel from "./MyCarousel";
+import Images from "./Images";
 import "../css/Common.css";
 import About from "./About";
+import Contacts from "./Contacts";
 
 function Home() {
   return (
     <div>
       <MyNavbar />
-      <MyCarousel />
+      <Images />
       <About/>
-      <MyFooter />
+      <Contacts/>
+      <MyFooter isHome={true}/>
     </div>
   );
 }
