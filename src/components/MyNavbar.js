@@ -8,39 +8,64 @@ import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 
+import logo from '../images/Ellipse.png';
 
-function MyNavbar() {
-  return (
-    <section>
-      <Navbar id="my-navbar" expand="lg">
-        <Navbar.Collapse id="my-nav">
-          <Nav className="ml-auto" >
-            <Navbar.Brand href="/">
-              <img id="logo"  alt="Logo" />
-            </Navbar.Brand>
 
-            <Nav.Item>
-              <Nav.Link href="/services">Услуги</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/vote">Голосование</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/forum">Форум</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/news">Новости</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/forum">Контакты</Nav.Link>
-            </Nav.Item>
+class MyNavbar extends React.Component {
+  constructor(props) {
+  super(props);
+  this.state = {'navClass': 'initial-nav-style'};
+  this.handleScroll = this.handleScroll.bind(this);
+}
+componentDidMount() {
+  window.addEventListener('scroll', this.handleScroll);
+};
 
-          </Nav>
+componentWillUnmount() {
+  window.removeEventListener('scroll', this.handleScroll);
+};
 
-        </Navbar.Collapse>
-      </Navbar>
-    </section>
-  );
+handleScroll(event) {
+  if (window.pageYOffset==0) {
+    this.setState({'navClass': 'initial-nav-style'})
+  } else {
+    this.setState({'navClass': 'scrolled-nav-style'})
+  }
+
+};
+  render() {
+    return(
+      <section>
+        <Navbar  id="my-navbar" expand="lg" className={this.state.navClass}>
+          <Navbar.Collapse id="my-nav">
+          <Navbar.Brand href="/" className="mr-auto">
+            <img id="logo" src={logo}  alt="Logo" />
+          </Navbar.Brand>
+
+            <Nav className="ml-auto" >
+              <Nav.Item>
+                <Nav.Link href="profile#services">Услуги</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="profile#all-news">Новости</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="profile#vote">Голосование</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="profile#forum">Форум</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="profile#footer">Контакты</Nav.Link>
+              </Nav.Item>
+
+            </Nav>
+
+          </Navbar.Collapse>
+        </Navbar>
+      </section>
+    );
+  }
 }
 
 export default MyNavbar;

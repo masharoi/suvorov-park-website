@@ -1,6 +1,25 @@
 #my-navbar {
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: 0;
 }
+
+.initial-nav-style {
+  color:black;
+  -webkit-transition: background 1s; /* Safari prior 6.1 */
+  transition: background 1s;
+}
+
+.scrolled-nav-style {
+  background:rgba(255,255,255, 0.7);
+  -webkit-transition: background 2s; /* Safari prior 6.1 */
+  transition: background 2s;
+}
+
+
 
 #my-navbar:after {
   content: "";
@@ -8,7 +27,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 650px;
+  width: 631px;
   height: 1px;
 }
 
@@ -17,18 +36,21 @@
   height: 40px;
   margin-top: 15px;
   margin-left: 20px;
-  float:left;
+  float: left;
 }
 
-/* dropdown */
+/* navbar link */
 
 .nav-link {
   color: black !important;
-  margin: 30px 40px 5px 0;
+  margin: 30px 40px 0 0;
+  padding-bottom: 5px;
 }
 
 .nav-link:hover {
-  color: #7D0000 !important;
+  color: #7d0000 !important;
+  border-bottom: 2px solid #7d0000;
+  padding-bottom: 3px;
 }
 
 .dropdown-item {

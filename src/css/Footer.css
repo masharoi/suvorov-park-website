@@ -1,20 +1,9 @@
 #footer {
   background: #012C0B;
-  padding:30px 0;
+  padding:150px 0 150px 0;
   margin:0;
 }
 
-#contacts-preview {
-  text-align: left;
-  background: #012C0B;
-  margin: 0 30px;
-  padding-top: 10px;
-  border-radius: 5px;
-}
-
-#contacts-preview h2 {
-  color: white;
-}
 
 .contacts-preview-item {
   display: flex;
@@ -23,12 +12,6 @@
   padding-top:20px;
 }
 
-#contacts-link {
-  font-weight: bold;
-  text-decoration: none;
-  width:110px;
-  font-size: 14px;
-}
 /* address */
 .address{
   text-align: left;
@@ -46,15 +29,23 @@
   padding: 20px;
 }
 
-
+/* form */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 280px;
+  padding: 0;
+}
 form input {
   margin: 10px 0;
   height: 40px;
   border-radius:5px;
   box-shadow: none;
   border: none;
+  position:relative;
+  text-indent: 15px;
 }
-
 
 textarea {
   margin: 10px 0;
@@ -62,33 +53,13 @@ textarea {
   border-radius:5px;
   border: none;
   resize: none;
+    text-indent: 15px;
+    padding-top:6px;
 }
 textarea::placeholder {
-  padding-top:5px;
+  padding-top:2px;
 }
 ::placeholder {
-  padding-left: 10px;
+  text-indent: 5px;
   vertical-align: top;
-}
-@media (max-width:992px) {
-  #footer-form {
-    width: 350px;
-  }
-}
-@media (max-width:768px) {
-  .contact-form-outer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  #contacts-outer {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  #contacts-info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
 }

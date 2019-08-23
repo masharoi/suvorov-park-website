@@ -18,11 +18,7 @@ function App() {
       <Router>
         <div>
           <Route exact path="/" component={home} />
-          <Route path="/services" component={main} />
-          <Route path="/vote" component={home} />
-          <Route path="/forum" component={home} />
-          <Route path="/news" component={home} />
-          <Route path="/contacts" component={home} />
+          <Route path="/profile" component={main} />
 
         </div>
       </Router>

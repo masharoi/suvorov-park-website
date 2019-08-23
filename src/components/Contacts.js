@@ -15,7 +15,7 @@ function Contacts() {
         <input class="gray-background medium-size-text" type="email" name="name" placeholder="Ваш E-mail" />
         <textarea class="gray-background medium-size-text" placeholder="Текст Сообщения" />
         <input
-          class="yellow-background green-color primary-button-size medium-size-text"
+          class="orange-background green-color primary-button-size medium-size-text"
           type="submit"
           value="Отправить"
         />
