@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
-          <Route exact path="/" component={home} />
+          <Route exact path="/home" component={home} />
           <Route path="/profile" component={main} />
           <Route path="/full-forum" component={forumExpanded} />
 

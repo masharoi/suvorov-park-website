@@ -62,6 +62,19 @@
 /* expanded forum */
 #forum-expanded {
   background: linear-gradient(to right,  #7D0000 0%,#7D0000 50%,white 50%,white 100%);
+  position: relative;
+}
+#forum-back-button  {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+#forum-back-button-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 2;
 }
 #forum-list {
   list-style: none;

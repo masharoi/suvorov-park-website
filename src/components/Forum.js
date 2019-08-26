@@ -6,9 +6,9 @@ function Forum() {
   return (
     <section id="forum" class="yellow-background">
       <div id="forum-link">
-        <Link href="/full-forum" id="forum-link-text" class="white-color link bold medium-size-text">
+        <a href="/full-forum" id="forum-link-text" class="white-color link bold medium-size-text">
           Все обсуждения
-        </Link>
+        </a>
         <i class="fas fa-long-arrow-alt-right white-color medium-size-text" id="forum-link-icon" />
       </div>
       <div class="row">

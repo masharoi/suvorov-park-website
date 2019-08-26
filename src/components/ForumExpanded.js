@@ -10,6 +10,7 @@ class ForumExpanded extends Component {
   render() {
     return (
       <section id="forum-expanded">
+      <div id="forum-back-button-container"><a id="forum-back-button" href="/profile"><i class="fas fa-long-arrow-alt-left"></i></a></div>
         <div class="row">
           <div class="col-6">
             <ul id="forum-list">
