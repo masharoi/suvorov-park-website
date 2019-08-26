@@ -24,3 +24,7 @@
   border: solid 1px #EAA81B;
   text-align-last:center;
 }
+option {
+    background: rgba(0,0,0,0.3);
+    color:red;
+}

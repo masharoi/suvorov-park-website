@@ -3,13 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import Home from "./components/Home";
-import Contacts from "./components/Contacts";
-import AllNews from "./components/AllNews";
-import Forum from "./components/Forum";
-import Services from "./components/Services";
-import ForumHome from "./components/ForumHome";
-import ForumSearch from "./components/ForumSearch";
-import ForumRules from "./components/ForumRules";
+import ForumExpanded from "./components/ForumExpanded";
 import Main from "./components/Main";
 
 function App() {
@@ -19,6 +13,7 @@ function App() {
         <div>
           <Route exact path="/" component={home} />
           <Route path="/profile" component={main} />
+          <Route path="/full-forum" component={forumExpanded} />
 
         </div>
       </Router>
@@ -26,7 +21,8 @@ function App() {
   );
 }
 const home = () => <Home />;
-const main = () => <Main/>
+const main = () => <Main/>;
+const forumExpanded = () => <ForumExpanded/>
 
 
 export default App;

@@ -2,39 +2,36 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React, { Component } from "react";
 import "../css/Vote.css";
+import MyPoll from "./MyPoll";
 
 class Vote extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.state = { value: ""};
   }
-
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     alert("A name was submitted: " + this.state.value);
     event.preventDefault();
   }
 
-  handleClick(event) {
+  handleClick = event => {
     alert("Clicked!");
     event.preventDefault();
   }
 
   render() {
+
     return (
       <section id="vote" class="gray-background">
         <Carousel responsive={responsive}>
           <form class="card" id="new-vote-form" onSubmit={this.handleSubmit}>
             <div>
               <input
-              id="vote-question-input"
+                id="vote-question-input"
                 class="vote-input medium-size-text"
                 type="text"
                 value={this.state.value}
@@ -80,7 +77,7 @@ class Vote extends Component {
               />
             </div>
           </form>
-          <div class="card" />
+          <div class="card" ><MyPoll/></div>
           <div class="card" />
           <div class="card" />
         </Carousel>
