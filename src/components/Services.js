@@ -8,9 +8,9 @@ function Services() {
       <div class="row">
         <div class="col-6" id="services-action-col">
           <select name="services-list" class="service-interaction green-background yellow-color" id="service-select" form="service-form">
-            <option class="service-option red-background">Вызов сантехника</option>
-            <option class="service-option">Вызов электрика</option>
-            <option class="service-option">Клининг</option>
+          {services.map((item) =>
+            <option class="service-option">{item.service}</option>
+          )}
           </select>
           <form action="/action_page.php" id="service-form">
             <input id="service-button" class="service-interaction yellow-background green-color" type="submit" value="Заказать услугу"/>
@@ -20,5 +20,11 @@ function Services() {
     </section>
   );
 }
+
+const services = [
+  {id:0, service:"Вызов сантехника"},
+  {id:1, service:"Вызов электрика"},
+  {id:2, service:"Клининг"}
+]
 
 export default Services;

@@ -9,27 +9,14 @@ class ForumExpanded extends Component {
     return (
       <section id="forum-chat">
         <ul id="comment-list" class="medium-size-text">
+        {this.props.messages.map((message) =>
           <li class="comment">
             <p class="comment-text">
-              Ириуре темпорибус про еу, граеци номинави ет яуи. Ад тале цоммодо
-              еум, ехерци сентентиае ест ин, ат тибияуе сусципиантур меа.
+              {message.comment}
             </p>
-            <p class="comment-author">Кв 20</p>
+            <p class="comment-author">{message.commentAuthor}</p>
           </li>
-          <li class="comment">
-            <p class="comment-text">
-              Ириуре темпорибус про еу, граеци номинави ет яуи. Ад тале цоммодо
-              еум, ехерци сентентиае ест ин, ат тибияуе сусципиантур меа.
-            </p>
-            <p class="comment-author">Кв 20</p>
-          </li>
-          <li class="comment">
-            <p class="comment-text">
-              Ириуре темпорибус про еу, граеци номинави ет яуи. Ад тале цоммодо
-              еум, ехерци сентентиае ест ин, ат тибияуе сусципиантур меа.
-            </p>
-            <p class="comment-author">Кв 20</p>
-          </li>
+        )}
         </ul>
 
         <form id="comment-input">

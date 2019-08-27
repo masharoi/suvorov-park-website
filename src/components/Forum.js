@@ -36,7 +36,7 @@ function Forum() {
           </div>
           <div class="forum-preview-item">
             <div class="medium-size-text">
-              Нам необходимо собрать всеобщее собрание...{" "}
+              Нам необходимо собрать всеобщее собрание...
             </div>
             <div class="orange-color bold medium-size-text">Подробнее</div>
           </div>
