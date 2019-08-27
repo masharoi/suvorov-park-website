@@ -6,7 +6,7 @@ function Services() {
   return (
     <section id="services" class="green-background">
       <div class="row">
-        <div class="col-6" id="services-action-col">
+        <div class="col-12 col-md-6" id="services-action-col">
           <select name="services-list" class="service-interaction green-background yellow-color" id="service-select" form="service-form">
           {services.map((item) =>
             <option class="service-option">{item.service}</option>

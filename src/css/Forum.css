@@ -1,7 +1,9 @@
 #forum {
   padding: 150px 0;
 }
-
+.small-screen {
+  display:none;
+}
 #forum-link {
   text-align: right;
   padding-right: 80px;
@@ -151,4 +153,32 @@ padding: 30px;
 #comment-input-button {
   background: transparent;
   border: none;
+}
+
+/* small */
+@media (max-width: 768px) {
+  #forum-preview-container {
+    padding-right: 15px;
+    padding-top: 50px;
+  }
+  .forum-preview-item  {
+    margin-top: 20px;
+  }
+  #forum-link {
+    font-size: 24px;
+    padding-right: 15px;
+    padding-top: 50px;
+  }
+  #forum-link-icon {
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+  }
+  .small-screen {
+    display: block;
+  }
+  .large-screen {
+    display: none;
+  }
+
 }

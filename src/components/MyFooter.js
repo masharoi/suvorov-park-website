@@ -3,7 +3,7 @@ import "../css/Footer.css";
 
 function MyFooter(props) {
   const form = (
-    <div class="col-lg-4  col-12 form-container ">
+    <div class="col-lg-4 col-md-6  col-12 form-container ">
       <div class="contact-form-header large-size-text medium">Обратная связь</div>
       <div >
       <form class="contact-form">
@@ -34,29 +34,29 @@ function MyFooter(props) {
         </h2>
 
         <div class="row">
-          <p class="contacts-item col-12 small-size-text">
+          <p class="contacts-item col-6 col-md-12 small-size-text">
             <span class="contacts-header medium-size-text">Диспетчерская</span>{" "}
             <br /> 8 (499) 146-05-13 Охрана (круглосуточно) <br /> 8 (977)
             637-15-29 Губарев Виктор Михайлович
           </p>
-          <p class="contacts-item col-12 small-size-text">
+          <p class="contacts-item col-6 col-md-12 small-size-text">
             <span class="contacts-header medium-size-text">Бухгалтерия</span>
             <br />8 (926) 538-88-46 (с 10:00 до 18:00)
           </p>
-          <p class="contacts-item col-12 small-size-text">
+          <p class="contacts-item col-6 col-md-12 small-size-text">
             <span class="contacts-header medium-size-text">
               Председатель УК
             </span>
             <br />
             tsg.suvorov@mail.ru <br /> Зайцев Илья Григорьевич
           </p>
-          <p class="contacts-item col-12 small-size-text">
+          <p class="contacts-item col-6 col-md-12 small-size-text">
             8 (977) 282-73-75 <br/>Рыбак Валерий Александрович
           </p>
         </div>
       </div>
       {!props.isHome ? form : <div />}
-      <div class="col-lg-4 col-12 address">
+      <div class="col-lg-4 col-md-6 col-12 address">
         <h2 class="large-size-text medium">ТСЖ "Суворов Парк"</h2>
         <div class="contacts-preview-item small-size-text">
           <div class="contacts-header medium-size-text">Адрес:</div>

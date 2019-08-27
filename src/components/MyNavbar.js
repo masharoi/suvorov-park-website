@@ -14,7 +14,7 @@ import logo from "../images/Ellipse.png";
 class MyNavbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { navClass: "initial-nav-style" };
+    this.state = { navClass: "initial-nav-style"};
     this.handleScroll = this.handleScroll.bind(this);
   }
   componentDidMount() {
@@ -32,12 +32,15 @@ class MyNavbar extends React.Component {
       this.setState({ navClass: "scrolled-nav-style" });
     }
   }
+
+
   render() {
     return (
       <section>
-        <Navbar id="my-navbar" expand="lg" className={this.state.navClass}>
+        <Navbar id="my-navbar" expand="md" className={this.state.navClass}>
+        <Navbar.Toggle  id="nav-toggle"/>
           <Navbar.Collapse id="my-nav">
-            <Navbar.Brand href="/home" className="mr-auto">
+            <Navbar.Brand id="nav-brand" href="/home" className="mr-auto">
               <img id="logo" src={logo} alt="Logo" />
             </Navbar.Brand>
             <ScrollspyNav
@@ -51,8 +54,7 @@ class MyNavbar extends React.Component {
               activeNavClass="is-active"
               scrollDuration="1000"
             >
-              <ul
-                style={{ display: "flex", "list-style": "none", "margin":0 }}
+              <ul id="nav-list"
               >
                 <li>
                   <a class="nav-link" href="#services">

@@ -1,3 +1,9 @@
 #all-news {
   padding: 150px 0;
 }
+/* small */
+@media (max-width: 840px) {
+  .card {
+    margin: 10px auto;
+  }
+}
