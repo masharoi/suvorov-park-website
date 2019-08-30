@@ -1,3 +1,5 @@
+
+
 #forum {
   padding: 150px 0;
 }
@@ -14,6 +16,14 @@
 }
 #forum-link-icon {
   padding-left: 10px;
+}
+
+#chat-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  z-index: 2;
 }
 
 /* forum form */
@@ -181,4 +191,20 @@ padding: 30px;
     display: none;
   }
 
+}
+
+/* medium */
+@media (max-width: 768px) {
+  #forum-chat-outer {
+    background: white;
+  }
+  #forum-expanded {
+    background: #7D0000;
+  }
+  #forum-chat {
+    margin-top: 10px;
+  }
+  .active-forum {
+    border-left: none;
+  }
 }

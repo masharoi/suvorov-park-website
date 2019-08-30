@@ -5,59 +5,147 @@ import ForumChat from "./ForumChat";
 class ForumExpanded extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedForumId: 0 };
+    this.state = {
+      selectedForumId: 0,
+      width: 0
+    };
+    this.expanded = "expanded";
+    this.chat = "chatOnly";
+    this.forum = "forumListOnly";
   }
 
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    if (window.innerWidth >= 768) {
+      window.localStorage.setItem("currentState", this.expanded);
+    }
+    this.setState({ width: window.innerWidth });
+  };
+
+  // handle forum interactions
+
   handleForumCardClicked = el => {
+    if (this.state.width < 768) {
+      window.localStorage.setItem("currentState", this.chat);
+    }
     this.setState({ selectedForumId: el });
   };
 
-  filterSelectedForum = (card) => {
+  handleChatBackClicked = () => {
+    window.localStorage.setItem("currentState", this.forum);
+    window.location.reload();
+  };
+
+  filterSelectedForum = card => {
     return card.id === this.state.selectedForumId;
   };
 
+  // set the view of the forum page depending on the screen size
+
+  // control the visibility of the forum list
+  setForumListView = () => {
+    if (
+      window.localStorage.getItem("currentState") == this.expanded ||
+      window.localStorage.getItem("currentState") == this.forum
+    ) {
+      return "show";
+    } else {
+      return "hide";
+    }
+  };
+
+  // control the visibility of the chat back button
+  setChatBackView = () => {
+    if (window.localStorage.getItem("currentState") == this.chat) {
+      return "show";
+    } else {
+      return "hide";
+    }
+  };
+
+  // control the visibility of the chat
+  setChatView = () => {
+    if (
+      window.localStorage.getItem("currentState") == this.chat ||
+      window.localStorage.getItem("currentState") == this.forum
+    ) {
+      return "show";
+    } else {
+      return "hide";
+    }
+  };
+
   render() {
-    const messages = cardInformation.filter((card) =>
+    const messages = cardInformation.filter(card =>
       this.filterSelectedForum(card)
     )[0].comments;
 
     return (
       <section id="forum-expanded">
-        <div id="forum-back-button-container">
+        <div id="forum-back-button-container" class={this.setForumListView()}>
           <a id="forum-back-button" href="/profile">
             <i class="fas fa-long-arrow-alt-left" />
           </a>
         </div>
         <div class="row">
-          <div class="col-6">
-            <ul id="forum-list">
-              {cardInformation.map(forum => (
-                <li
-                  key={forum.id}
-                  class={"forum-card medium-size-text ".concat(
-                    forum.id == this.state.selectedForumId ? "active-forum" : ""
-                  )}
-                  onClick={() => this.handleForumCardClicked(forum.id)}
-                >
-                  <p class="forum-card-text">{forum.topic}</p>
-                  <div class="forum-card-footer row small-size-text">
-                    <div class="forum-card-footer-left col-6">
-                      <p class="forum-author">{forum.author}</p>
-                      <p class="forum-date">{forum.date}</p>
+          <div class="col-md-6 col-12 ">
+            <div
+              class={
+                window.localStorage.getItem("currentState") == this.expanded ||
+                window.localStorage.getItem("currentState") == this.forum
+                  ? "show"
+                  : "hide"
+              }
+            >
+              <ul id="forum-list">
+                {cardInformation.map(forum => (
+                  <li
+                    key={forum.id}
+                    class={"forum-card medium-size-text ".concat(
+                      forum.id == this.state.selectedForumId
+                        ? "active-forum"
+                        : ""
+                    )}
+                    onClick={() => this.handleForumCardClicked(forum.id)}
+                  >
+                    <p class="forum-card-text">{forum.topic}</p>
+                    <div class="forum-card-footer row small-size-text">
+                      <div class="forum-card-footer-left col-6">
+                        <p class="forum-author">{forum.author}</p>
+                        <p class="forum-date">{forum.date}</p>
+                      </div>
+                      <div class="forum-card-footer-right col-6">
+                        <p class="forum-comments">
+                          {forum.commentsCount} Комментариев
+                        </p>
+                        <p class="forum-users">{forum.usersCount} Учасника</p>
+                      </div>
                     </div>
-                    <div class="forum-card-footer-right col-6">
-                      <p class="forum-comments">
-                        {forum.commentsCount} Комментариев
-                      </p>
-                      <p class="forum-users">{forum.usersCount} Учасника</p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div class="col-6 zero-padding">
-            <ForumChat messages={messages} />
+          <div id="forum-chat-outer" class="col-md-6 col-12 zero-padding">
+            <div id="chat-back">
+              <a id="forum-back-button" onClick={this.handleChatBackClicked}>
+                <i
+                  class={
+                    "fas fa-long-arrow-alt-left red-color " +
+                    this.setChatBackView()
+                  }
+                />
+              </a>
+            </div>
+            <ForumChat class={this.setChatView()} messages={messages} />
           </div>
         </div>
       </section>

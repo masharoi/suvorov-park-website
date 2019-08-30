@@ -2,9 +2,18 @@
 * {
   box-sizing: border-box;
 }
+
+/* utis */
 .zero-padding {
   padding:0;
 }
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
 /* font size */
 .large-size-text {
   font-size:18px;

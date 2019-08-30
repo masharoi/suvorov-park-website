@@ -82,15 +82,15 @@ const responsive = {
     items: 5
   },
   LargerDesktop: {
-    breakpoint: { max: 1300, min: 992 },
+    breakpoint: { max: 1300, min: 1106 },
     items: 4
   },
   desktop: {
-    breakpoint: { max: 992, min: 768 },
+    breakpoint: { max: 1106, min: 840 },
     items: 3
   },
   tablet: {
-    breakpoint: { max: 768, min: 576 },
+    breakpoint: { max: 840, min: 576 },
     items: 2
   },
   mobile: {
@@ -98,5 +98,4 @@ const responsive = {
     items: 1
   }
 };
-
 export default AllNews;
