@@ -13,6 +13,10 @@ function Services() {
           )}
           </select>
           <form action="/action_page.php" id="service-form">
+          <textarea
+            class="medium-size-text gray-background"
+            placeholder="Дополнительная информация"
+          />
             <input id="service-button" class="service-interaction yellow-background green-color" type="submit" value="Заказать услугу"/>
           </form>
         </div>

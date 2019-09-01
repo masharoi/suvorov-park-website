@@ -1,6 +1,7 @@
 #services {
-  height: 300px;
+  height: auto;
   margin: 140px 0 0 0;
+  padding: 80px 0;
 }
 
 #services-action-col {
@@ -11,6 +12,10 @@
   height: 300px;
 }
 
+#service-form {
+  display: flex;
+  flex-direction: column;
+}
 .service-interaction {
   height: 53px;
   width: 250px;

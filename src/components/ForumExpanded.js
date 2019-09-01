@@ -6,7 +6,6 @@ class ForumExpanded extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedForumId: 0,
       width: 0
     };
     this.expanded = "expanded";
@@ -36,7 +35,8 @@ class ForumExpanded extends Component {
     if (this.state.width < 768) {
       window.localStorage.setItem("currentState", this.chat);
     }
-    this.setState({ selectedForumId: el });
+    window.localStorage.setItem("currentSelectedForum", el);
+    window.location.reload();
   };
 
   handleChatBackClicked = () => {
@@ -45,7 +45,7 @@ class ForumExpanded extends Component {
   };
 
   filterSelectedForum = card => {
-    return card.id === this.state.selectedForumId;
+    return card.id == window.localStorage.getItem("currentSelectedForum");
   };
 
   // set the view of the forum page depending on the screen size
@@ -91,7 +91,7 @@ class ForumExpanded extends Component {
     return (
       <section id="forum-expanded">
         <div id="forum-back-button-container" class={this.setForumListView()}>
-          <a id="forum-back-button" href="/profile">
+          <a id="forum-back-button" href="/profile#forum">
             <i class="fas fa-long-arrow-alt-left" />
           </a>
         </div>
@@ -110,7 +110,7 @@ class ForumExpanded extends Component {
                   <li
                     key={forum.id}
                     class={"forum-card medium-size-text ".concat(
-                      forum.id == this.state.selectedForumId
+                      forum.id == window.localStorage.getItem("currentSelectedForum")
                         ? "active-forum"
                         : ""
                     )}
