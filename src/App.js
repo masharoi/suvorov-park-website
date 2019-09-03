@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import Home from "./components/Home";
 import ForumExpanded from "./components/ForumExpanded";
 import Main from "./components/Main";
+import LogIn from "./components/LogIn";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route exact path="/home" component={home} />
           <Route path="/profile" component={main} />
           <Route path="/full-forum" component={forumExpanded} />
-
+          <Route path="/log-in" component={logIn} />
         </div>
       </Router>
     </div>
@@ -23,6 +24,6 @@ function App() {
 const home = () => <Home />;
 const main = () => <Main/>;
 const forumExpanded = () => <ForumExpanded/>
-
+const logIn = () => <LogIn/>
 
 export default App;

@@ -8,6 +8,7 @@ import Forum from "./Forum";
 
 
 function Main() {
+  const isLoggedIn = window.localStorage.getItem("isLoggedIn");
   return (
     <div>
     <MyNavbar/>
