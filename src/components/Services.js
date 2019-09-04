@@ -20,6 +20,9 @@ function Services() {
             <input id="service-button" class="service-interaction yellow-background green-color" type="submit" value="Заказать услугу"/>
           </form>
         </div>
+        <div class="col-6" id="services-illustration">
+
+        </div>
       </div>
     </section>
   );

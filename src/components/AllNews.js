@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import makeRequest from "./Utils";
+
 class AllNews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showPopup: false, selectedNewsId: 0 };
+    this.state = { showPopup: false, selectedNewsId: 0, newsInfo:[] };
   }
 
   togglePopup = id => {
@@ -22,18 +24,38 @@ class AllNews extends React.Component {
     return news.id === this.state.selectedNewsId;
   };
 
+  handleResponse = (json) => {
+    this.setState({newsInfo:json})
+    alert(JSON.stringify(this.state.newsInfo))
+  }
+
+  componentDidMount() {
+    makeRequest(
+      null,
+      "get",
+      "/api/common/news",
+      this.handleResponse
+    );
+  }
+
   render() {
-    const selectedNewsItem = newsInformation.filter(news =>
-      this.filterSelectedNewsItem(news)
-    )[0];
+    var selectedNewsItem;
+    if (this.state.newsInfo.length != 0) {
+      selectedNewsItem = this.state.newsInfo.filter(news =>
+        this.filterSelectedNewsItem(news)
+      )[0];
+    } else {
+      selectedNewsItem = null;
+    }
+
     return (
       <section id="all-news">
         <Carousel responsive={responsive}>
-          {newsInformation.map(newsItem => (
+          {this.state.newsInfo.map(newsItem => (
             <div key={newsItem.id} class="card medium-size-text">
-              <div class="bold">{newsItem.header}</div>
+              <div class="bold">{newsItem.title}</div>
               <div class="medium">{newsItem.date}</div>
-              <div>{newsItem.body}</div>
+              <div>{newsItem.text}</div>
               <div
                 onClick={() => this.togglePopup(newsItem.id)}
                 class="bold orange-color link"
@@ -43,11 +65,11 @@ class AllNews extends React.Component {
             </div>
           ))}
         </Carousel>
-        {this.state.showPopup ? (
+        {this.state.showPopup & selectedNewsItem != null ? (
           <Popup
-            header={selectedNewsItem.header}
+            header={selectedNewsItem.title}
             date={selectedNewsItem.date}
-            body={selectedNewsItem.body}
+            body={selectedNewsItem.text}
             closePopup={this.togglePopup}
           />
         ) : null}

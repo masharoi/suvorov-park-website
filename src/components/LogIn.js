@@ -8,7 +8,7 @@ class LogIn extends Component {
 
   }
 
-  handleResponse = json => {
+  handleResponse = response => {
     window.localStorage.setItem("isLoggedIn", true);
     window.location = "/profile";
   }

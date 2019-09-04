@@ -97,7 +97,7 @@ class MyNavbar extends React.Component {
             <Navbar.Brand id="nav-brand" href="/home" className="mr-auto">
               <img id="logo" src={logo} alt="Logo" />
             </Navbar.Brand>
-            {window.localStorage.getItem("isLoggedIn") ? loggedInNav : loggedOutNav}
+            {window.localStorage.getItem("isLoggedIn")==true ? loggedInNav : loggedOutNav}
           </Navbar.Collapse>
         </Navbar>
       </section>
