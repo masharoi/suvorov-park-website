@@ -4,10 +4,9 @@ export default function makeRequest(body, requestType, apiAddress, callback) {
   fetch(apiAddress, {
     method: requestType,
     body: body,
-    mode: 'no-cors',
     credentials: "include",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json"
     }
   })
@@ -15,6 +14,7 @@ export default function makeRequest(body, requestType, apiAddress, callback) {
       return response.json();
     })
     .then(json => {
+      console.log(json)
        callback(json);
     })
     .catch(error => alert("The error has occured " + error));

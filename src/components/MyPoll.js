@@ -1,38 +1,49 @@
 import React, { Component } from "react";
 import Poll from "react-polls";
 import "../css/Vote.css";
+import makeRequest from "./Utils";
 
 class MyPoll extends Component {
   constructor(props) {
     super(props);
-    this.state = { pollAnswers: [...pollAnswers] };
+    this.state = { pollAnswers: props.choices, id:props.uniqueId , voted: ""};
+  }
+
+  handleResponse = (json) => {
+    this.setState({pollAnswers:json.choices, voted: "я"})
   }
 
   handleVote = voteAnswer => {
-    const { pollAnswers } = this.state;
-    const newPollAnswers = pollAnswers.map(answer => {
-      if (answer.option === voteAnswer) answer.votes++;
-      return answer;
-    });
-    this.setState({
-      pollAnswers: newPollAnswers
+    const { pollAnswers, id } = this.state;
+    const newPollAnswers = pollAnswers.forEach(answer => {
+      if (answer.option === voteAnswer) {
+        const answerId = answer.id;
+        alert("/api/polls/" + id +"/vote/" + answerId)
+        makeRequest(
+          JSON.stringify({test: "test"}),
+          "post",
+          "/api/polls/" + id +"/vote/" + answerId,
+          this.handleResponse
+        );
+      };
     });
   };
 
   render() {
-    const { pollAnswers } = this.state;
+    const { pollAnswers, voted } = this.state;
     return (
-      <Poll id="poll"
-    customStyles={styles}
-        question={pollQuestion}
-        answers={pollAnswers}
+      <Poll
+        id="poll"
+        noStorage={true}
+        customStyles={styles}
+        question={this.props.title}
+        answers={this.state.pollAnswers}
         onVote={this.handleVote}
+        vote={voted}
       />
     );
   }
 }
-const styles=[{questionBold: false}, {theme: 'red'}];
-const pollQuestion = "Имеется техническая возможность организовать в’езд в паркинг по улитке (без лифтов). Кто за проработку этого вопроса?";
-const pollAnswers = [{ option: "Я", votes: 8 }, { option: "Не Я", votes: 2 }];
+const styles = [{ questionBold: false }];
 
 export default MyPoll;

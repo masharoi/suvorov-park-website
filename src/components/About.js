@@ -1,24 +1,34 @@
 import React from "react";
 import "../css/About.css";
 import { Link } from "react-router-dom";
+import makeRequest from "./Utils";
 
-function About() {
-  return (
-    <section id="about" class="yellow-background">
-    <div id="about-info">
-      <h2 class="large-size-text">О нас</h2>
-      <p class="medium-size-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
+class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      aboutText: ""
+    }
+  }
+  handleResponse = json => {
+    this.setState({ aboutText: json.about });
+  };
 
+  componentDidMount() {
+    makeRequest(null, "get", "/api/common/general-configuration", this.handleResponse);
+  }
+
+  render() {
+    return (
+      <section id="about" class="yellow-background">
+        <div id="about-info">
+          <h2 class="large-size-text">О нас</h2>
+          <p class="medium-size-text">
+          {this.state.aboutText}
+          </p>
         </div>
-    </section>
-  );
+      </section>
+    );
+  }
 }
 export default About;

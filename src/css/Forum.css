@@ -139,6 +139,9 @@ padding: 30px;
   text-align:left;
   margin-top: 50px;
   padding:0 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 .comment {
   border-top: 1px solid #7D0000;

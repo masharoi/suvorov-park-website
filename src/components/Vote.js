@@ -3,28 +3,36 @@ import "react-multi-carousel/lib/styles.css";
 import React, { Component } from "react";
 import "../css/Vote.css";
 import MyPoll from "./MyPoll";
+import makeRequest from "./Utils";
 
 class Vote extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: ""};
+    this.state = { value: "", allPolls: [] };
   }
   handleChange = event => {
     this.setState({ value: event.target.value });
-  }
+  };
 
   handleSubmit = event => {
     alert("A name was submitted: " + this.state.value);
     event.preventDefault();
-  }
+  };
 
   handleClick = event => {
     alert("Clicked!");
     event.preventDefault();
+  };
+
+  handleResponse = json => {
+    this.setState({ allPolls: json });
+  };
+
+  componentDidMount() {
+    makeRequest(null, "get", "/api/polls/", this.handleResponse);
   }
 
   render() {
-
     return (
       <section id="vote" class="gray-background">
         <Carousel responsive={responsive}>
@@ -77,9 +85,11 @@ class Vote extends Component {
               />
             </div>
           </form>
-          <div class="card" ><MyPoll/></div>
-          <div class="card" />
-          <div class="card" />
+          {this.state.allPolls.map(poll => (
+            <div class="card">
+              <MyPoll uniqueId={poll.id} title={poll.title} choices={poll.choices}/>
+            </div>
+          ))}
         </Carousel>
       </section>
     );

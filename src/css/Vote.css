@@ -45,6 +45,10 @@
   font-size: 12px;
 }
 
+.styles_votes__3IO-o {
+  display: none;
+}
+
 
 /* small */
 @media (max-width: 840px) {
