@@ -15,7 +15,7 @@ export default function makeRequest(body, requestType, apiAddress, callback) {
     })
     .then(json => {
       console.log(json)
-       callback(json);
+      callback(json);
     })
     .catch(error => alert("The error has occured " + error));
 }

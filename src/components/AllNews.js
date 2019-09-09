@@ -49,7 +49,7 @@ class AllNews extends React.Component {
 
     return (
       <section id="all-news">
-        <Carousel responsive={responsive}>
+        <Carousel responsive={responsive} infinite={true}>
           {this.state.newsInfo.map(newsItem => (
             <div key={newsItem.id} class="card medium-size-text">
               <div class="bold">{newsItem.title}</div>
@@ -86,7 +86,6 @@ class Popup extends React.Component {
           <div class="bold">{this.props.header}</div>
           <div class="medium">{this.props.date}</div>
           <div>"{this.props.body}"</div>
-
         </div>
       </div>
     );

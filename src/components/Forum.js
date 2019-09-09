@@ -7,6 +7,9 @@ import makeRequest from "./Utils";
 class Forum extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: ""
+    }
   }
   handleForumPreviewClicked = (id) => {
     window.localStorage.setItem("currentSelectedForum", id);
@@ -19,6 +22,7 @@ class Forum extends React.Component {
 
   handleResponse = json => {
    alert(JSON.stringify(json))
+     this.setState({value: ""});
   };
 
   handleCreateForumClicked = event => {
@@ -37,6 +41,9 @@ class Forum extends React.Component {
   //  makeRequest(null, "get", "/api/services/", this.handleResponse);
   }
 
+  handleValueChanged = event => {
+    this.setState({value: event.target.value});
+  }
 
 
   render() {
@@ -56,6 +63,8 @@ class Forum extends React.Component {
                 class="medium-size-text"
                 placeholder="Тема для обсуждения"
                 name="forumTitle"
+                value={this.state.value}
+                onChange={this.handleValueChanged}
               />
               <input
                 id="forum-button"

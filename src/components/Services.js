@@ -7,7 +7,8 @@ class Services extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      services: []
+      services: [],
+      value:""
     };
   }
 
@@ -19,10 +20,25 @@ class Services extends React.Component {
     makeRequest(null, "get", "/api/services/", this.handleResponse);
   }
 
+  handleOrderService = json => {
+    alert(JSON.stringify(json))
+    this.setState({value:""})
+  };
+
+  handleValueChanged = event => {
+       this.setState({value: event.target.value});
+  }
+
   handleOrderServerClicked = event => {
     event.preventDefault();
-    const { login, password } = event.target;
-    const message = { username: login.value, password: password.value };
+    const { servicesList, details } = event.target;
+    const message = { details: details.value };
+    makeRequest(
+      JSON.stringify(message),
+      "post",
+      "/api/services/" + servicesList.value + "/order",
+      this.handleOrderService
+    );
   };
 
   render() {
@@ -32,18 +48,21 @@ class Services extends React.Component {
           <div class="col-12 col-md-6" id="services-action-col">
             <form onSubmit={this.handleOrderServerClicked} id="service-form">
               <select
-                name="services-list"
+                name="servicesList"
                 class="service-interaction green-background yellow-color"
                 id="service-select"
                 form="service-form"
               >
                 {this.state.services.map(item => (
-                  <option class="service-option">{item.title}</option>
+                  <option value={item.id} class="service-option">{item.title}</option>
                 ))}
               </select>
               <textarea
                 class="medium-size-text gray-background"
                 placeholder="Дополнительная информация"
+                name="details"
+                onChange={this.handleValueChanged}
+                value={this.state.value}
               />
               <input
                 id="service-button"
