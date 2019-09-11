@@ -18,9 +18,8 @@ class MyPoll extends Component {
     const newPollAnswers = pollAnswers.forEach(answer => {
       if (answer.option === voteAnswer) {
         const answerId = answer.id;
-        alert("/api/polls/" + id +"/vote/" + answerId)
         makeRequest(
-          JSON.stringify({test: "test"}),
+          {},
           "post",
           "/api/polls/" + id +"/vote/" + answerId,
           this.handleResponse

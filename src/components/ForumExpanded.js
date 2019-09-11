@@ -33,6 +33,8 @@ class ForumExpanded extends Component {
   updateWindowDimensions = () => {
     if (window.innerWidth >= 768) {
       window.localStorage.setItem("currentState", this.expanded);
+    } else if (window.localStorage.getItem("currentState") != this.forum) {
+      window.localStorage.setItem("currentState", this.chat);
     }
     this.setState({ width: window.innerWidth });
   };
@@ -83,7 +85,7 @@ class ForumExpanded extends Component {
   setChatView = () => {
     if (
       window.localStorage.getItem("currentState") == this.chat ||
-      window.localStorage.getItem("currentState") == this.forum
+      window.localStorage.getItem("currentState") == this.expanded
     ) {
       return "show";
     } else {
@@ -96,7 +98,10 @@ class ForumExpanded extends Component {
     if (this.state.forumInfo.length != 0) {
       if (window.localStorage.getItem("currentSelectedForum") == -1) {
         forumMessages = this.state.forumInfo[0].messages;
-          window.localStorage.setItem("currentSelectedForum", this.state.forumInfo[0].id)
+        window.localStorage.setItem(
+          "currentSelectedForum",
+          this.state.forumInfo[0].id
+        );
       } else {
         forumMessages = this.state.forumInfo.filter(forum =>
           this.filterSelectedForum(forum)
@@ -115,14 +120,7 @@ class ForumExpanded extends Component {
         </div>
         <div class="row">
           <div class="col-md-6 col-12 ">
-            <div
-              class={
-                window.localStorage.getItem("currentState") == this.expanded ||
-                window.localStorage.getItem("currentState") == this.forum
-                  ? "show"
-                  : "hide"
-              }
-            >
+            <div class={this.setForumListView()}>
               <ul id="forum-list">
                 {this.state.forumInfo.map(forum => (
                   <li
@@ -166,7 +164,11 @@ class ForumExpanded extends Component {
                 />
               </a>
             </div>
-            <ForumChat class={this.setChatView()} chatId={window.localStorage.getItem("currentSelectedForum")} messages={forumMessages} />
+            <ForumChat
+              class={this.setChatView()}
+              chatId={window.localStorage.getItem("currentSelectedForum")}
+              messages={forumMessages}
+            />
           </div>
         </div>
       </section>

@@ -3,91 +3,28 @@ import "react-multi-carousel/lib/styles.css";
 import React, { Component } from "react";
 import "../css/Vote.css";
 import MyPoll from "./MyPoll";
+import CreatePoll from "./CreatePoll";
 import makeRequest from "./Utils";
 
 class Vote extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", allPolls: [] };
   }
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
 
-  handleSubmit = event => {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
-  };
-
-  handleClick = event => {
-    alert("Clicked!");
-    event.preventDefault();
-  };
-
-  handleResponse = json => {
-    this.setState({ allPolls: json });
-  };
-
-  componentDidMount() {
-    makeRequest(null, "get", "/api/polls/", this.handleResponse);
-  }
 
   render() {
     return (
       <section id="vote" class="gray-background">
+
         <Carousel responsive={responsive}>
-          <form class="card" id="new-vote-form" onSubmit={this.handleSubmit}>
-            <div>
-              <input
-                id="vote-question-input"
-                class="vote-input medium-size-text"
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChange}
-                placeholder="Тема для голосования"
-              />
-            </div>
-
-            <div class="vote-option medium-size-text">
-              <span class="vote-decor" />
-              <input
-                class="vote-input vote-option-inner"
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChange}
-                placeholder="Вариант ответа"
-              />
-            </div>
-
-            <div class="vote-option medium-size-text">
-              <span class="vote-decor" />
-              <input
-                class="vote-input  vote-option-inner"
-                type="text"
-                value={this.state.value}
-                onChange={this.handleChange}
-                placeholder="Вариант ответа"
-              />
-            </div>
-
-            <div class="vote-option red-color link medium-size-text">
-              <i class="fas fa-plus" />
-              <div id="add-option" onClick={this.handleClick}>
-                Добавить вариант
-              </div>
-            </div>
-
-            <div>
-              <input
-                class="red-background white-color medium-size-text vote-button"
-                type="submit"
-                value="Создать"
-              />
-            </div>
-          </form>
-          {this.state.allPolls.map(poll => (
+        <CreatePoll/>
+          {this.props.pollsList.map(poll => (
             <div class="card">
-              <MyPoll uniqueId={poll.id} title={poll.title} choices={poll.choices}/>
+              <MyPoll
+                uniqueId={poll.id}
+                title={poll.title}
+                choices={poll.choices}
+              />
             </div>
           ))}
         </Carousel>

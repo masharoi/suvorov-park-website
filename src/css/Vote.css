@@ -20,19 +20,20 @@
 }
 
 .vote-option-inner {
-  margin-left: 10px;
+  margin: 5px 10px;
+  width: 200px;
 }
 
 .vote-option {
   display: flex;
   align-items: center;
 }
-.vote-decor {
-  width:15px;
-  height:15px;
-  background: #EAE9E9;
-  border-radius: 50px;
+
+
+#new-vote-form {
+  padding: 10px 20px;
 }
+
 
 /* vote button */
 .vote-button {

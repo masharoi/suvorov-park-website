@@ -198,6 +198,9 @@ padding: 30px;
 
 /* medium */
 @media (max-width: 768px) {
+  .forum-list-visibility {
+    display: none;
+  }
   #forum-chat-outer {
     background: white;
   }

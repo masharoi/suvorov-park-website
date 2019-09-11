@@ -5,12 +5,15 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+
 import makeRequest from "./Utils";
 
 class AllNews extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showPopup: false, selectedNewsId: 0, newsInfo:[] };
+    this.state = { showPopup: false, selectedNewsId: 0 };
   }
 
   togglePopup = id => {
@@ -24,47 +27,57 @@ class AllNews extends React.Component {
     return news.id === this.state.selectedNewsId;
   };
 
-  handleResponse = (json) => {
-    this.setState({newsInfo:json})
-  }
+  handleResponse = json => {
+    this.setState({ newsInfo: json });
+  };
 
   componentDidMount() {
-    makeRequest(
-      null,
-      "get",
-      "/api/common/news",
-      this.handleResponse
-    );
+    makeRequest(null, "get", "/api/common/news", this.handleResponse);
   }
 
-  render() {
-    var selectedNewsItem;
-    if (this.state.newsInfo.length != 0) {
-      selectedNewsItem = this.state.newsInfo.filter(news =>
-        this.filterSelectedNewsItem(news)
-      )[0];
-    } else {
-      selectedNewsItem = null;
+  setPreviewText = text => {
+    if (text.length > 210) {
+      return text.substring(0, 210) + "...";
     }
+    return text;
+  };
+
+  setMoreLinkVisibility = text => {
+    if (text.length > 210) {
+      return "show";
+    } else {
+      return "hide";
+    }
+  };
+
+  render() {
+    var selectedNewsItem = this.props.newsList.filter(news =>
+      this.filterSelectedNewsItem(news)
+    )[0];
 
     return (
       <section id="all-news">
-        <Carousel responsive={responsive} infinite={true}>
-          {this.state.newsInfo.map(newsItem => (
-            <div key={newsItem.id} class="card medium-size-text">
-              <div class="bold">{newsItem.title}</div>
-              <div class="medium">{newsItem.date}</div>
-              <div>{newsItem.text}</div>
+        <Carousel responsive={responsive}>
+          {this.props.newsList.map(newsItem => (
+            <div class="card medium-size-text">
+              <div>
+                <div class="bold">{newsItem.title}</div>
+                <div class="medium">{newsItem.date}</div>
+              </div>
+              <div>{this.setPreviewText(newsItem.text)}</div>
               <div
                 onClick={() => this.togglePopup(newsItem.id)}
-                class="bold orange-color link"
+                class={
+                  "bold orange-color link " +
+                  this.setMoreLinkVisibility(newsItem.text)
+                }
               >
                 Подробнее
               </div>
             </div>
           ))}
         </Carousel>
-        {this.state.showPopup & selectedNewsItem != null ? (
+        {this.state.showPopup == true ? (
           <Popup
             header={selectedNewsItem.title}
             date={selectedNewsItem.date}
@@ -82,16 +95,19 @@ class Popup extends React.Component {
     return (
       <div className="popup medium-size-text">
         <div className="popup-inner">
-        <i onClick={this.props.closePopup} id="close-news-button" class="fas fa-times large-size-text" />
+          <i
+            onClick={this.props.closePopup}
+            id="close-news-button"
+            class="fas fa-times large-size-text"
+          />
           <div class="bold">{this.props.header}</div>
           <div class="medium">{this.props.date}</div>
-          <div>"{this.props.body}"</div>
+          <div>{this.props.body}</div>
         </div>
       </div>
     );
   }
 }
-
 
 const responsive = {
   SuperLargeDesktop: {
