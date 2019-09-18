@@ -68,7 +68,7 @@ class Forum extends React.Component {
               />
               <input
                 id="forum-button"
-                class="orange-background white-color medium-size-text"
+                class="button orange-background white-color medium-size-text"
                 type="submit"
                 value="Создать"
               />

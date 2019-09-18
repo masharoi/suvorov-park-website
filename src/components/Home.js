@@ -9,7 +9,7 @@ import Contacts from "./Contacts";
 function Home() {
   return (
     <div>
-      <MyNavbar />
+      <MyNavbar isHome={true}/>
       <Images />
       <About/>
       <Contacts/>

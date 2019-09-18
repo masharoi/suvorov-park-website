@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import AliceCarousel from "react-alice-carousel";
-import "react-alice-carousel/lib/alice-carousel.css";
-
 import makeRequest from "./Utils";
 
 class AllNews extends React.Component {

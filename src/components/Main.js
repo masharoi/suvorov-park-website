@@ -6,6 +6,8 @@ import Vote from "./Vote";
 import MyFooter from "./MyFooter";
 import Forum from "./Forum";
 import makeRequest from "./Utils";
+import { LOGGED_OUT } from "./Utils";
+import LogIn from "./LogIn";
 
 class Main extends React.Component {
   constructor(props) {
@@ -18,17 +20,24 @@ class Main extends React.Component {
   }
 
   handleNewsResponse = json => {
-    this.setState({ newsList: json });
+    if (json == LOGGED_OUT) {
+      window.localStorage.setItem("isLoggedIn", false);
+    } else {
+      this.setState({ newsList: json });
+    }
   };
 
   handleVoteResponse = json => {
-    this.setState({ pollsList: json });
+    if (json == LOGGED_OUT) {
+      window.localStorage.setItem("isLoggedIn", false);
+    } else {
+        this.setState({ pollsList: json });
+    }
   };
 
   handleForumPreviewResponse = json => {
-    alert(JSON.stringify(json))
     this.setState({ forumPreviewList: json });
-  }
+  };
 
   componentDidMount() {
     makeRequest(null, "get", "/api/common/news", this.handleNewsResponse);
@@ -37,15 +46,29 @@ class Main extends React.Component {
   }
 
   render() {
-     const { newsList, pollsList, forumPreviewList } = this.state;
+    const { newsList, pollsList, forumPreviewList } = this.state;
     return (
       <div>
-        <MyNavbar />
-        <Services />
-        {newsList.length != 0 ? <AllNews newsList={newsList} /> : <div>empty</div>}
-        {pollsList.length != 0 ? <Vote pollsList={pollsList} /> : <div>empty</div>}
-        <Forum/>
-        <MyFooter />
+        {window.localStorage.getItem("isLoggedIn") == "false" ? (
+          <LogIn />
+        ) : (
+          <div>
+            <MyNavbar  isHome={false}/>
+            <Services />
+            {newsList.length != 0 ? (
+              <AllNews newsList={newsList} />
+            ) : (
+              <div>empty</div>
+            )}
+            {pollsList.length != 0 ? (
+              <Vote pollsList={pollsList} />
+            ) : (
+              <div>empty</div>
+            )}
+            <Forum />
+            <MyFooter />
+          </div>
+        )}
       </div>
     );
   }

@@ -10,28 +10,19 @@
   display: flex;
   list-style: none;
   margin: 0;
+  padding-bottom: 20px;
 }
 
-.initial-nav-style {
-  color: black;
-  -webkit-transition: background 1s; /* Safari prior 6.1 */
-  transition: background 1s;
+#nav-brand {
+  font-family: "Lobster", cursive;
+  margin-top: 15px;
+  margin-left: 20px;
 }
 
 .scrolled-nav-style {
   background: rgba(255, 255, 255, 0.7);
   -webkit-transition: background 2s; /* Safari prior 6.1 */
   transition: background 2s;
-}
-
-#my-navbar:after {
-  content: "";
-  background: black;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 711px;
-  height: 1px;
 }
 
 #logo {
@@ -45,7 +36,13 @@
   color: #c95501 !important;
 }
 /* navbar link */
-
+#profile-link {
+  color: black !important;
+  padding-bottom: 20px;
+}
+#profile-link:hover {
+  color: #c95501 !important;
+}
 .nav-link {
   color: black;
   margin: 30px 40px 0 0;
@@ -54,7 +51,7 @@
 }
 
 .nav-link:hover {
-  color: #c95501;
+  color: #c95501 !important;
 }
 
 /* search */
@@ -68,16 +65,49 @@
 
 @media (max-width: 768px) {
   #nav-toggle {
-    position:absolute;
-    top:0;
-    left:0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: transparent;
   }
+
+  .toggle {
+    color: #c95501;
+    width: 40px;
+    height: 40px;
+  }
+
+  .toggle:focus {
+    outline:none;
+  }
+
+  .toggle::before {
+    display: inline-block;
+   font-style: normal;
+   font-variant: normal;
+   text-rendering: auto;
+   -webkit-font-smoothing: antialiased;
+  }
+  .toggle-icon::before {
+     font-family: "Font Awesome 5 Free"!important;
+     font-weight: 900;
+     content: "\f0c9";
+     font-size: 36px;
+  }
+
+  .navbar-light .navbar-toggler-icon {
+    color: white;
+    border-color:red;
+  }
+
+
   #nav-list {
     flex-direction: column;
-    background: #7D0000;
+    background: black;
   }
   .nav-link {
-    color: rgba(255,255,255, 0.7);
+    color: rgba(255, 255, 255, 0.7);
   }
   .nav-link:hover {
     color: white;
@@ -86,10 +116,10 @@
     color: white !important;
   }
   #my-navbar {
-    padding:0;
+    padding: 0;
   }
   #my-navbar:after {
-    display:none;
+    display: none;
   }
   #nav-brand {
     display: none;

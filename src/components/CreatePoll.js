@@ -166,7 +166,7 @@ class CreatePoll extends Component {
 
         <div>
           <input
-            class="red-background white-color medium-size-text vote-button"
+            class="button red-background white-color medium-size-text vote-button"
             type="submit"
             value="Создать"
           />

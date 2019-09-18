@@ -1,4 +1,4 @@
-const ADDRESS = "http://92.53.67.152";
+export const LOGGED_OUT = 403;
 
 export default function makeRequest(body, requestType, apiAddress, callback) {
   fetch(apiAddress, {
@@ -11,7 +11,14 @@ export default function makeRequest(body, requestType, apiAddress, callback) {
     }
   })
     .then(response => {
-      return response.json();
+      if (response.ok) {
+        return response.json();
+      } else if (response.status == 403) {
+        return LOGGED_OUT;
+      } else {
+        console.log(response.json())
+        throw new Error('Something went wrong');
+      }
     })
     .then(json => {
       console.log(json)

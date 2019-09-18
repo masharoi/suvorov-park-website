@@ -2,6 +2,7 @@ import React from "react";
 import "../css/Services.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import makeRequest from "./Utils";
+import { LOGGED_OUT } from "./Utils";
 
 class Services extends React.Component {
   constructor(props) {
@@ -13,7 +14,11 @@ class Services extends React.Component {
   }
 
   handleResponse = json => {
-    this.setState({ services: json });
+    if (json == LOGGED_OUT) {
+      window.localStorage.setItem("isLoggedIn", false);
+    } else {
+      this.setState({ services: json });
+    }
   };
 
   componentDidMount() {
@@ -49,7 +54,7 @@ class Services extends React.Component {
             <form onSubmit={this.handleOrderServerClicked} id="service-form">
               <select
                 name="servicesList"
-                class="service-interaction green-background yellow-color"
+                class="medium-size-text service-interaction green-background yellow-color"
                 id="service-select"
                 form="service-form"
               >
@@ -66,7 +71,7 @@ class Services extends React.Component {
               />
               <input
                 id="service-button"
-                class="service-interaction yellow-background green-color"
+                class="button medium-size-text service-interaction yellow-background green-color"
                 type="submit"
                 value="Заказать услугу"
               />

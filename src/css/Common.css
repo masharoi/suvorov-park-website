@@ -1,40 +1,43 @@
-
 * {
   box-sizing: border-box;
 }
 
 /* utis */
 .zero-padding {
-  padding:0;
+  padding: 0;
 }
 .hide {
-  display: none!important;
+  display: none !important;
 }
 .show {
-  display: block!important;
+  display: block !important;
 }
 
 .show-flex {
-  display: flex!important;
+  display: flex !important;
+}
+
+.button {
+  text-indent: 0;
 }
 
 /* font size */
 .large-size-text {
-  font-size:18px;
+  font-size: 18px;
 }
 .medium-size-text {
-  font-size:14px;
+  font-size: 14px;
 }
 .small-size-text {
-  font-size:12px;
+  font-size: 12px;
 }
 .tiny-size-text {
-  font-size:10px;
+  font-size: 10px;
 }
 
 /* font weight  */
 * {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 .medium {
   font-weight: 500;
@@ -45,35 +48,35 @@
 
 /* colors */
 .orange-color {
-  color: #C95501;
+  color: #c95501;
 }
 .green-color {
-  color: #012C0B;
+  color: #012c0b;
 }
 .red-color {
-  color: #7D0000;
+  color: #7d0000;
 }
 .yellow-color {
-  color: #EAA81B;
+  color: #eaa81b;
 }
 .white-color {
   color: white;
 }
 
 .orange-background {
-  background: #C95501;
+  background: #c95501;
 }
 .green-background {
-  background: #012C0B;
+  background: #012c0b;
 }
 .red-background {
-  background: #7D0000;
+  background: #7d0000;
 }
 .yellow-background {
-  background: #EAA81B;
+  background: #eaa81b;
 }
 .gray-background {
-  background: #EAE9E9;
+  background: #eae9e9;
 }
 .white-background {
   background: white;
@@ -81,7 +84,7 @@
 
 /* link */
 .link {
-  cursor:pointer;
+  cursor: pointer;
 }
 .link i {
   font-size: 10px;
@@ -99,27 +102,30 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   margin: 20px 10px;
   padding: 30px;
-  text-align:left;
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
 /* placholder */
-::-webkit-input-placeholder { /* Edge */
-  padding-left:0;
+::-webkit-input-placeholder {
+  /* Edge */
+  padding-left: 0;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  padding-left:0;
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  padding-left: 0;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-  padding-left:0;
+:-moz-placeholder {
+  /* Firefox 18- */
+  padding-left: 0;
 }
 
 ::placeholder {
-  padding-left:0px;
+  padding-left: 0px;
 }
 
 /* button sizes */

@@ -26,9 +26,10 @@ class LogIn extends Component {
   };
 
   render() {
+    {window.localStorage.getItem("isLoggedIn") == "true" ?  window.location = "/profile" : window.location = "/log-in"}
     return (
       <section id="login">
-        <a href="/home">
+        <a href="/">
           <i id="login-back" class={"fas fa-long-arrow-alt-left red-color "} />
         </a>
         <form
@@ -38,8 +39,7 @@ class LogIn extends Component {
           onSubmit={this.handleLogin}
         >
           <h2 id="login-header" class="large-size-text red-color">
-            {" "}
-            Войти в личный кабинет{" "}
+            Войти в личный кабинет
           </h2>
           <input
             class="login-input medium-size-text gray-background"

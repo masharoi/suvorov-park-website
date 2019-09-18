@@ -14,49 +14,25 @@ import logo from "../images/Ellipse.png";
 class MyNavbar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { navClass: "initial-nav-style", isLoggedIn: false};
-    this.handleScroll = this.handleScroll.bind(this);
-  }
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
-  }
-
-  handleScroll(event) {
-    if (window.pageYOffset == 0) {
-      this.setState({ navClass: "initial-nav-style" });
-    } else {
-      this.setState({ navClass: "scrolled-nav-style" });
-    }
   }
 
   handleLogIn = () => {
-    window.location = "/log-in"
-  }
-
+    window.location = "/log-in";
+  };
 
   render() {
-    {if (!window.localStorage.getItem("isLoggedIn") == true) {
-      window.localStorage.setItem("isLoggedIn", false);
+    {
+      if (!window.localStorage.getItem("isLoggedIn") == true) {
+        window.localStorage.setItem("isLoggedIn", false);
+      }
     }
-  }
-
-    const loggedInNav =   <ScrollspyNav
-        scrollTargetIds={[
-          "services",
-          "all-news",
-          "vote",
-          "forum",
-          "footer"
-        ]}
+    const loggedInNav = (
+      <ScrollspyNav
+        scrollTargetIds={["services", "all-news", "vote", "forum", "footer"]}
         activeNavClass="is-active"
         scrollDuration="1000"
       >
-        <ul id="nav-list"
-        >
+        <ul id="nav-list">
           <li>
             <a class="nav-link" href="#services">
               <span>Услуги</span>
@@ -84,20 +60,28 @@ class MyNavbar extends React.Component {
           </li>
         </ul>
       </ScrollspyNav>
+    );
 
-    const loggedOutNav =  <Nav className="ml-auto">
-      <Nav.Link onClick={this.handleLogIn} className="nav-link" href="/log-in">Личный кабинет</Nav.Link>
-    </Nav>
+    const loggedOutNav = (
+      <Nav className="ml-auto">
+      <a onClick={this.handleLogIn} id="profile-link" class="nav-link" href="/log-in">
+      Личный кабинет
+      </a>
+      </Nav>
+    );
+
     return (
-
       <section>
-        <Navbar id="my-navbar" expand="md" className={this.state.navClass}>
-        <Navbar.Toggle  id="nav-toggle"/>
-          <Navbar.Collapse id="my-nav">
+        <Navbar id="my-navbar" expand="md" className="scrolled-nav-style">
+          <Navbar.Toggle bsPrefix="toggle toggle-icon" id="nav-toggle" />
+          <Navbar.Collapse className="ml-auto" id="my-nav">
             <Navbar.Brand id="nav-brand" href="/home" className="mr-auto">
-              <img id="logo" src={logo} alt="Logo" />
+            ТСЖ Суворов Парк
             </Navbar.Brand>
-            {window.localStorage.getItem("isLoggedIn")==true || window.localStorage.getItem("isLoggedIn")=="true" ? loggedInNav : loggedOutNav}
+            {!this.props.isHome &&
+            window.localStorage.getItem("isLoggedIn") == "true"
+              ? loggedInNav
+              : loggedOutNav}
           </Navbar.Collapse>
         </Navbar>
       </section>
