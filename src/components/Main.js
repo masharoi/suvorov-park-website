@@ -31,18 +31,27 @@ class Main extends React.Component {
     if (json == LOGGED_OUT) {
       window.localStorage.setItem("isLoggedIn", false);
     } else {
-        this.setState({ pollsList: json });
+      this.setState({ pollsList: json });
     }
   };
 
   handleForumPreviewResponse = json => {
-    this.setState({ forumPreviewList: json });
+    if (json == LOGGED_OUT) {
+      window.localStorage.setItem("isLoggedIn", false);
+    } {
+        this.setState({ forumPreviewList: json.results });
+    }
   };
 
   componentDidMount() {
     makeRequest(null, "get", "/api/common/news", this.handleNewsResponse);
     makeRequest(null, "get", "/api/polls/", this.handleVoteResponse);
-    //makeRequest(null, "get", "/api/forum/short?limit=3", this.handleForumPreviewResponse);
+    makeRequest(
+      null,
+      "get",
+      "/api/forum/short?limit=3",
+      this.handleForumPreviewResponse
+    );
   }
 
   render() {
@@ -53,19 +62,30 @@ class Main extends React.Component {
           <LogIn />
         ) : (
           <div>
-            <MyNavbar  isHome={false}/>
+            <MyNavbar isHome={false} />
             <Services />
+
+
             {newsList.length != 0 ? (
               <AllNews newsList={newsList} />
             ) : (
               <div>empty</div>
             )}
+
+
             {pollsList.length != 0 ? (
               <Vote pollsList={pollsList} />
             ) : (
               <div>empty</div>
             )}
-            <Forum />
+
+
+            {forumPreviewList.length != 0 ? (
+              <Forum forumPreviewList={forumPreviewList} />
+            ) : (
+              <div>empty</div>
+            )}
+
             <MyFooter />
           </div>
         )}

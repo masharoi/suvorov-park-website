@@ -75,10 +75,10 @@ class Forum extends React.Component {
             </form>
           </div>
           <div class="col-12 col-md-8" id="forum-preview-container">
-          {forumPreviewInfo.map(preview =>
+          {this.props.forumPreviewList.map(preview =>
             <div class="forum-preview-item" onClick={() => this.handleForumPreviewClicked(preview.id)}>
               <div class="medium-size-text">
-                {preview.header}
+                {preview.title}
               </div>
               <div class="orange-color bold small-size-text">Подробнее</div>
             </div>

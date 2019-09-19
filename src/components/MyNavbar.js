@@ -64,25 +64,32 @@ class MyNavbar extends React.Component {
 
     const loggedOutNav = (
       <Nav className="ml-auto">
-      <a onClick={this.handleLogIn} id="profile-link" class="nav-link" href="/log-in">
-      Личный кабинет
-      </a>
+        <a
+          onClick={this.handleLogIn}
+          id="profile-link"
+          class="nav-link"
+          href="/log-in"
+        >
+          Личный кабинет
+        </a>
       </Nav>
     );
 
     return (
       <section>
         <Navbar id="my-navbar" expand="md" className="scrolled-nav-style">
-          <Navbar.Toggle bsPrefix="toggle toggle-icon" id="nav-toggle" />
-          <Navbar.Collapse className="ml-auto" id="my-nav">
-            <Navbar.Brand id="nav-brand" href="/home" className="mr-auto">
+          <Navbar.Brand id="nav-brand" href="/home">
             ТСЖ Суворов Парк
-            </Navbar.Brand>
-            {!this.props.isHome &&
-            window.localStorage.getItem("isLoggedIn") == "true"
-              ? loggedInNav
-              : loggedOutNav}
-          </Navbar.Collapse>
+          </Navbar.Brand>
+          {!this.props.isHome &&
+          window.localStorage.getItem("isLoggedIn") == "true" ? (
+            <div id="collapsed-container">
+              <Navbar.Toggle bsPrefix="toggle toggle-icon" id="nav-toggle" />
+              <Navbar.Collapse id="my-nav">{loggedInNav}</Navbar.Collapse>
+            </div>
+          ) : (
+            loggedOutNav
+          )}
         </Navbar>
       </section>
     );
