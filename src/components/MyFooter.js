@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/Footer.css";
 import makeRequest from "./Utils";
+import FeedbackForm from "./FeedbackForm";
 
 class MyFooter extends React.Component {
   constructor(props) {
