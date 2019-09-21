@@ -68,7 +68,7 @@ class MyNavbar extends React.Component {
           onClick={this.handleLogIn}
           id="profile-link"
           class="nav-link"
-          href="/log-in"
+          href="/profile"
         >
           Личный кабинет
         </a>
