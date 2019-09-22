@@ -27,7 +27,6 @@ class LogIn extends Component {
 
   render() {
     
-  //  {window.localStorage.getItem("isLoggedIn") == "true" ?  window.location = "/profile" : window.location = "/log-in"}
     return (
       <section id="login">
         <a href="/">

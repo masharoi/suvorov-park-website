@@ -111,21 +111,21 @@
 /* placholder */
 ::-webkit-input-placeholder {
   /* Edge */
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  padding-left: 0;
+  padding-left: 10px;
 }
 
 ::placeholder {
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 /* button sizes */

@@ -20,27 +20,15 @@ class Main extends React.Component {
   }
 
   handleNewsResponse = json => {
-    if (json == LOGGED_OUT) {
-      window.localStorage.setItem("isLoggedIn", false);
-    } else {
-      this.setState({ newsList: json });
-    }
+    this.setState({ newsList: json });
   };
 
   handleVoteResponse = json => {
-    if (json == LOGGED_OUT) {
-      window.localStorage.setItem("isLoggedIn", false);
-    } else {
-      this.setState({ pollsList: json });
-    }
+    this.setState({ pollsList: json });
   };
 
   handleForumPreviewResponse = json => {
-    if (json == LOGGED_OUT) {
-      window.localStorage.setItem("isLoggedIn", false);
-    } {
-        this.setState({ forumPreviewList: json.results });
-    }
+    this.setState({ forumPreviewList: json.results });
   };
 
   componentDidMount() {
@@ -65,20 +53,17 @@ class Main extends React.Component {
             <MyNavbar isHome={false} />
             <Services />
 
-
             {newsList.length != 0 ? (
               <AllNews newsList={newsList} />
             ) : (
               <div>empty</div>
             )}
 
-
             {pollsList.length != 0 ? (
               <Vote pollsList={pollsList} />
             ) : (
               <div>empty</div>
             )}
-
 
             {forumPreviewList.length != 0 ? (
               <Forum forumPreviewList={forumPreviewList} />

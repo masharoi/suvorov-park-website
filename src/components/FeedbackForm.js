@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/Contacts.css";
 import makeRequest from "./Utils";
+import { INTERNAL_SERVER_ERROR } from "./Utils";
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -44,7 +45,6 @@ class FeedbackForm extends React.Component {
   };
 
   handleResponse = response => {
-    alert(JSON.stringify(response))
     this.setState({ name: "" });
     this.setState({ message: "" });
     this.setState({ email: "" });

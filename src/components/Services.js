@@ -9,16 +9,12 @@ class Services extends React.Component {
     super(props);
     this.state = {
       services: [],
-      value:""
+      value: ""
     };
   }
 
   handleResponse = json => {
-    if (json == LOGGED_OUT) {
-      window.localStorage.setItem("isLoggedIn", false);
-    } else {
-      this.setState({ services: json });
-    }
+    this.setState({ services: json });
   };
 
   componentDidMount() {
@@ -26,13 +22,13 @@ class Services extends React.Component {
   }
 
   handleOrderService = json => {
-    alert(JSON.stringify(json))
-    this.setState({value:""})
+    alert(JSON.stringify(json));
+    this.setState({ value: "" });
   };
 
   handleValueChanged = event => {
-       this.setState({value: event.target.value});
-  }
+    this.setState({ value: event.target.value });
+  };
 
   handleOrderServerClicked = event => {
     event.preventDefault();
@@ -59,7 +55,9 @@ class Services extends React.Component {
                 form="service-form"
               >
                 {this.state.services.map(item => (
-                  <option value={item.id} class="service-option">{item.title}</option>
+                  <option value={item.id} class="service-option">
+                    {item.title}
+                  </option>
                 ))}
               </select>
               <textarea
