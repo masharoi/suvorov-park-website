@@ -49,7 +49,7 @@ class Forum extends React.Component {
   render() {
     return (
       <section id="forum" class="yellow-background">
-        <div id="forum-link" onClick={this.handleAllForumsClicked} class="large-screen">
+        <div id="forum-link" onClick={this.handleAllForumsClicked}>
           <a href="/full-forum" id="forum-link-text" class="white-color link bold medium-size-text">
             Все обсуждения
           </a>
@@ -85,28 +85,11 @@ class Forum extends React.Component {
           )}
           </div>
         </div>
-        <div id="forum-link" class="small-screen">
-          <a href="/full-forum" id="forum-link-text" class="white-color link bold medium-size-text">
-            Все обсуждения
-          </a>
-          <i class="fas fa-long-arrow-alt-right white-color medium-size-text" id="forum-link-icon" />
-        </div>
+
       </section>
 
     )
   }
 }
-
-const forumPreviewInfo = [
-  {id:0,
-    header: "0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-  },
-  {id:1,
-    header: "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-  },
-  {id:2,
-    header: "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-  }
-]
 
 export default Forum;

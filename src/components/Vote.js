@@ -11,19 +11,18 @@ class Vote extends Component {
     super(props);
   }
 
-
   render() {
     return (
       <section id="vote" class="gray-background">
-
         <Carousel responsive={responsive}>
-        <CreatePoll/>
+          <CreatePoll />
           {this.props.pollsList.map(poll => (
             <div class="card">
               <MyPoll
                 uniqueId={poll.id}
                 title={poll.title}
                 choices={poll.choices}
+                voted={poll.user_voted_for}
               />
             </div>
           ))}

@@ -1,48 +1,53 @@
 import React, { Component } from "react";
 import Poll from "react-polls";
-import "../css/Vote.css";
+import "../css/MyPoll.css";
 import makeRequest from "./Utils";
 
 class MyPoll extends Component {
   constructor(props) {
     super(props);
-    this.state = { pollAnswers: props.choices, id:props.uniqueId , voted: ""};
   }
 
-  handleResponse = (json) => {
-    this.setState({pollAnswers:json.choices, voted: "я"})
-  }
+  handleResponse = json => {
+    window.location = "/profile#vote";
+    window.location.reload();
+  };
 
-  handleVote = voteAnswer => {
-    const { pollAnswers, id } = this.state;
-    const newPollAnswers = pollAnswers.forEach(answer => {
-      if (answer.option === voteAnswer) {
-        const answerId = answer.id;
-        makeRequest(
-          {},
-          "post",
-          "/api/polls/" + id +"/vote/" + answerId,
-          this.handleResponse
-        );
-      };
-    });
+  handleVote = voteId => {
+    makeRequest(
+      JSON.stringify({}),
+      "post",
+      "/api/polls/" + this.props.uniqueId + "/vote/" + voteId,
+      this.handleResponse
+    );
   };
 
   render() {
-    const { pollAnswers, voted } = this.state;
+    const notVotedView = this.props.choices.map(choice => (
+      <div class="small-size-text vote-choice active-choice" onClick={() => this.handleVote(choice.id)}>{choice.option}</div>
+    ));
+    const votedView = this.props.choices.map(choice =>
+      this.props.voted == choice.option ? (
+        <div class="small-size-text vote-choice vote-selected">
+          <div> {choice.option} <i class="fas fa-check"></i></div>
+          <div> {choice.votes} </div>
+        </div>
+      ) : (
+        <div class="small-size-text vote-choice">
+          <div> {choice.option} </div>
+          <div> {choice.votes} </div>
+        </div>
+      )
+    );
     return (
-      <Poll
-        id="poll"
-        noStorage={true}
-        customStyles={styles}
-        question={this.props.title}
-        answers={this.state.pollAnswers}
-        onVote={this.handleVote}
-        vote={voted}
-      />
+      <div id="my-poll-container">
+        <div class="medium-size-text">{this.props.title}</div>
+        <div>
+        {this.props.voted != null ? votedView : notVotedView}
+        </div>
+      </div>
     );
   }
 }
-const styles = [{ questionBold: false }];
 
 export default MyPoll;

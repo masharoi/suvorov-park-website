@@ -1,0 +1,26 @@
+.vote-choice {
+  padding: 5px 0;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #012c0b;
+  border-radius: 7px;
+  margin-top: 8px;
+}
+
+.active-choice:hover {
+  background: #012c0b;
+  cursor: pointer;
+  color: white;
+}
+
+.vote-selected {
+  background: #012c0b;
+  color: white;
+}
+
+#my-poll-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}

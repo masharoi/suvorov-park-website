@@ -46,7 +46,7 @@ class Contacts extends React.Component {
           <h2 class="contact-form-header large-size-text">Написать нам:</h2>
           <FeedbackForm
             showEmail={
-              window.localStorage.getItem("isLoggedIn") == "True" ? false : true
+              window.localStorage.getItem("isLoggedIn") == "true" ? false : true
             }
           />
         </div>

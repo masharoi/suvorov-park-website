@@ -1,0 +1,46 @@
+/* forum chat */
+#forum-chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+#comment-list {
+  list-style: none;
+  text-align:left;
+  margin-top: 50px;
+  padding:0 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.comment {
+  border-top: 1px solid #7D0000;
+  padding-top: 10px;
+}
+#comment-input {
+  border-top: 1px solid gray;
+  height: 60px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+#comment-text-input-outer {
+  height:auto;
+  min-width: 200px;
+  width:100%;
+}
+#comment-text-input {
+    width:100%;
+}
+#comment-input-button {
+  background: transparent;
+  border: none;
+}
+#empty-chat-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}

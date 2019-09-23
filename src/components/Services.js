@@ -9,7 +9,8 @@ class Services extends React.Component {
     super(props);
     this.state = {
       services: [],
-      value: ""
+      value: "",
+      showSuccessMessage: false
     };
   }
 
@@ -22,7 +23,7 @@ class Services extends React.Component {
   }
 
   handleOrderService = json => {
-    alert(JSON.stringify(json));
+    this.setState({showSuccessMessage:true})
     this.setState({ value: "" });
   };
 
@@ -43,6 +44,7 @@ class Services extends React.Component {
   };
 
   render() {
+    const {showSuccessMessage} = this.state;
     return (
       <section id="services" class="green-background">
         <div class="row">
@@ -73,6 +75,11 @@ class Services extends React.Component {
                 type="submit"
                 value="Заказать услугу"
               />
+              {showSuccessMessage ? (
+                <h3 class="small-size-text yellow-color">
+                  Ваша услуга принята!
+                </h3>
+              ) : null}
             </form>
           </div>
           <div class="col-6" id="services-illustration" />

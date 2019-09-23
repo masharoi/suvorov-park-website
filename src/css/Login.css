@@ -10,7 +10,7 @@
   display: flex;
   width: 400px;
   margin: auto auto;
-  border: solid 1px #7D0000;
+  border: solid 1px  #c95501;
   padding: 20px;
   border-radius: 7px;
 }
@@ -38,5 +38,8 @@
   transition: font-size 1s;
 }
 
+#login-validation {
+  text-align: left;
+}
 
 /* mobile */

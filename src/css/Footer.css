@@ -66,9 +66,6 @@ textarea::placeholder {
 }
 
 /* input validation */
-.error-input {
-  border: solid 2px red;
-}
 
 .footer-message {
   text-align: left;
