@@ -3,7 +3,6 @@ import "../css/Vote.css";
 import makeRequest from "./Utils";
 
 class CreatePoll extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,13 +34,22 @@ class CreatePoll extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { pollTitle, optionOne, optionTwo, optionThree, optionFour } = event.target;
-    var optionsList = [{option: optionOne.value}, {option: optionTwo.value}];
+    const {
+      pollTitle,
+      optionOne,
+      optionTwo,
+      optionThree,
+      optionFour
+    } = event.target;
+    var optionsList = [
+      { option: optionOne.value },
+      { option: optionTwo.value }
+    ];
     if (window.localStorage.getItem("hasThirdOption") == "true") {
-      optionsList.push({option: optionThree.value})
+      optionsList.push({ option: optionThree.value });
     }
     if (window.localStorage.getItem("hasFourthOption") == "true") {
-      optionsList.push({option: optionFour.value})
+      optionsList.push({ option: optionFour.value });
     }
     const message = { title: pollTitle.value, choices: optionsList };
     makeRequest(
@@ -53,48 +61,56 @@ class CreatePoll extends Component {
   };
 
   handleCreatePoll = json => {
-    window.localStorage.setItem("hasFourthOption", false)
-    window.localStorage.setItem("hasThirdOption", false)
-    this.setState({PollNameValue: ""})
-    this.setState({OptionOneValue: ""})
-    this.setState({OptionTwoValue: ""})
-    this.setState({OptionThreeValue: ""})
-    this.setState({OptionFourValue: ""})
-    window.location.reload();
-  }
-
-  handleAddOptionClicked = event => {
-    event.preventDefault();
-    if (
-      window.localStorage.getItem("hasThirdOption") == "false" ||
-      window.localStorage.getItem("hasThirdOption") == null
-    ) {
-      window.localStorage.setItem("hasThirdOption", true);
-    } else {
-      window.localStorage.setItem("hasFourthOption", true);
-    }
+    window.localStorage.setItem("hasFourthOption", false);
+    window.localStorage.setItem("hasThirdOption", false);
+    this.setState({ PollNameValue: "" });
+    this.setState({ OptionOneValue: "" });
+    this.setState({ OptionTwoValue: "" });
+    this.setState({ OptionThreeValue: "" });
+    this.setState({ OptionFourValue: "" });
     window.location.reload();
   };
 
-
-
-  setVisibility  = item => {
-    if (window.localStorage.getItem(item) == "true") {
-      return "show"
+  handleAddOptionClicked = event => {
+    event.preventDefault();
+    if (this.state.hasThirdOption == true) {
+      this.setState({hasFourthOption: true})
     } else {
-      return "hide"
+      this.setState({hasThirdOption: true})
     }
-  }
+  };
+
+  setVisibility = item => {
+    if (item == true) {
+      return "show";
+    } else {
+      return "hide";
+    }
+  };
+
 
   setAddOptionVisibility = () => {
-    if (window.localStorage.getItem("hasFourthOption") == "true") {
-      return "hide"
+    if (this.state.hasFourthOption == true) {
+      return "hide";
     } else {
-      return "show-flex"
+      return "show-flex";
     }
+  };
+
+  deleteOption = () => {
+    if (this.state.hasFourthOption == true) {
+      this.setState({hasFourthOption: false});
+      return;
+    }
+    if (this.state.hasThirdOption == true) {
+      this.setState({hasThirdOption: false});
+      return;
+    }
+    return;
   }
   render() {
-    return(
+    const {hasThirdOption, hasFourthOption} = this.state;
+    return (
       <form class="card" id="new-vote-form" onSubmit={this.handleSubmit}>
         <div>
           <input
@@ -131,7 +147,10 @@ class CreatePoll extends Component {
         </div>
 
         <div
-          class={"vote-option small-size-text " + this.setVisibility("hasThirdOption")}
+          class={
+            "vote-option small-size-text " +
+            this.setVisibility(hasThirdOption)
+          }
         >
           <input
             class="vote-input vote-option-inner"
@@ -141,11 +160,18 @@ class CreatePoll extends Component {
             placeholder="Вариант ответа"
             name="optionThree"
           />
+          {hasFourthOption != true ? (
+            <div class="delete-option" onClick={this.deleteOption}>
+              <i class="fas fa-times" />
+            </div>
+          ) : null}
         </div>
 
         <div
           class={
-            "vote-option small-size-text " + this.setVisibility("hasFourthOption")}
+            "vote-option small-size-text " +
+            this.setVisibility(hasFourthOption)
+          }
         >
           <input
             class="vote-input vote-option-inner"
@@ -155,9 +181,17 @@ class CreatePoll extends Component {
             placeholder="Вариант ответа"
             name="optionFour"
           />
+          <div class="delete-option" onClick={this.deleteOption}>
+            <i class="fas fa-times" />
+          </div>
         </div>
 
-        <div class={"vote-option red-color link medium-size-text " + this.setAddOptionVisibility()}>
+        <div
+          class={
+            "vote-option red-color link medium-size-text " +
+            this.setAddOptionVisibility()
+          }
+        >
           <i class="fas fa-plus" />
           <div id="add-option" onClick={this.handleAddOptionClicked}>
             Добавить вариант
@@ -172,7 +206,7 @@ class CreatePoll extends Component {
           />
         </div>
       </form>
-    )
+    );
   }
 }
 

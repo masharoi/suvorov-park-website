@@ -4,15 +4,15 @@
 
 /* vote general input */
 .vote-input {
-  border-bottom: 1px solid #EAE9E9;
+  border-bottom: 1px solid #eae9e9;
   border-radius: 0px;
   outline: none;
   height: 30px;
   padding-left: 10px;
 }
 .vote-input:focus {
-    border-bottom: 2px solid #CECECE;
-    padding-bottom: 0;
+  border-bottom: 2px solid #cecece;
+  padding-bottom: 0;
 }
 
 #vote-question-input {
@@ -27,19 +27,34 @@
 .vote-option {
   display: flex;
   align-items: center;
+  position: relative;
 }
-
 
 #new-vote-form {
   padding: 10px 20px;
 }
 
+.delete-option {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  background: #eae9e9;
+  cursor: pointer;
+}
+
+.delete-option i {
+  margin-left: 6px;
+  margin-top: 4px;
+  font-size: 10px;
+}
 
 /* vote button */
 .vote-button {
   width: 100%;
 }
-
 
 /* small */
 @media (max-width: 840px) {

@@ -56,19 +56,19 @@ class Main extends React.Component {
             {newsList.length != 0 ? (
               <AllNews newsList={newsList} />
             ) : (
-              <div>empty</div>
+              <div></div>
             )}
 
             {pollsList.length != 0 ? (
               <Vote pollsList={pollsList} />
             ) : (
-              <div>empty</div>
+              <div></div>
             )}
 
             {forumPreviewList.length != 0 ? (
               <Forum forumPreviewList={forumPreviewList} />
             ) : (
-              <div>empty</div>
+              <div></div>
             )}
 
             <MyFooter />

@@ -14,6 +14,9 @@
   flex-direction: column;
   overflow-y: scroll;
 }
+#comments-list-outer {
+  overflow-y: scroll;
+}
 .comment {
   border-top: 1px solid #7D0000;
   padding-top: 10px;

@@ -33,7 +33,10 @@ class ForumExpanded extends Component {
   };
 
   scrollToBottom = () => {
-    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    if (this.messagesEnd != null)  {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
   };
 
   componentDidMount() {
@@ -79,29 +82,30 @@ class ForumExpanded extends Component {
       </div>
     );
 
-    const chatScreen = (
-      <div>
-        <ul id="comment-list" class="medium-size-text">
-          {this.props.messages.map(message => (
-            <li class="comment">
-              <p class="comment-text">{message.text}</p>
-              <p class="comment-author">{message.user}</p>
-            </li>
-          ))}
-        </ul>
-
-      </div>
-    );
     const messagesSize = this.props.messages.length;
     return (
       <section id="forum-chat">
-        {messagesSize == 0 ? emptyScreen : chatScreen}
-        <div
-          style={{ float: "left", clear: "both" }}
-          ref={el => {
-            this.messagesEnd = el;
-          }}
-        />
+
+        {messagesSize == 0 ? emptyScreen : (
+          <div id="comments-list-outer">
+            <ul id="comment-list" class="medium-size-text">
+              {this.props.messages.map(message => (
+                <li class="comment">
+                  <p class="comment-text">{message.text}</p>
+                  <p class="comment-author">{message.user}</p>
+                </li>
+              ))}
+            </ul>
+            <div style={{ float:"left", clear: "both" }}
+              ref={el => {
+                this.messagesEnd = el;
+              }}
+            ></div>
+
+          </div>
+
+        )}
+
         {messageInput}
       </section>
     );

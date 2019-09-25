@@ -148,5 +148,5 @@
 
 /* validation */
 .error-input {
-  border: solid 2px #7d0000;
+  border: solid 2px red;
 }

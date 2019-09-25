@@ -37,7 +37,12 @@
 
 #forum-form-outer {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#forum-form-outer h3 {
+  padding-left: 0;
 }
 
 #forum-text {
