@@ -3,6 +3,7 @@ import "../css/Services.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import makeRequest from "./Utils";
 import { LOGGED_OUT } from "./Utils";
+import servicesIllustration from '../images/services2.svg';
 
 class Services extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Services extends React.Component {
     return (
       <section id="services" class="green-background">
         <div class="row">
-          <div class="col-12 col-md-6" id="services-action-col">
+          <div class="col-12 col-md-4" id="services-action-col">
             <form onSubmit={this.handleOrderServerClicked} id="service-form">
               <select
                 name="servicesList"
@@ -82,7 +83,9 @@ class Services extends React.Component {
               ) : null}
             </form>
           </div>
-          <div class="col-6" id="services-illustration" />
+          <div class="col-8" id="services-illustration">
+            <img src={servicesIllustration}/>
+          </div>
         </div>
       </section>
     );

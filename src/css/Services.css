@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 300px;
 }
 
@@ -25,6 +25,11 @@
   margin:0;
 }
 
+#services-illustration img {
+  width: 90%;
+  height: 300px;
+}
+
 #service-select {
   border: solid 1px #EAA81B;
   text-align-last:center;
@@ -32,4 +37,13 @@
 option {
     background: rgba(0,0,0,0.3);
     color:red;
+}
+
+@media (max-width: 768px) {
+  #services-action-col {
+    align-items: center;
+  }
+  #services-illustration img {
+    display:none;
+  }
 }

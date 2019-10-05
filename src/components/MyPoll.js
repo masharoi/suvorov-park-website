@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Poll from "react-polls";
 import "../css/MyPoll.css";
 import makeRequest from "./Utils";
 

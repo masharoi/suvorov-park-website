@@ -2,6 +2,7 @@ import React from "react";
 import "../css/Footer.css";
 import makeRequest from "./Utils";
 import FeedbackForm from "./FeedbackForm";
+import footerIllustration from '../images/footer.svg';
 
 class MyFooter extends React.Component {
   constructor(props) {
@@ -130,6 +131,7 @@ class MyFooter extends React.Component {
     );
     return (
       <section id="footer" class="row white-color">
+      <img id="footer-illustration" src={footerIllustration}/>
         <div class="col-lg-4 col-md-6 col-12">
           <h2 id="contacts-main-header" class="large-size-text medium">
             Контакты
