@@ -3,13 +3,15 @@ import "../css/Forum.css";
 import ForumChat from "./ForumChat";
 
 import makeRequest from "./Utils";
+import Loader from "react-loader-spinner";
 
 class ForumExpanded extends Component {
   constructor(props) {
     super(props);
     this.state = {
       width: 0,
-      forumInfo: []
+      forumInfo: [],
+      isForumLoading: true
     };
     this.expanded = "expanded";
     this.chat = "chatOnly";
@@ -27,7 +29,7 @@ class ForumExpanded extends Component {
   }
 
   handleResponse = json => {
-    this.setState({ forumInfo: json });
+    this.setState({ forumInfo: json, isForumLoading: false });
   };
 
   updateWindowDimensions = () => {
@@ -94,6 +96,7 @@ class ForumExpanded extends Component {
   };
 
   render() {
+    const { isForumLoading } = this.state;
     var forumMessages;
     if (this.state.forumInfo.length != 0) {
       if (window.localStorage.getItem("currentSelectedForum") == -1) {
@@ -112,66 +115,88 @@ class ForumExpanded extends Component {
     }
 
     return (
-      <section id="forum-expanded">
-        <div id="forum-back-button-container" class={this.setForumListView()}>
-          <a id="forum-back-button" href="/profile#forum">
-            <i class="fas fa-long-arrow-alt-left" />
-          </a>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-12 ">
-            <div class={this.setForumListView()}>
-              <ul id="forum-list">
-                {this.state.forumInfo.map(forum => (
-                  <li
-                    key={forum.id}
-                    class={"forum-card medium-size-text ".concat(
-                      forum.id ==
-                        window.localStorage.getItem("currentSelectedForum")
-                        ? "active-forum"
-                        : ""
-                    )}
-                    onClick={() => this.handleForumCardClicked(forum.id)}
-                  >
-                    <p class="forum-card-text">{forum.title}</p>
-                    <div class="forum-card-footer row small-size-text">
-                      <div class="forum-card-footer-left col-6">
-                        <p class="forum-author">{forum.author}</p>
-                        <p class="forum-date">{forum.created_at}</p>
-                      </div>
-                      <div class="forum-card-footer-right col-6">
-                        <p class="forum-comments">
-                          {forum.number_of_messages} Комментариев
-                        </p>
-                        <p class="forum-users">
-                          {forum.number_of_members} Учасника
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div id="forum-chat-outer" class="col-md-6 col-12 zero-padding">
-            <div id="chat-back">
-              <a id="forum-back-button" onClick={this.handleChatBackClicked}>
-                <i
-                  class={
-                    "fas fa-long-arrow-alt-left red-color " +
-                    this.setChatBackView()
-                  }
-                />
+      <div>
+        {!isForumLoading ? (
+          <section id="forum-expanded">
+            <div
+              id="forum-back-button-container"
+              class={this.setForumListView()}
+            >
+              <a id="forum-back-button" href="/profile#forum">
+                <i class="fas fa-long-arrow-alt-left" />
               </a>
             </div>
-            <ForumChat
-              class={this.setChatView()}
-              chatId={window.localStorage.getItem("currentSelectedForum")}
-              messages={forumMessages}
+            <div class="row">
+              <div class="col-md-6 col-12 ">
+                <div class={this.setForumListView()}>
+                  <ul id="forum-list">
+                    {this.state.forumInfo.map(forum => (
+                      <li
+                        key={forum.id}
+                        class={"forum-card medium-size-text ".concat(
+                          forum.id ==
+                            window.localStorage.getItem("currentSelectedForum")
+                            ? "active-forum"
+                            : ""
+                        )}
+                        onClick={() => this.handleForumCardClicked(forum.id)}
+                      >
+                        <p class="forum-card-text">{forum.title}</p>
+                        <div class="forum-card-footer row small-size-text">
+                          <div class="forum-card-footer-left col-6">
+                            <p class="forum-author">{forum.author}</p>
+                            <p class="forum-date">{forum.created_at}</p>
+                          </div>
+                          <div class="forum-card-footer-right col-6">
+                            <p class="forum-comments">
+                              {forum.number_of_messages} Комментариев
+                            </p>
+                            <p class="forum-users">
+                              {forum.number_of_members} Учасника
+                            </p>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div
+                id="forum-chat-outer"
+                class={"col-md-6 col-12 zero-padding " + this.setChatView()}
+              >
+                <div id="chat-back">
+                  <a
+                    id="forum-back-button"
+                    onClick={this.handleChatBackClicked}
+                  >
+                    <i
+                      class={
+                        "fas fa-long-arrow-alt-left red-color " +
+                        this.setChatBackView()
+                      }
+                    />
+                  </a>
+                </div>
+                <ForumChat
+                  chatId={window.localStorage.getItem("currentSelectedForum")}
+                  messages={forumMessages}
+                />
+              </div>
+            </div>
+          </section>
+        ) : (
+          <div class="loader-container">
+            <Loader
+              type="Rings"
+              color="#7d0000"
+              height={150}
+              width={150}
+              timeout={10000}
             />
           </div>
-        </div>
-      </section>
+        )}
+      </div>
     );
   }
 }

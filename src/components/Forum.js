@@ -3,6 +3,7 @@ import "../css/Forum.css";
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 
 import makeRequest from "./Utils";
+import Loader from "react-loader-spinner";
 
 class Forum extends React.Component {
   constructor(props) {
@@ -12,10 +13,12 @@ class Forum extends React.Component {
       showTextFailed: false,
       showErrorMessage: false,
       showSuccessMessage: false,
+      isLoading: false
     };
   }
   handleForumPreviewClicked = id => {
     window.localStorage.setItem("currentSelectedForum", id);
+    window.localStorage.setItem("currentState", this.chat);
     window.location = "/full-forum";
   };
 
@@ -24,9 +27,7 @@ class Forum extends React.Component {
   };
 
   handleResponse = json => {
-    this.setState({ value: "" });
-    this.setState({ showErrorMessage: false });
-    this.setState({ showSuccessMessage: true });
+    this.setState({ value: "", showErrorMessage: false, showSuccessMessage: true, isLoading:false  });
   };
 
   handleCreateForumClicked = event => {
@@ -37,6 +38,7 @@ class Forum extends React.Component {
       return;
     }
     const message = { title: forumTitle.value };
+    this.setState({isLoading:true})
     makeRequest(
       JSON.stringify(message),
       "post",
@@ -72,7 +74,7 @@ class Forum extends React.Component {
   };
 
   render() {
-    const { showTextFailed, showErrorMessage, showSuccessMessage } = this.state;
+    const { showTextFailed, showErrorMessage, showSuccessMessage, isLoading } = this.state;
     return (
       <section id="forum" class="yellow-background">
         <div id="forum-link" onClick={this.handleAllForumsClicked}>
@@ -110,12 +112,24 @@ class Forum extends React.Component {
                 onChange={this.handleValueChanged}
                 onBlur={this.validateTitle}
               />
+              <div class="button button-container orange-background">
               <input
                 id="forum-button"
-                class="button orange-background white-color medium-size-text"
+                class="medium-size-text button white-color"
                 type="submit"
                 value="Создать"
               />
+              {isLoading ? (
+                <Loader
+                  class="button-loader"
+                  type="Rings"
+                  color="white"
+                  height={40}
+                  width={50}
+                  timeout={100000}
+                />
+              ) : null}
+              </div>
             </form>
 
           </div>

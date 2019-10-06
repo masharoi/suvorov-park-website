@@ -8,6 +8,7 @@ import Forum from "./Forum";
 import makeRequest from "./Utils";
 import { LOGGED_OUT } from "./Utils";
 import LogIn from "./LogIn";
+import Loader from "react-loader-spinner";
 
 class Main extends React.Component {
   constructor(props) {
@@ -15,20 +16,29 @@ class Main extends React.Component {
     this.state = {
       newsList: [],
       pollsList: [],
-      forumPreviewList: []
+      forumPreviewList: [],
+      services: [],
+      isForumLoading: true,
+      isPollLoading: true,
+      isNewsLoading: true,
+      isServicesLoading: true
     };
   }
 
   handleNewsResponse = json => {
-    this.setState({ newsList: json });
+    this.setState({ newsList: json, isNewsLoading: false });
   };
 
   handleVoteResponse = json => {
-    this.setState({ pollsList: json });
+    this.setState({ pollsList: json, isPollLoading: false });
   };
 
   handleForumPreviewResponse = json => {
-    this.setState({ forumPreviewList: json.results });
+    this.setState({ forumPreviewList: json.results, isForumLoading: false });
+  };
+
+  handleServicesResponse = json => {
+    this.setState({ services: json, isServicesLoading: false });
   };
 
   componentDidMount() {
@@ -40,38 +50,64 @@ class Main extends React.Component {
       "/api/forum/short?limit=3",
       this.handleForumPreviewResponse
     );
+    makeRequest(null, "get", "/api/services/", this.handleServicesResponse);
   }
 
   render() {
-    const { newsList, pollsList, forumPreviewList } = this.state;
+    const {
+      newsList,
+      pollsList,
+      forumPreviewList,
+      services,
+      isForumLoading,
+      isPollLoading,
+      isServicesLoading
+    } = this.state;
     return (
       <div>
         {window.localStorage.getItem("isLoggedIn") == "false" ? (
           <LogIn />
         ) : (
           <div>
-            <MyNavbar isHome={false} />
-            <Services />
+            {!isForumLoading &&
+            !isPollLoading &&
+            !isPollLoading &&
+            !isServicesLoading ? (
+              <div>
+                <MyNavbar isHome={false} />
+                <Services servicesList={services} />
 
-            {newsList.length != 0 ? (
-              <AllNews newsList={newsList} />
+                {newsList.length != 0 ? (
+                  <AllNews newsList={newsList} />
+                ) : (
+                  <div />
+                )}
+
+                {pollsList.length != 0 ? (
+                  <Vote pollsList={pollsList} />
+                ) : (
+                  <div />
+                )}
+
+                {forumPreviewList.length != 0 ? (
+                  <Forum forumPreviewList={forumPreviewList} />
+                ) : (
+                  <div />
+                )}
+
+                <MyFooter />
+              </div>
             ) : (
-              <div></div>
+              <div class="loader-container">
+                <Loader
+                  type="Rings"
+                  color="#7d0000"
+                  height={150}
+                  width={150}
+                  timeout={10000}
+                />
+              </div>
             )}
-
-            {pollsList.length != 0 ? (
-              <Vote pollsList={pollsList} />
-            ) : (
-              <div></div>
-            )}
-
-            {forumPreviewList.length != 0 ? (
-              <Forum forumPreviewList={forumPreviewList} />
-            ) : (
-              <div></div>
-            )}
-
-            <MyFooter />
           </div>
         )}
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Contacts.css";
 import makeRequest from "./Utils";
-import { INTERNAL_SERVER_ERROR } from "./Utils";
+import Loader from "react-loader-spinner";
 
 class FeedbackForm extends React.Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class FeedbackForm extends React.Component {
       showErrorMessage: false,
       showNameFailed: false,
       showTextFailed: false,
-      showEmailFailed: false
+      showEmailFailed: false,
+      isLoading: false
     };
   }
 
@@ -32,10 +33,10 @@ class FeedbackForm extends React.Component {
         this.setState({ showErrorMessage: true });
         return;
       } else {
-        jsonMessage['email'] = email.value;
+        jsonMessage["email"] = email.value;
       }
     }
-
+    this.setState({ isLoading: true });
     makeRequest(
       JSON.stringify(jsonMessage),
       "post",
@@ -45,11 +46,14 @@ class FeedbackForm extends React.Component {
   };
 
   handleResponse = response => {
-    this.setState({ name: "" });
-    this.setState({ message: "" });
-    this.setState({ email: "" });
-    this.setState({ showSuccessMessage: true });
-    this.setState({ showErrorMessage: false });
+    this.setState({
+      name: "",
+      message: "",
+      email: "",
+      showSuccessMessage: true,
+      showErrorMessage: false,
+      isLoading: false
+    });
   };
 
   handleNameChanged = event => {
@@ -101,11 +105,16 @@ class FeedbackForm extends React.Component {
       showNameFailed,
       showTextFailed,
       showErrorMessage,
-      showEmailFailed
+      showEmailFailed,
+      isLoading
     } = this.state;
     return (
       <div>
-        <form id="contact-form-home" class="contact-form" onSubmit={this.handleSendMessage}>
+        <form
+          id="contact-form-home"
+          class="contact-form"
+          onSubmit={this.handleSendMessage}
+        >
           <input
             class={
               "gray-background medium-size-text " +
@@ -143,19 +152,31 @@ class FeedbackForm extends React.Component {
             onBlur={this.validateMessage}
             name="message"
           />
-          <input
-            class="button orange-background green-color primary-button-size medium-size-text"
-            type="submit"
-            value="Отправить"
-          />
+          <div class="button-container">
+            <input
+              class="button orange-background green-color primary-button-size medium-size-text"
+              type="submit"
+              value="Отправить"
+            />
+            {isLoading ? (
+              <Loader
+                class="button-loader"
+                type="Rings"
+                color="#c95501"
+                height={40}
+                width={50}
+                timeout={100000}
+              />
+            ) : null}
+          </div>
         </form>
         {showSuccessMessage ? (
-          <h3 class="small-size-text yellow-color footer-message">
+          <h3 class="small-size-text orange-color footer-message">
             Сообщение успешно отправлено!
           </h3>
         ) : null}
         {showErrorMessage ? (
-          <h3 class="small-size-text white-color footer-message">
+          <h3 class="small-size-text orange-color footer-message">
             Все поля должны быть заполнены!
           </h3>
         ) : null}

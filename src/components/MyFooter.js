@@ -2,7 +2,8 @@ import React from "react";
 import "../css/Footer.css";
 import makeRequest from "./Utils";
 import FeedbackForm from "./FeedbackForm";
-import footerIllustration from '../images/footer.svg';
+import footerIllustration from "../images/footer.svg";
+import Loader from "react-loader-spinner";
 
 class MyFooter extends React.Component {
   constructor(props) {
@@ -13,16 +14,13 @@ class MyFooter extends React.Component {
       showSuccessMessage: false,
       showErrorMessage: false,
       showNameFailed: false,
-      showTextFailed: false
+      showTextFailed: false,
+      isLoading: false
     };
   }
 
   handleResponse = response => {
-    alert(JSON.stringify(response))
-    this.setState({ name: "" });
-    this.setState({ message: "" });
-    this.setState({ showSuccessMessage: true });
-    this.setState({ showErrorMessage: false });
+    this.setState({ name: "", message: "", showSuccessMessage: true, showErrorMessage: false, isLoading: false });
   };
 
   handleSendMessage = event => {
@@ -33,6 +31,7 @@ class MyFooter extends React.Component {
       return;
     }
     const jsonMessage = { name: userName.value, text: message.value };
+    this.setState({isLoading: true})
     makeRequest(
       JSON.stringify(jsonMessage),
       "post",
@@ -77,7 +76,8 @@ class MyFooter extends React.Component {
       showSuccessMessage,
       showNameFailed,
       showTextFailed,
-      showErrorMessage
+      showErrorMessage,
+      isLoading
     } = this.state;
 
     const form = (
@@ -110,11 +110,24 @@ class MyFooter extends React.Component {
               name="message"
               onBlur={this.validateMessage}
             />
-            <input
-              class="button medium-size-text primary-button-size yellow-background green-color"
-              type="submit"
-              value="Отправить"
-            />
+            <div class="button-container">
+              <input
+                class="button medium-size-text primary-button-size yellow-background green-color"
+                type="submit"
+                value="Отправить"
+              />
+              {isLoading ? (
+                <Loader
+                  class="button-loader"
+                  type="Rings"
+                  color="#eaa81b"
+                  height={40}
+                  width={50}
+                  timeout={100000}
+                />
+              ) : null}
+            </div>
+
           </form>
           {showSuccessMessage ? (
             <h3 class="small-size-text yellow-color footer-message">
@@ -131,7 +144,7 @@ class MyFooter extends React.Component {
     );
     return (
       <section id="footer" class="row white-color">
-      <img id="footer-illustration" src={footerIllustration}/>
+        <img id="footer-illustration" src={footerIllustration} />
         <div class="col-lg-4 col-md-6 col-12">
           <h2 id="contacts-main-header" class="large-size-text medium">
             Контакты

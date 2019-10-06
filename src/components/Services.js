@@ -3,29 +3,22 @@ import "../css/Services.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import makeRequest from "./Utils";
 import { LOGGED_OUT } from "./Utils";
-import servicesIllustration from '../images/services2.svg';
+import servicesIllustration from "../images/services2.svg";
+import Loader from "react-loader-spinner";
 
 class Services extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      services: [],
       value: "",
-      showSuccessMessage: false
+      showSuccessMessage: false,
+      isLoading: false
     };
   }
 
-  handleResponse = json => {
-    this.setState({ services: json });
-  };
-
-  componentDidMount() {
-    makeRequest(null, "get", "/api/services/", this.handleResponse);
-  }
-
   handleOrderService = json => {
-    this.setState({showSuccessMessage:true})
-    this.setState({ value: "" });
+    this.setState({ showSuccessMessage: true });
+    this.setState({ value: "" , isLoading: false});
   };
 
   handleValueChanged = event => {
@@ -42,10 +35,11 @@ class Services extends React.Component {
       "/api/services/" + servicesList.value + "/order",
       this.handleOrderService
     );
+    this.setState({ isLoading: true });
   };
 
   render() {
-    const {showSuccessMessage} = this.state;
+    const { showSuccessMessage, isLoading } = this.state;
     return (
       <section id="services" class="green-background">
         <div class="row">
@@ -57,7 +51,7 @@ class Services extends React.Component {
                 id="service-select"
                 form="service-form"
               >
-                {this.state.services.map(item => (
+                {this.props.servicesList.map(item => (
                   <option value={item.id} class="service-option">
                     {item.title}
                   </option>
@@ -70,12 +64,24 @@ class Services extends React.Component {
                 onChange={this.handleValueChanged}
                 value={this.state.value}
               />
-              <input
-                id="service-button"
-                class="button medium-size-text service-interaction yellow-background green-color"
-                type="submit"
-                value="Заказать услугу"
-              />
+              <div class="service-interaction button button-container yellow-background green-color">
+                <input
+                  id="service-button"
+                  class="medium-size-text"
+                  type="submit"
+                  value="Заказать услугу"
+                />
+                {isLoading ? (
+                  <Loader
+                    class="button-loader"
+                    type="Rings"
+                    color="#012c0b"
+                    height={40}
+                    width={50}
+                    timeout={100000}
+                  />
+                ) : null}
+              </div>
               {showSuccessMessage ? (
                 <h3 class="small-size-text yellow-color">
                   Ваша услуга принята!
@@ -84,7 +90,7 @@ class Services extends React.Component {
             </form>
           </div>
           <div class="col-8" id="services-illustration">
-            <img src={servicesIllustration}/>
+            <img src={servicesIllustration} />
           </div>
         </div>
       </section>

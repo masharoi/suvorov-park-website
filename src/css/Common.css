@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-/* utis */
+/* utils */
 .zero-padding {
   padding: 0;
 }
@@ -17,8 +17,10 @@
   display: flex !important;
 }
 
-.button {
-  text-indent: 0;
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 /* font size */
@@ -128,11 +130,28 @@
   padding-left: 10px;
 }
 
-/* button sizes */
+/* button */
 .primary-button-size {
   width: 150px;
   height: 40px;
 }
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  text-indent: 0;
+  border-radius: 7px;
+}
+.button-loader {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* contact form */
 
 .contact-form-header {
   text-align: left;
@@ -149,4 +168,12 @@
 /* validation */
 .error-input {
   border: solid 2px red;
+}
+
+/* loader spinner */
+.loader-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
