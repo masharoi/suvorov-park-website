@@ -17,8 +17,7 @@ class Services extends React.Component {
   }
 
   handleOrderService = json => {
-    this.setState({ showSuccessMessage: true });
-    this.setState({ value: "" , isLoading: false});
+    this.setState({ showSuccessMessage: true, value: "" , isLoading: false });
   };
 
   handleValueChanged = event => {

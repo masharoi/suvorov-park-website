@@ -10,7 +10,7 @@ import filler3 from '../images/filler3.jpg';
 function Images() {
   return (
     <section id="images">
-    <Carousel responsive={responsive} centerMode={true}  infinite={true}>
+    <Carousel responsive={responsive} infinite={true}>
     <img class="image" src={filler1}/>
     <img class="image" src={filler2}/>
     <img class="image" src={filler3}/>

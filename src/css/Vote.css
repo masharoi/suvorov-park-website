@@ -2,6 +2,17 @@
   padding: 150px 0;
 }
 
+/* empty polls */
+.empty-poll {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#empty-polls-image {
+  width:200px;
+  height: 200px;
+}
 /* vote general input */
 .vote-input {
   border-bottom: 1px solid #eae9e9;
@@ -60,5 +71,8 @@
 @media (max-width: 840px) {
   .card {
     margin: 10px auto;
+  }
+  #empty-polls-image-outer {
+    margin-bottom: 30px;
   }
 }

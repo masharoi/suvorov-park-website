@@ -177,3 +177,10 @@ select:focus {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+  .small-row-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

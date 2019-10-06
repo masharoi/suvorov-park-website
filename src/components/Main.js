@@ -5,9 +5,12 @@ import AllNews from "./AllNews";
 import Vote from "./Vote";
 import MyFooter from "./MyFooter";
 import Forum from "./Forum";
+import EmptyNews from "./EmptyNews";
 import makeRequest from "./Utils";
 import { LOGGED_OUT } from "./Utils";
 import LogIn from "./LogIn";
+import EmptyPolls from "./EmptyPolls";
+import EmptyForums from "./EmptyForums";
 import Loader from "react-loader-spinner";
 
 class Main extends React.Component {
@@ -80,19 +83,19 @@ class Main extends React.Component {
                 {newsList.length != 0 ? (
                   <AllNews newsList={newsList} />
                 ) : (
-                  <div />
+                  <EmptyNews />
                 )}
 
                 {pollsList.length != 0 ? (
                   <Vote pollsList={pollsList} />
                 ) : (
-                  <div />
+                  <EmptyPolls />
                 )}
 
                 {forumPreviewList.length != 0 ? (
                   <Forum forumPreviewList={forumPreviewList} />
                 ) : (
-                  <div />
+                  <EmptyForums />
                 )}
 
                 <MyFooter />

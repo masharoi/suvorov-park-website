@@ -1,4 +1,7 @@
-
+#empty-forum-image {
+  width:200px;
+  height: 200px;
+}
 
 #forum {
   padding: 150px 0;
@@ -179,5 +182,8 @@ padding: 30px;
   }
   .active-forum {
     border-left: none;
+  }
+  #empty-forum-image-outer {
+    margin-bottom: 30px;
   }
 }
