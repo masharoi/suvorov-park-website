@@ -3,19 +3,18 @@ import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import "../css/Images.css";
 
-import filler1 from '../images/filler1.jpg';
-import filler2 from '../images/filler2.jpg';
-import filler3 from '../images/filler3.jpg';
+import filler1 from "../images/filler1.jpg";
+import filler2 from "../images/filler2.jpg";
+import filler3 from "../images/filler3.jpg";
 
 function Images() {
   return (
     <section id="images">
-    <Carousel responsive={responsive} infinite={true}>
-    <img class="image" src={filler1}/>
-    <img class="image" src={filler2}/>
-    <img class="image" src={filler3}/>
-
-    </Carousel>
+      <Carousel responsive={responsive} infinite={true}>
+        <img class="image" src={filler1} />
+        <img class="image" src={filler2} />
+        <img class="image" src={filler3} />
+      </Carousel>
     </section>
   );
 }

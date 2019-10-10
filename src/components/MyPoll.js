@@ -5,30 +5,47 @@ import makeRequest from "./Utils";
 class MyPoll extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      id: this.props.uniqueId,
+      title: this.props.title,
+      choices: this.props.choices,
+      voted: this.props.voted
+    };
   }
 
   handleResponse = json => {
-    window.location = "/profile#vote";
-    window.location.reload();
+    this.setState({
+      id: json.id,
+      title: json.title,
+      choices: json.choices,
+      voted: json.user_voted_for
+    });
   };
 
   handleVote = voteId => {
     makeRequest(
       JSON.stringify({}),
       "post",
-      "/api/polls/" + this.props.uniqueId + "/vote/" + voteId,
+      "/api/polls/" + this.state.id + "/vote/" + voteId,
       this.handleResponse
     );
   };
 
   render() {
-    const notVotedView = this.props.choices.map(choice => (
-      <div class="small-size-text vote-choice active-choice" onClick={() => this.handleVote(choice.id)}>{choice.option}</div>
+    const notVotedView = this.state.choices.map(choice => (
+      <div
+        class="small-size-text vote-choice active-choice"
+        onClick={() => this.handleVote(choice.id)}
+      >
+        {choice.option}
+      </div>
     ));
-    const votedView = this.props.choices.map(choice =>
-      this.props.voted == choice.option ? (
+    const votedView = this.state.choices.map(choice =>
+      this.state.voted == choice.option ? (
         <div class="small-size-text vote-choice vote-selected">
-          <div> {choice.option} <i class="fas fa-check"></i></div>
+          <div>
+            {choice.option} <i class="fas fa-check" />
+          </div>
           <div> {choice.votes} </div>
         </div>
       ) : (
@@ -40,10 +57,8 @@ class MyPoll extends Component {
     );
     return (
       <div id="my-poll-container">
-        <div class="medium-size-text">{this.props.title}</div>
-        <div>
-        {this.props.voted != null ? votedView : notVotedView}
-        </div>
+        <div class="medium-size-text">{this.state.title}</div>
+        <div>{this.state.voted != null ? votedView : notVotedView}</div>
       </div>
     );
   }
