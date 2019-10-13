@@ -15,7 +15,9 @@ class Vote extends Component {
       OptionTwoValue: "",
       OptionThreeValue: "",
       OptionFourValue: "",
-      list: this.props.pollsList
+      hasFourthOption: false,
+      hasThirdOption: false,
+      pollsList: this.props.pollsList
     };
   }
 
@@ -36,6 +38,28 @@ class Vote extends Component {
     this.setState({PollNameValue: event.target.value});
   };
 
+  handleAddOptionClicked = event => {
+    event.preventDefault();
+    if (this.state.hasThirdOption == true) {
+      this.setState({hasFourthOption:true});
+    } else {
+      this.setState({hasThirdOption:true});
+    }
+  };
+
+  deleteOption = () => {
+    if (this.state.hasFourthOption == true) {
+        this.setState({hasFourthOption:false});
+      return;
+    }
+    if (this.state.hasThirdOption == true) {
+      this.setState({hasThirdOption:false});
+      return;
+    }
+    return;
+  };
+
+
   handleSubmit = event => {
     event.preventDefault();
     const {
@@ -49,10 +73,10 @@ class Vote extends Component {
       { option: optionOne.value },
       { option: optionTwo.value }
     ];
-    if (window.localStorage.getItem("hasThirdOption") == "true") {
+    if (this.state.hasThirdOption) {
       optionsList.push({ option: optionThree.value });
     }
-    if (window.localStorage.getItem("hasFourthOption") == "true") {
+    if (this.state.hasFourthOption) {
       optionsList.push({ option: optionFour.value });
     }
     const message = { title: pollTitle.value, choices: optionsList };
@@ -65,6 +89,8 @@ class Vote extends Component {
   };
 
   handleCreatePoll = json => {
+    var newList = this.props.pollsList;
+    newList.unshift(json);
     this.setState({
       PollNameValue: "",
       OptionOneValue: "",
@@ -73,8 +99,11 @@ class Vote extends Component {
       OptionFourValue: "",
       hasThirdOption: false,
       hasFourthOption: false,
-      list: [json].concat(this.props.pollsList)
+      pollsList: []
     });
+
+    this.setState({pollsList: newList})
+
   };
 
   render() {
@@ -84,9 +113,11 @@ class Vote extends Component {
       OptionOneValue,
       OptionTwoValue,
       OptionThreeValue,
-      OptionFourValue
+      OptionFourValue,
+      hasThirdOption,
+      hasFourthOption,
+      pollsList
     } = this.state;
-
     return (
       <section id="vote" class="gray-background">
         <Carousel responsive={responsive}>
@@ -102,8 +133,12 @@ class Vote extends Component {
             handleOptThreeChange={this.handleOptThreeChange}
             handleOptFourChange={this.handleOptFourChange}
             handleSubmit={this.handleSubmit}
+            hasFourthOption={hasFourthOption}
+            hasThirdOption={hasThirdOption}
+            handleAddOptionClicked = {this.handleAddOptionClicked}
+            deleteOption = {this.deleteOption}
           />
-          {this.state.list.map(poll => (
+          {pollsList.map(poll => (
             <div class="card">
               <MyPoll
                 uniqueId={poll.id}

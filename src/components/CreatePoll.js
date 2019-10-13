@@ -5,20 +5,10 @@ import makeRequest from "./Utils";
 class CreatePoll extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hasThirdOption: false,
-      hasFourthOption: false
-    }
+
   }
 
-  handleAddOptionClicked = event => {
-    event.preventDefault();
-    if (this.state.hasThirdOption == true) {
-      this.state.hasFourthOption = true;
-    } else {
-      this.state.hasThirdOption = true;
-    }
-  };
+
 
   setVisibility = item => {
     if (item == true) {
@@ -36,20 +26,7 @@ class CreatePoll extends Component {
     }
   };
 
-  deleteOption = () => {
-    if (this.state.hasFourthOption == true) {
-      this.state.hasFourthOption = false;
-      return;
-    }
-    if (this.props.hasThirdOption == true) {
-      this.props.hasThirdOption = false;
-      return;
-    }
-    return;
-  };
-
   render() {
-    const { hasThirdOption, hasFourthOption } = this.state;
     return (
       <form class="card" id="new-vote-form" onSubmit={this.props.handleSubmit}>
         <div>
@@ -88,7 +65,7 @@ class CreatePoll extends Component {
 
         <div
           class={
-            "vote-option " + this.setVisibility(hasThirdOption)
+            "vote-option " + this.setVisibility(this.props.hasThirdOption)
           }
         >
           <input
@@ -99,8 +76,8 @@ class CreatePoll extends Component {
             placeholder="Вариант ответа"
             name="optionThree"
           />
-          {hasFourthOption != true ? (
-            <div class="delete-option" onClick={this.deleteOption}>
+          {this.props.hasFourthOption != true ? (
+            <div class="delete-option" onClick={this.props.deleteOption}>
               <i class="fas fa-times" />
             </div>
           ) : null}
@@ -108,7 +85,7 @@ class CreatePoll extends Component {
 
         <div
           class={
-            "vote-option " + this.setVisibility(hasFourthOption)
+            "vote-option " + this.setVisibility(this.props.hasFourthOption)
           }
         >
           <input
@@ -119,7 +96,7 @@ class CreatePoll extends Component {
             placeholder="Вариант ответа"
             name="optionFour"
           />
-          <div class="delete-option" onClick={this.deleteOption}>
+          <div class="delete-option" onClick={this.props.deleteOption}>
             <i class="fas fa-times" />
           </div>
         </div>
@@ -131,7 +108,7 @@ class CreatePoll extends Component {
           }
         >
           <i class="fas fa-plus" />
-          <div id="add-option" onClick={this.handleAddOptionClicked}>
+          <div id="add-option" onClick={this.props.handleAddOptionClicked}>
             Добавить вариант
           </div>
         </div>

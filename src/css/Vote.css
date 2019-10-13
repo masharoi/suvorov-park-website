@@ -47,19 +47,18 @@
 
 .delete-option {
   position: absolute;
-  top: 5px;
+  top: 0px;
   right: 15px;
-  border-radius: 50px;
-  width: 20px;
-  height: 20px;
-  background: #eae9e9;
   cursor: pointer;
 }
 
 .delete-option i {
-  margin-left: 6px;
-  margin-top: 4px;
+  padding: 5px 5px 5px 6px;
   font-size: 10px;
+  width: 20px;
+  height: 20px;
+  background: #eae9e9;
+  border-radius: 50px;
 }
 
 /* vote button */
