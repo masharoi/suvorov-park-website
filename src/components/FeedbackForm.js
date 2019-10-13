@@ -117,7 +117,7 @@ class FeedbackForm extends React.Component {
         >
           <input
             class={
-              "gray-background medium-size-text " +
+              "gray-background " +
               this.setError(showNameFailed)
             }
             type="text"
@@ -130,7 +130,7 @@ class FeedbackForm extends React.Component {
           {this.props.showEmail ? (
             <input
               class={
-                "gray-background medium-size-text " +
+                "gray-background " +
                 this.setError(showEmailFailed)
               }
               type="email"
@@ -143,7 +143,7 @@ class FeedbackForm extends React.Component {
           ) : null}
           <textarea
             class={
-              "gray-background medium-size-text " +
+              "gray-background " +
               this.setError(showTextFailed)
             }
             placeholder="Текст Сообщения"

@@ -53,7 +53,6 @@ class ForumExpanded extends Component {
         <div id="comment-text-input-outer">
           <input
             id="comment-text-input"
-            class="medium-size-text"
             type="text"
             name="messageText"
             value={this.state.value}

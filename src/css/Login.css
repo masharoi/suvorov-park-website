@@ -18,6 +18,7 @@
 .login-input {
   margin-top: 10px;
   border-radius: 7px;
+  border:none;
 }
 
 #login-header {
@@ -43,3 +44,8 @@
 }
 
 /* mobile */
+@media (max-width: 768px) {
+  #login-form {
+    width: 300px;
+  }
+}

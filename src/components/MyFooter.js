@@ -89,7 +89,7 @@ class MyFooter extends React.Component {
           <form class="contact-form" onSubmit={this.handleSendMessage}>
             <input
               class={
-                "medium-size-text gray-background " +
+                "gray-background " +
                 this.setError(showNameFailed)
               }
               type="text"
@@ -103,7 +103,7 @@ class MyFooter extends React.Component {
               onChange={this.handleMessageChanged}
               value={this.state.message}
               class={
-                "medium-size-text gray-background " +
+                "gray-background " +
                 this.setError(showTextFailed)
               }
               placeholder="Текст Сообщения"

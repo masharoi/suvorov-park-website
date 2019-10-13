@@ -46,7 +46,7 @@ class Services extends React.Component {
             <form onSubmit={this.handleOrderServerClicked} id="service-form">
               <select
                 name="servicesList"
-                class="medium-size-text service-interaction green-background yellow-color"
+                class="input-padding service-interaction green-background yellow-color"
                 id="service-select"
                 form="service-form"
               >
@@ -57,7 +57,7 @@ class Services extends React.Component {
                 ))}
               </select>
               <textarea
-                class="medium-size-text gray-background"
+                class="gray-background"
                 placeholder="Дополнительная информация"
                 name="details"
                 onChange={this.handleValueChanged}

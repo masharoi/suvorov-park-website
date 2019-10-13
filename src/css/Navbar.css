@@ -6,6 +6,10 @@
   width: 100%;
   padding-bottom: 0;
 }
+
+#close-button {
+  font-size: 30px;
+}
 #nav-list {
   display: flex;
   list-style: none;
@@ -81,6 +85,7 @@
     border: none;
     background: transparent;
     display: block;
+    z-index: 2;
   }
 
   .toggle {
@@ -111,13 +116,24 @@
      font-size: 32px;
   }
 
+  .toggle-close-icon::before {
+     font-family: "Font Awesome 5 Free"!important;
+     content: "\f00d";
+     font-size: 32px;
+  }
+
+
   #nav-list {
     flex-direction: column;
-    position: static;
     width: 100vw;
-    padding-top: 50px;
-    background: rgba(255, 255, 255, 0.8);
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding-bottom: 0px;
   }
+
+
   .nav-link {
     color: rgba(0, 0, 0, 0.8);
   }

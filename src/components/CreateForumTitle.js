@@ -72,7 +72,7 @@ class CreateForumTitle extends Component {
         <form id="forum-form" onSubmit={this.handleCreateForumClicked}>
           <textarea
             id="forum-text"
-            class={"medium-size-text " + this.setError(showTextFailed)}
+            class={this.setError(showTextFailed)}
             placeholder="Тема для обсуждения"
             name="forumTitle"
             value={value}
@@ -82,7 +82,7 @@ class CreateForumTitle extends Component {
           <div class="button button-container orange-background">
             <input
               id="forum-button"
-              class="medium-size-text button white-color"
+              class="button white-color"
               type="submit"
               value="Создать"
             />

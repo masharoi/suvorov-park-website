@@ -99,7 +99,7 @@ class LogIn extends Component {
           </h2>
           <input
             class={
-              "login-input medium-size-text gray-background " +
+              "login-input gray-background " +
               this.setError(showLoginFailed)
             }
             type="text"
@@ -111,7 +111,7 @@ class LogIn extends Component {
           />
           <input
             class={
-              "login-input medium-size-text gray-background " +
+              "login-input gray-background " +
               this.setError(showPasswordFailed)
             }
             type="password"

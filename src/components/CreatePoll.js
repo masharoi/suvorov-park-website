@@ -55,7 +55,7 @@ class CreatePoll extends Component {
         <div>
           <input
             id="vote-question-input"
-            class="vote-input medium-size-text"
+            class="vote-input"
             type="text"
             value={this.props.PollNameValue}
             onChange={this.props.handleNameChange}
@@ -64,7 +64,7 @@ class CreatePoll extends Component {
           />
         </div>
 
-        <div class="vote-option small-size-text">
+        <div class="vote-option">
           <input
             class="vote-input vote-option-inner"
             type="text"
@@ -75,7 +75,7 @@ class CreatePoll extends Component {
           />
         </div>
 
-        <div class="vote-option small-size-text">
+        <div class="vote-option">
           <input
             class="vote-input vote-option-inner "
             type="text"
@@ -88,7 +88,7 @@ class CreatePoll extends Component {
 
         <div
           class={
-            "vote-option small-size-text " + this.setVisibility(hasThirdOption)
+            "vote-option " + this.setVisibility(hasThirdOption)
           }
         >
           <input
@@ -108,7 +108,7 @@ class CreatePoll extends Component {
 
         <div
           class={
-            "vote-option small-size-text " + this.setVisibility(hasFourthOption)
+            "vote-option " + this.setVisibility(hasFourthOption)
           }
         >
           <input
@@ -126,7 +126,7 @@ class CreatePoll extends Component {
 
         <div
           class={
-            "vote-option red-color link medium-size-text " +
+            "vote-option red-color link " +
             this.setAddOptionVisibility()
           }
         >

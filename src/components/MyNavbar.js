@@ -14,10 +14,22 @@ import logo from "../images/Ellipse.png";
 class MyNavbar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      navIcon: "toggle-icon",
+      showList: ""
+    };
   }
 
   handleLogIn = () => {
     window.location = "/log-in";
+  };
+
+  handleToggle = () => {
+    if (this.state.navIcon == "toggle-icon") {
+      this.setState({ navIcon: "toggle-close-icon"});
+    } else {
+      this.setState({ navIcon: "toggle-icon" });
+    }
   };
 
   render() {
@@ -30,9 +42,9 @@ class MyNavbar extends React.Component {
       <ScrollspyNav
         scrollTargetIds={["services", "all-news", "vote", "forum", "footer"]}
         activeNavClass="is-active"
-        scrollDuration="1000"
+        scrollDuration="400"
       >
-        <ul id="nav-list">
+        <ul id="nav-list" class={this.state.showList}>
           <li>
             <a class="nav-link" href="#services">
               <span>Услуги</span>
@@ -77,14 +89,22 @@ class MyNavbar extends React.Component {
 
     return (
       <section>
-        <Navbar id="my-navbar" expand="md" className="scrolled-nav-style">
+        <Navbar
+          id="my-navbar"
+          expand="md"
+          className="scrolled-nav-style"
+          onToggle={this.handleToggle}
+        >
           <Navbar.Brand id="nav-brand" href="/home">
             ТСЖ Суворов Парк
           </Navbar.Brand>
           {!this.props.isHome &&
           window.localStorage.getItem("isLoggedIn") == "true" ? (
-            <div id="collapsed-container">
-              <Navbar.Toggle bsPrefix="toggle toggle-icon" id="nav-toggle" />
+            <div>
+              <Navbar.Toggle
+                bsPrefix={"toggle " + this.state.navIcon}
+                id="nav-toggle"
+              />
               <Navbar.Collapse id="my-nav">{loggedInNav}</Navbar.Collapse>
             </div>
           ) : (

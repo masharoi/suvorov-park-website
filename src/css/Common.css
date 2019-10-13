@@ -17,16 +17,27 @@
   display: flex !important;
 }
 
+/* input */
+
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
 }
 
+input,
+textarea,
+select {
+  font-size: 14px;
+}
+
+
+
 /* font size */
 .large-size-text {
   font-size: 18px;
 }
+
 .medium-size-text {
   font-size: 14px;
 }
@@ -182,5 +193,15 @@ select:focus {
   .small-row-reverse {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .input-padding {
+    padding-left: 20px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
   }
 }
