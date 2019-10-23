@@ -3,25 +3,50 @@ import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import "../css/Images.css";
 
-import filler1 from "../images/filler1.jpg";
-import filler2 from "../images/filler2.jpg";
-import filler3 from "../images/filler3.jpg";
+class Images extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSmall: true
+    }
+  }
 
-function Images() {
-  return (
-    <section id="images">
-      <Carousel responsive={responsive} infinite={true}>
-        <img class="image" src={filler1} />
-        <img class="image" src={filler2} />
-        <img class="image" src={filler3} />
-      </Carousel>
-    </section>
-  );
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener("resize", this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions = () => {
+    if (window.innerWidth < 1250) {
+      this.setState({isSmall: true})
+    } else {
+        this.setState({isSmall: false})
+    }
+  };
+
+
+  render() {
+    return (
+      <section id="images">
+        <Carousel responsive={responsive} infinite={true} centerMode={!this.state.isSmall}>
+          {this.props.imagesList.map(item => (
+            <div class="image-container">
+              <img class="image" src={"http://92.53.67.152" + item.url} />
+            </div>
+          ))}
+        </Carousel>
+      </section>
+    );
+  }
+
 }
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 1
   },

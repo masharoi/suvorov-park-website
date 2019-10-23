@@ -13,13 +13,12 @@ class Home extends React.Component {
     super(props);
     this.state = {
       aboutText: "",
-      isTextLoading: true,
-      isImagesLoading: true
+      isLoading: true
     };
   }
 
   handleResponse = json => {
-    this.setState({ aboutText: json.about, isTextLoading:false });
+    this.setState({ aboutText: json.about, isLoading:false, imagesData: json.images });
   };
 
   componentDidMount() {
@@ -29,16 +28,17 @@ class Home extends React.Component {
       "/api/common/general-configuration",
       this.handleResponse
     );
+
   }
 
   render() {
-    const { aboutText, isTextLoading } = this.state;
+    const { aboutText, isLoading, imagesData } = this.state;
     return (
       <div>
-        {!isTextLoading ? (
+        {!isLoading ? (
           <div>
             <MyNavbar isHome={true} />
-            <Images />
+            <Images imagesList={imagesData}/>
             <About text={aboutText} />
             <Contacts />
             <MyFooter isHome={true} />

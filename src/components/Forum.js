@@ -29,6 +29,7 @@ class Forum extends React.Component {
 
   render() {
     return (
+      
       <section id="forum" class="yellow-background">
         <div id="forum-link" onClick={this.handleAllForumsClicked}>
           <a
