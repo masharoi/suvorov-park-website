@@ -16,11 +16,22 @@ class LogIn extends Component {
   }
 
   handleResponse = response => {
-    if (response == VALIDATION_ERROR) {
+    if (response === VALIDATION_ERROR) {
       this.setState({ showValidationError: true });
     } else {
       window.localStorage.setItem("isLoggedIn", true);
-      window.location = "/profile";
+
+      switch (response.user) {
+        case "admin":
+          window.location = "/admin/"
+          break
+        case "resident":
+          window.location = "/profile"
+          break
+
+        default:
+          break
+      }
     }
   };
 
@@ -77,7 +88,7 @@ class LogIn extends Component {
     const {
       showValidationError,
       showLoginFailed,
-      showPasswordFailed
+      showPasswordFailed,
     } = this.state;
     return (
       <section id="login">
