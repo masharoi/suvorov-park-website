@@ -26,9 +26,6 @@
 
 
 #nav-brand {
-  font-family: "Lobster", cursive;
-  margin-top: 27px;
-  margin-left: 20px;
   padding-bottom: 20px;
 }
 
@@ -39,7 +36,7 @@
 }
 
 #logo {
-  width: 45px;
+  width: 100px;
   height: 40px;
   margin-top: 15px;
   margin-left: 20px;

@@ -15,7 +15,8 @@
     "react-scripts": "3.0.1",
     "react-scrollspy-nav": "^1.2.1",
     "react-yandex-maps": "^4.0.1",
-    "redux": "^4.0.3"
+    "redux": "^4.0.3",
+    "video-react": "^0.14.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -5,6 +5,7 @@ import Images from "./Images";
 import "../css/Common.css";
 import About from "./About";
 import Contacts from "./Contacts";
+import Video from "./Video";
 import makeRequest from "./Utils";
 import Loader from "react-loader-spinner";
 
@@ -28,7 +29,6 @@ class Home extends React.Component {
       "/api/common/general-configuration",
       this.handleResponse
     );
-
   }
 
   render() {
@@ -39,6 +39,7 @@ class Home extends React.Component {
           <div>
             <MyNavbar isHome={true} />
             <Images imagesList={imagesData}/>
+            <Video/>
             <About text={aboutText} />
             <Contacts />
             <MyFooter isHome={true} />

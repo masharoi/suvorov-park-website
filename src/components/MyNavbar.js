@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import ScrollspyNav from "react-scrollspy-nav";
 
-import logo from "../images/Ellipse.png";
+import logo from "../images/logo.svg";
 
 class MyNavbar extends React.Component {
   constructor(props) {
@@ -96,7 +96,7 @@ class MyNavbar extends React.Component {
           onToggle={this.handleToggle}
         >
           <Navbar.Brand id="nav-brand" href="/home">
-            ТСЖ Суворов Парк
+            <img id="logo" src={logo} />
           </Navbar.Brand>
           {!this.props.isHome &&
           window.localStorage.getItem("isLoggedIn") == "true" ? (

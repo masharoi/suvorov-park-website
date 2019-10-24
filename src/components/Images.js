@@ -2,13 +2,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import "../css/Images.css";
+import demoVideo from "../images/demo.mp4";
+import { Player } from 'video-react';
 
 class Images extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isSmall: true
-    }
+    };
   }
 
   componentDidMount() {
@@ -22,17 +24,20 @@ class Images extends React.Component {
 
   updateWindowDimensions = () => {
     if (window.innerWidth < 1250) {
-      this.setState({isSmall: true})
+      this.setState({ isSmall: true });
     } else {
-        this.setState({isSmall: false})
+      this.setState({ isSmall: false });
     }
   };
-
 
   render() {
     return (
       <section id="images">
-        <Carousel responsive={responsive} infinite={true} centerMode={!this.state.isSmall}>
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+          centerMode={!this.state.isSmall}
+        >
           {this.props.imagesList.map(item => (
             <div class="image-container">
               <img class="image" src={"http://92.53.67.152" + item.url} />
@@ -42,7 +47,6 @@ class Images extends React.Component {
       </section>
     );
   }
-
 }
 
 const responsive = {
