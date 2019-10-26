@@ -21,7 +21,8 @@
 
 input:focus,
 textarea:focus,
-select:focus {
+select:focus,
+video:focus {
   outline: none;
 }
 

@@ -14,12 +14,14 @@ class Home extends React.Component {
     super(props);
     this.state = {
       aboutText: "",
-      isLoading: true
+      isLoading: true,
+      imagesData: null,
+      videosData: null
     };
   }
 
   handleResponse = json => {
-    this.setState({ aboutText: json.about, isLoading:false, imagesData: json.images });
+    this.setState({ aboutText: json.about, isLoading:false, imagesData: json.images, videosData: json.videos });
   };
 
   componentDidMount() {
@@ -32,14 +34,14 @@ class Home extends React.Component {
   }
 
   render() {
-    const { aboutText, isLoading, imagesData } = this.state;
+    const { aboutText, isLoading, imagesData, videosData } = this.state;
     return (
       <div>
         {!isLoading ? (
           <div>
             <MyNavbar isHome={true} />
             <Images imagesList={imagesData}/>
-            <Video/>
+            <Video videosList={videosData}/>
             <About text={aboutText} />
             <Contacts />
             <MyFooter isHome={true} />

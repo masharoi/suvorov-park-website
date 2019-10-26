@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Video.css";
-import demoVideo from "../images/demo.mp4";
 import { Player } from "video-react";
 import Carousel from "react-multi-carousel";
 
@@ -22,19 +21,17 @@ class Video extends React.Component {
 
   render() {
     return (
-      <section id="video">
+      <section id="videos">
         <Carousel
           responsive={responsive}
           infinite={true}
           centerMode={!this.state.isSmall}
         >
-          {
-            <div>
-              <video controls>
-                <source src={demoVideo} />
-              </video>
-            </div>
-          }
+          {this.props.videosList.map(item => (
+            <video class="video" controls>
+              <source src={"http://92.53.67.152" + item.url} />
+            </video>
+          ))}
         </Carousel>
       </section>
     );

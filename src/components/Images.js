@@ -2,7 +2,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import "../css/Images.css";
-import demoVideo from "../images/demo.mp4";
 import { Player } from 'video-react';
 
 class Images extends React.Component {

@@ -1,4 +1,26 @@
-#video {
+#videos {
   background: #EAA81B;
   padding: 100px 0;
+}
+
+.video  {
+  width: 600px;
+  height: 400px;
+  background: black;
+}
+
+/* small */
+@media (max-width: 500px) {
+  .video {
+    width: 230px;
+    height: 150px;
+  }
+}
+
+/* small */
+@media (min-width: 501px) and (max-width: 778px) {
+  .video {
+    width: 400px;
+    height: 300px;
+  }
 }
