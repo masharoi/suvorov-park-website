@@ -17,48 +17,48 @@ class Vote extends Component {
       OptionFourValue: "",
       hasFourthOption: false,
       hasThirdOption: false,
-      pollsList: this.props.pollsList
+      pollsList: this.props.pollsList,
+      showErrorMessage: false
     };
   }
 
   handleOptOneChange = event => {
-    this.setState({OptionOneValue: event.target.value});
+    this.setState({ OptionOneValue: event.target.value });
   };
   handleOptTwoChange = event => {
-    this.setState({OptionTwoValue: event.target.value});
+    this.setState({ OptionTwoValue: event.target.value });
   };
   handleOptThreeChange = event => {
-    this.setState({OptionThreeValue: event.target.value});
+    this.setState({ OptionThreeValue: event.target.value });
   };
   handleOptFourChange = event => {
-    this.setState({OptionFourValue: event.target.value});
+    this.setState({ OptionFourValue: event.target.value });
   };
 
   handleNameChange = event => {
-    this.setState({PollNameValue: event.target.value});
+    this.setState({ PollNameValue: event.target.value });
   };
 
   handleAddOptionClicked = event => {
     event.preventDefault();
     if (this.state.hasThirdOption == true) {
-      this.setState({hasFourthOption:true});
+      this.setState({ hasFourthOption: true });
     } else {
-      this.setState({hasThirdOption:true});
+      this.setState({ hasThirdOption: true });
     }
   };
 
   deleteOption = () => {
     if (this.state.hasFourthOption == true) {
-        this.setState({hasFourthOption:false});
+      this.setState({ hasFourthOption: false });
       return;
     }
     if (this.state.hasThirdOption == true) {
-      this.setState({hasThirdOption:false});
+      this.setState({ hasThirdOption: false });
       return;
     }
     return;
   };
-
 
   handleSubmit = event => {
     event.preventDefault();
@@ -69,16 +69,53 @@ class Vote extends Component {
       optionThree,
       optionFour
     } = event.target;
+    if (
+      optionOne.value.replace(/\s/g, "").length == 0 ||
+      optionTwo.value.replace(/\s/g, "").length == 0
+    ) {
+      this.setState({ showErrorMessage: true });
+      return;
+    }
     var optionsList = [
       { option: optionOne.value },
       { option: optionTwo.value }
     ];
     if (this.state.hasThirdOption) {
-      optionsList.push({ option: optionThree.value });
+      if (optionThree.value.replace(/\s/g, "").length == 0) {
+        this.setState({ showErrorMessage: true });
+        return;
+      } else {
+        optionsList.push({ option: optionThree.value });
+      }
     }
     if (this.state.hasFourthOption) {
-      optionsList.push({ option: optionFour.value });
+      if (optionFour.value.replace(/\s/g, "").length == 0) {
+        this.setState({ showErrorMessage: true });
+        return;
+      } else {
+        optionsList.push({ option: optionFour.value });
+      }
     }
+
+    var hasIdentical = false;
+
+    for (var i=0; i<optionsList.length; i++) {
+      if (i == optionsList.length-1) {
+        break;
+      }
+
+      for (var j=i+1; j<optionsList.length; j++) {
+        if (optionsList[i].option == optionsList[j].option) {
+          hasIdentical = true;
+          break;
+        }
+      }
+      if (hasIdentical) {
+        this.setState({ showErrorMessage: true });
+        return;
+      }
+    }
+    
     const message = { title: pollTitle.value, choices: optionsList };
     makeRequest(
       JSON.stringify(message),
@@ -99,15 +136,14 @@ class Vote extends Component {
       OptionFourValue: "",
       hasThirdOption: false,
       hasFourthOption: false,
-      pollsList: []
+      pollsList: [],
+      showErrorMessage: false
     });
 
-    this.setState({pollsList: newList})
-
+    this.setState({ pollsList: newList });
   };
 
   render() {
-
     const {
       PollNameValue,
       OptionOneValue,
@@ -116,10 +152,12 @@ class Vote extends Component {
       OptionFourValue,
       hasThirdOption,
       hasFourthOption,
-      pollsList
+      pollsList,
+      showErrorMessage
     } = this.state;
     return (
       <section id="vote" class="gray-background">
+
         <Carousel responsive={responsive}>
           <CreatePoll
             PollNameValue={PollNameValue}
@@ -135,8 +173,8 @@ class Vote extends Component {
             handleSubmit={this.handleSubmit}
             hasFourthOption={hasFourthOption}
             hasThirdOption={hasThirdOption}
-            handleAddOptionClicked = {this.handleAddOptionClicked}
-            deleteOption = {this.deleteOption}
+            handleAddOptionClicked={this.handleAddOptionClicked}
+            deleteOption={this.deleteOption}
           />
           {pollsList.map(poll => (
             <div class="card">
@@ -149,6 +187,11 @@ class Vote extends Component {
             </div>
           ))}
         </Carousel>
+        {showErrorMessage ? (
+          <h3 id="vote-error-message" class="small-size-text green-color">
+            Варианты не могут быть <br /> пустыми или повторяться.
+          </h3>
+        ) : null}
       </section>
     );
   }
