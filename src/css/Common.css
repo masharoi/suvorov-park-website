@@ -32,8 +32,6 @@ select {
   font-size: 14px;
 }
 
-
-
 /* font size */
 .large-size-text {
   font-size: 18px;
@@ -156,6 +154,7 @@ select {
 .button {
   text-indent: 0;
   border-radius: 7px;
+  height: 40px;
 }
 .button-loader {
   display: flex;
@@ -194,10 +193,6 @@ select {
   .small-row-reverse {
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  .input-padding {
-    padding-left: 20px;
   }
 
   input,

@@ -20,7 +20,13 @@ class MyFooter extends React.Component {
   }
 
   handleResponse = response => {
-    this.setState({ name: "", message: "", showSuccessMessage: true, showErrorMessage: false, isLoading: false });
+    this.setState({
+      name: "",
+      message: "",
+      showSuccessMessage: true,
+      showErrorMessage: false,
+      isLoading: false
+    });
   };
 
   handleSendMessage = event => {
@@ -30,8 +36,9 @@ class MyFooter extends React.Component {
       this.setState({ showErrorMessage: true });
       return;
     }
+
     const jsonMessage = { name: userName.value, text: message.value };
-    this.setState({isLoading: true})
+    this.setState({ isLoading: true });
     makeRequest(
       JSON.stringify(jsonMessage),
       "post",
@@ -88,10 +95,7 @@ class MyFooter extends React.Component {
         <div>
           <form class="contact-form" onSubmit={this.handleSendMessage}>
             <input
-              class={
-                "gray-background " +
-                this.setError(showNameFailed)
-              }
+              class={"gray-background " + this.setError(showNameFailed)}
               type="text"
               name="userName"
               placeholder="Ваше Имя"
@@ -102,10 +106,7 @@ class MyFooter extends React.Component {
             <textarea
               onChange={this.handleMessageChanged}
               value={this.state.message}
-              class={
-                "gray-background " +
-                this.setError(showTextFailed)
-              }
+              class={"gray-background " + this.setError(showTextFailed)}
               placeholder="Текст Сообщения"
               name="message"
               onBlur={this.validateMessage}
@@ -127,7 +128,6 @@ class MyFooter extends React.Component {
                 />
               ) : null}
             </div>
-
           </form>
           {showSuccessMessage ? (
             <h3 class="small-size-text yellow-color footer-message">
@@ -144,7 +144,9 @@ class MyFooter extends React.Component {
     );
     return (
       <section id="footer" class="row white-color">
-        <img id="footer-illustration" src={footerIllustration} />
+        <div id="footer-illustration">
+          <img src={footerIllustration} />
+        </div>
         <div class="col-lg-4 col-md-6 col-12">
           <h2 id="contacts-main-header" class="large-size-text medium">
             Контакты
@@ -154,7 +156,7 @@ class MyFooter extends React.Component {
             <p class="contacts-item col-6 col-md-12 small-size-text">
               <span class="contacts-header medium-size-text">
                 Диспетчерская
-              </span>{" "}
+              </span>
               <br /> 8 (499) 146-05-13 Охрана (круглосуточно) <br /> 8 (977)
               637-15-29 Губарев Виктор Михайлович
             </p>

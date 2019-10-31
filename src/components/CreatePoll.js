@@ -5,10 +5,7 @@ import makeRequest from "./Utils";
 class CreatePoll extends Component {
   constructor(props) {
     super(props);
-
   }
-
-
 
   setVisibility = item => {
     if (item == true) {
@@ -115,6 +112,7 @@ class CreatePoll extends Component {
 
         <div>
           <input
+            id="create-poll-btn"
             class="button red-background white-color medium-size-text vote-button"
             type="submit"
             value="Создать"

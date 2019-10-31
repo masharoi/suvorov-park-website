@@ -1,7 +1,7 @@
 #services {
   height: auto;
   margin: 140px 0 0 0;
-  padding: 80px 0;
+  padding: 50px 0;
 }
 #service-button {
   width: 100%;
@@ -24,6 +24,7 @@
   height: 40px;
   width: 250px;
   margin: 20px 0;
+  text-align: -webkit-center!important;
 }
 .row {
   margin:0;
@@ -36,7 +37,7 @@
 
 #service-select {
   border: solid 1px #EAA81B;
-  text-align-last:center;
+  padding-left: 20px;
   background: #012c0b;
   appearance: none;
   -moz-appearance: none;
