@@ -17,9 +17,13 @@
 #comments-list-outer {
   overflow-y: scroll;
 }
+.comment-author {
+  text-align: right;
+  font-weight: bold;
+}
 .comment {
   border-top: 1px solid #7D0000;
-  padding-top: 10px;
+  padding: 10px;
 }
 #comment-input {
   border-top: 1px solid gray;

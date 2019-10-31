@@ -7,12 +7,15 @@ class ForumExpanded extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      messages: this.props.messages
     };
   }
 
   handleResponse = json => {
-    window.location.reload();
+    this.state.messages.push(json);
+    var messages =  this.state.messages;
+    this.setState({messages});
   };
 
   handleAddComment = event => {
@@ -88,7 +91,7 @@ class ForumExpanded extends Component {
         {messagesSize == 0 ? emptyScreen : (
           <div id="comments-list-outer">
             <ul id="comment-list" class="medium-size-text">
-              {this.props.messages.map(message => (
+              {this.state.messages.map(message => (
                 <li class="comment">
                   <p class="comment-text">{message.text}</p>
                   <p class="comment-author">{message.user}</p>
@@ -100,7 +103,6 @@ class ForumExpanded extends Component {
                 this.messagesEnd = el;
               }}
             ></div>
-
           </div>
 
         )}
