@@ -7,7 +7,6 @@ import MyFooter from "./MyFooter";
 import Forum from "./Forum";
 import EmptyNews from "./EmptyNews";
 import makeRequest from "./Utils";
-import { LOGGED_OUT } from "./Utils";
 import LogIn from "./LogIn";
 import EmptyPolls from "./EmptyPolls";
 import EmptyForums from "./EmptyForums";
@@ -26,6 +25,7 @@ class Main extends React.Component {
       isNewsLoading: true,
       isServicesLoading: true
     };
+
   }
 
   handleNewsResponse = json => {
@@ -56,6 +56,7 @@ class Main extends React.Component {
     makeRequest(null, "get", "/api/services/", this.handleServicesResponse);
   }
 
+
   render() {
     const {
       newsList,
@@ -68,7 +69,7 @@ class Main extends React.Component {
     } = this.state;
     return (
       <div>
-        {window.localStorage.getItem("isLoggedIn") == "false" ? (
+        {window.localStorage.getItem("isLoggedIn") === "false" ? (
           <LogIn />
         ) : (
           <div>
@@ -80,19 +81,19 @@ class Main extends React.Component {
                 <MyNavbar isHome={false} />
                 <Services servicesList={services} />
 
-                {newsList.length != 0 ? (
+                {newsList.length !== 0 ? (
                   <AllNews newsList={newsList} />
                 ) : (
                   <EmptyNews />
                 )}
 
-                {pollsList.length != 0 ? (
+                {pollsList.length !== 0 ? (
                   <Vote pollsList={pollsList} />
                 ) : (
                   <EmptyPolls />
                 )}
 
-                {forumPreviewList.length != 0 ? (
+                {forumPreviewList.length !== 0 ? (
                   <Forum forumPreviewList={forumPreviewList} />
                 ) : (
                   <EmptyForums />
@@ -101,7 +102,7 @@ class Main extends React.Component {
                 <MyFooter />
               </div>
             ) : (
-              <div class="loader-container">
+              <div className="loader-container">
                 <Loader
                   type="Rings"
                   color="#7d0000"

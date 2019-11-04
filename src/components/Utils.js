@@ -18,6 +18,7 @@ export default function makeRequest(body, requestType, apiAddress, callback) {
       switch (response.status) {
 
         case LOGGED_OUT:
+          console.log(response)
           window.localStorage.setItem("isLoggedIn", false);
           throw new Error('Authorization Error');
 

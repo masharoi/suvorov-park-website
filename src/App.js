@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import Home from "./components/Home";
 import ForumExpanded from "./components/ForumExpanded";
 import Main from "./components/Main";

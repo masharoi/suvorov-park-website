@@ -1,14 +1,9 @@
 import React from "react";
 import "../css/Contacts.css";
-import map from "../images/map.png";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
-import makeRequest from "./Utils";
 import FeedbackForm from "./FeedbackForm";
 
 class Contacts extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const mapData = {
@@ -46,7 +41,7 @@ class Contacts extends React.Component {
           <h2 class="contact-form-header large-size-text">Написать нам:</h2>
           <FeedbackForm
             showEmail={
-              window.localStorage.getItem("isLoggedIn") == "true" ? false : true
+              window.localStorage.getItem("isLoggedIn") === "true" ? false : true
             }
           />
         </div>

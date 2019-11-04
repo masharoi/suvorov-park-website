@@ -36,7 +36,10 @@ class ForumExpanded extends Component {
   updateWindowDimensions = () => {
     if (window.innerWidth >= 768) {
       window.localStorage.setItem("currentState", this.expanded);
-    } else if (window.localStorage.getItem("currentState") != this.forum) {
+    } else if (window.localStorage.getItem("currentSelectedForum") === -1) {
+      window.localStorage.setItem("currentState", this.forum);
+    }
+     else if (window.localStorage.getItem("currentState") !== this.forum) {
       window.localStorage.setItem("currentState", this.chat);
     }
     this.setState({ width: window.innerWidth });
@@ -58,7 +61,7 @@ class ForumExpanded extends Component {
   };
 
   filterSelectedForum = card => {
-    return card.id == window.localStorage.getItem("currentSelectedForum");
+    return card.id === JSON.parse(window.localStorage.getItem("currentSelectedForum"));
   };
 
   // set the view of the forum page depending on the screen size
@@ -66,8 +69,8 @@ class ForumExpanded extends Component {
   // control the visibility of the forum list
   setForumListView = () => {
     if (
-      window.localStorage.getItem("currentState") == this.expanded ||
-      window.localStorage.getItem("currentState") == this.forum
+      window.localStorage.getItem("currentState") === this.expanded ||
+      window.localStorage.getItem("currentState") === this.forum
     ) {
       return "show";
     } else {
@@ -77,7 +80,7 @@ class ForumExpanded extends Component {
 
   // control the visibility of the chat back button
   setChatBackView = () => {
-    if (window.localStorage.getItem("currentState") == this.chat) {
+    if (window.localStorage.getItem("currentState") === this.chat) {
       return "show";
     } else {
       return "hide";
@@ -87,8 +90,8 @@ class ForumExpanded extends Component {
   // control the visibility of the chat
   setChatView = () => {
     if (
-      window.localStorage.getItem("currentState") == this.chat ||
-      window.localStorage.getItem("currentState") == this.expanded
+      window.localStorage.getItem("currentState") === this.chat ||
+      window.localStorage.getItem("currentState") === this.expanded
     ) {
       return "show";
     } else {
@@ -99,8 +102,8 @@ class ForumExpanded extends Component {
   render() {
     const { isForumLoading } = this.state;
     var forumMessages;
-    if (this.state.forumInfo.length != 0) {
-      if (window.localStorage.getItem("currentSelectedForum") == -1) {
+    if (this.state.forumInfo.length !== 0) {
+      if (JSON.parse(window.localStorage.getItem("currentSelectedForum")) === -1) {
         forumMessages = this.state.forumInfo[0].messages;
         window.localStorage.setItem(
           "currentSelectedForum",
@@ -117,7 +120,7 @@ class ForumExpanded extends Component {
 
     return (
       <div>
-        {window.localStorage.getItem("isLoggedIn") == "false" ? (
+        {window.localStorage.getItem("isLoggedIn") === "false" ? (
           <LogIn />
         ) : (
           <div>
@@ -125,24 +128,24 @@ class ForumExpanded extends Component {
               <section id="forum-expanded">
                 <div
                   id="forum-back-button-container"
-                  class={this.setForumListView()}
+                  className={this.setForumListView()}
                 >
                   <a id="forum-back-button" href="/profile#forum">
-                    <i class="fas fa-long-arrow-alt-left" />
+                    <i className="fas fa-long-arrow-alt-left" />
                   </a>
                 </div>
-                <div class="row">
-                  <div class="col-md-6 col-12 ">
-                    <div class={this.setForumListView()}>
+                <div className="row">
+                  <div className="col-md-6 col-12 ">
+                    <div className={this.setForumListView()}>
                       <ul id="forum-list">
                         {this.state.forumInfo.map(forum => (
                           <li
                             key={forum.id}
-                            class={"forum-card medium-size-text ".concat(
-                              forum.id ==
-                                window.localStorage.getItem(
+                            className={"forum-card medium-size-text ".concat(
+                              forum.id ===
+                                JSON.parse(window.localStorage.getItem(
                                   "currentSelectedForum"
-                                )
+                                ))
                                 ? "active-forum"
                                 : ""
                             )}
@@ -150,17 +153,17 @@ class ForumExpanded extends Component {
                               this.handleForumCardClicked(forum.id)
                             }
                           >
-                            <p class="forum-card-text">{forum.title}</p>
-                            <div class="forum-card-footer row small-size-text">
-                              <div class="forum-card-footer-left col-6">
-                                <p class="forum-author">{forum.author}</p>
-                                <p class="forum-date">{forum.created_at}</p>
+                            <p className="forum-card-text">{forum.title}</p>
+                            <div className="forum-card-footer row small-size-text">
+                              <div className="forum-card-footer-left col-6">
+                                <p className="forum-author">{forum.author}</p>
+                                <p className="forum-date">{forum.created_at}</p>
                               </div>
-                              <div class="forum-card-footer-right col-6">
-                                <p class="forum-comments">
+                              <div className="forum-card-footer-right col-6">
+                                <p className="forum-comments">
                                   {forum.number_of_messages} Комментариев
                                 </p>
-                                <p class="forum-users">
+                                <p className="forum-users">
                                   {forum.number_of_members} Учасника
                                 </p>
                               </div>
@@ -172,7 +175,7 @@ class ForumExpanded extends Component {
                   </div>
                   <div
                     id="forum-chat-outer"
-                    class={"col-md-6 col-12 zero-padding " + this.setChatView()}
+                    className={"col-md-6 col-12 zero-padding " + this.setChatView()}
                   >
                     <div id="chat-back">
                       <a
@@ -180,7 +183,7 @@ class ForumExpanded extends Component {
                         onClick={this.handleChatBackClicked}
                       >
                         <i
-                          class={
+                          className={
                             "fas fa-long-arrow-alt-left red-color " +
                             this.setChatBackView()
                           }
@@ -197,7 +200,7 @@ class ForumExpanded extends Component {
                 </div>
               </section>
             ) : (
-              <div class="loader-container">
+              <div className="loader-container">
                 <Loader
                   type="Rings"
                   color="#7d0000"

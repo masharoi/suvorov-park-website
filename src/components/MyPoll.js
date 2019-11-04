@@ -41,7 +41,7 @@ class MyPoll extends Component {
       </div>
     ));
     const votedView = this.state.choices.map(choice =>
-      this.state.voted == choice.option ? (
+      this.state.voted === choice.option ? (
         <div class="small-size-text vote-choice vote-selected">
           <div>
             {choice.option} <i class="fas fa-check" />

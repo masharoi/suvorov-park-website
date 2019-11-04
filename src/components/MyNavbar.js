@@ -1,11 +1,6 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Form from "react-bootstrap/Form";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
-import { Link } from "react-router-dom";
 import "../css/Navbar.css";
 import ScrollspyNav from "react-scrollspy-nav";
 
@@ -25,7 +20,7 @@ class MyNavbar extends React.Component {
   };
 
   handleToggle = () => {
-    if (this.state.navIcon == "toggle-icon") {
+    if (this.state.navIcon === "toggle-icon") {
       this.setState({ navIcon: "toggle-close-icon"});
     } else {
       this.setState({ navIcon: "toggle-icon" });
@@ -33,10 +28,8 @@ class MyNavbar extends React.Component {
   };
 
   render() {
-    {
-      if (!window.localStorage.getItem("isLoggedIn") == true) {
-        window.localStorage.setItem("isLoggedIn", false);
-      }
+    if (!window.localStorage.getItem("isLoggedIn") === true) {
+      window.localStorage.setItem("isLoggedIn", false);
     }
     const loggedInNav = (
       <ScrollspyNav
@@ -44,29 +37,29 @@ class MyNavbar extends React.Component {
         activeNavClass="is-active"
         scrollDuration="400"
       >
-        <ul id="nav-list" class={this.state.showList}>
+        <ul id="nav-list" className={this.state.showList}>
           <li>
-            <a class="nav-link" href="#services">
+            <a className="nav-link" href="#services">
               <span>Услуги</span>
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#all-news">
+            <a className="nav-link" href="#all-news">
               <span>Новости</span>
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#vote">
+            <a className="nav-link" href="#vote">
               <span>Голосование</span>
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#forum">
+            <a className="nav-link" href="#forum">
               <span>Форум</span>
             </a>
           </li>
           <li>
-            <a class="nav-link" href="#footer">
+            <a className="nav-link" href="#footer">
               <span>Контакты</span>
             </a>
           </li>
@@ -96,10 +89,10 @@ class MyNavbar extends React.Component {
           onToggle={this.handleToggle}
         >
           <Navbar.Brand id="nav-brand" href="/home">
-            <img id="logo" src={logo} />
+            <img alt="logo" id="logo" src={logo} />
           </Navbar.Brand>
           {!this.props.isHome &&
-          window.localStorage.getItem("isLoggedIn") == "true" ? (
+          window.localStorage.getItem("isLoggedIn") === "true" ? (
             <div>
               <Navbar.Toggle
                 bsPrefix={"toggle " + this.state.navIcon}

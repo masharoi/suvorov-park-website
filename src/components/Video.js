@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/Video.css";
-import { Player } from "video-react";
 import Carousel from "react-multi-carousel";
 
 class Video extends React.Component {

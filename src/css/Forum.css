@@ -4,7 +4,7 @@
 }
 
 #forum {
-  padding: 50px 0;
+  padding: 80px 0;
 }
 .small-screen {
   display:none;
@@ -20,7 +20,9 @@
 #forum-link-icon {
   padding-left: 10px;
 }
-
+.forum-message {
+  padding-top: 10px;
+}
 #chat-back {
   position: absolute;
   top: 20px;
@@ -77,7 +79,7 @@
 #forum-preview-container {
   display:flex;
   flex-direction:column;
-  justify-content: space-between;
+  justify-content:space-around;
   padding-right: 80px;
 }
 
@@ -150,7 +152,6 @@ padding: 30px;
   #forum-link {
     font-size: 24px;
     padding-right: 15px;
-    padding-top: 50px;
   }
   #forum-link-icon {
     font-size: 18px;
@@ -168,6 +169,9 @@ padding: 30px;
 
 /* medium */
 @media (max-width: 768px) {
+  #forum {
+    padding: 50px 0;
+  }
   .forum-list-visibility {
     display: none;
   }

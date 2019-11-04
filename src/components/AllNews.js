@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import "../css/AllNews.css";
-import { Link } from "react-router-dom";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -56,15 +55,15 @@ class AllNews extends React.Component {
       <section id="all-news">
         <Carousel responsive={responsive}>
           {this.props.newsList.map(newsItem => (
-            <div class="card medium-size-text">
+            <div key={newsItem.id} className="card medium-size-text">
               <div>
-                <div class="bold">{newsItem.title}</div>
-                <div class="medium">{newsItem.date}</div>
+                <div className="bold">{newsItem.title}</div>
+                <div className="medium">{newsItem.date}</div>
               </div>
               <div>{this.setPreviewText(newsItem.text)}</div>
               <div
                 onClick={() => this.togglePopup(newsItem.id)}
-                class={
+                className={
                   "bold orange-color link " +
                   this.setMoreLinkVisibility(newsItem.text)
                 }
@@ -74,7 +73,7 @@ class AllNews extends React.Component {
             </div>
           ))}
         </Carousel>
-        {this.state.showPopup == true ? (
+        {this.state.showPopup === true ? (
           <Popup
             header={selectedNewsItem.title}
             date={selectedNewsItem.date}
@@ -95,10 +94,10 @@ class Popup extends React.Component {
           <i
             onClick={this.props.closePopup}
             id="close-news-button"
-            class="fas fa-times large-size-text"
+            className="fas fa-times large-size-text"
           />
-          <div class="bold">{this.props.header}</div>
-          <div class="medium">{this.props.date}</div>
+          <div className="bold">{this.props.header}</div>
+          <div className="medium">{this.props.date}</div>
           <div>{this.props.body}</div>
         </div>
       </div>

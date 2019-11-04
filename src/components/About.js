@@ -1,13 +1,7 @@
 import React from "react";
 import "../css/About.css";
-import { Link } from "react-router-dom";
 
 class About extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-
   render() {
     return (
       <section id="about" class="yellow-background">

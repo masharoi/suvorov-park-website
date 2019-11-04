@@ -72,23 +72,23 @@ class CreateForumTitle extends Component {
         <form id="forum-form" onSubmit={this.handleCreateForumClicked}>
           <textarea
             id="forum-text"
-            class={this.setError(showTextFailed)}
+            className={this.setError(showTextFailed)}
             placeholder="Тема для обсуждения"
             name="forumTitle"
             value={value}
             onChange={this.handleValueChanged}
             onBlur={this.validateTitle}
           />
-          <div class="button button-container orange-background">
+          <div className="button button-container orange-background">
             <input
               id="forum-button"
-              class="button white-color"
+              className="button white-color"
               type="submit"
               value="Создать"
             />
             {isLoading ? (
               <Loader
-                class="button-loader"
+                className="button-loader"
                 type="Rings"
                 color="white"
                 height={40}
@@ -99,12 +99,12 @@ class CreateForumTitle extends Component {
           </div>
         </form>
         {showSuccessMessage ? (
-          <h3 class="small-size-text white-color footer-message">
+          <h3 className="small-size-text white-color footer-message forum-message">
             Ваш форум создан!
           </h3>
         ) : null}
         {showErrorMessage ? (
-          <h3 class="small-size-text white-color footer-message">
+          <h3 className="small-size-text white-color footer-message forum-message">
             Все поля должны быть заполнены!
           </h3>
         ) : null}

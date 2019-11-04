@@ -88,7 +88,7 @@ class ForumExpanded extends Component {
     return (
       <section id="forum-chat">
 
-        {messagesSize == 0 ? emptyScreen : (
+        {messagesSize === 0 ? emptyScreen : (
           <div id="comments-list-outer">
             <ul id="comment-list" class="medium-size-text">
               {this.state.messages.map(message => (

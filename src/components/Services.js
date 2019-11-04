@@ -1,8 +1,6 @@
 import React from "react";
 import "../css/Services.css";
-import Dropdown from "react-bootstrap/Dropdown";
 import makeRequest from "./Utils";
-import { LOGGED_OUT } from "./Utils";
 import servicesIllustration from "../images/services2.svg";
 import Loader from "react-loader-spinner";
 
@@ -40,33 +38,33 @@ class Services extends React.Component {
   render() {
     const { showSuccessMessage, isLoading } = this.state;
     return (
-      <section id="services" class="green-background">
-        <div class="row">
-          <div class="col-12 col-md-4" id="services-action-col">
+      <section id="services" className="green-background">
+        <div className="row">
+          <div className="col-12 col-md-4" id="services-action-col">
             <form onSubmit={this.handleOrderServerClicked} id="service-form">
               <select
                 name="servicesList"
-                class="input-padding service-interaction green-background yellow-color"
+                className="input-padding service-interaction green-background yellow-color"
                 id="service-select"
                 form="service-form"
               >
                 {this.props.servicesList.map(item => (
-                  <option value={item.id} class="service-option">
+                  <option key={item.id} value={item.id} className="service-option">
                     {item.title}
                   </option>
                 ))}
               </select>
               <textarea
-                class="gray-background"
+                className="gray-background"
                 placeholder="Дополнительная информация"
                 name="details"
                 onChange={this.handleValueChanged}
                 value={this.state.value}
               />
-              <div class="service-interaction button button-container yellow-background green-color">
+              <div className="service-interaction button button-container yellow-background green-color">
                 <input
                   id="service-button"
-                  class="medium-size-text"
+                  className="medium-size-text"
                   type="submit"
                   value="Заказать услугу"
                 />
@@ -88,8 +86,8 @@ class Services extends React.Component {
               ) : null}
             </form>
           </div>
-          <div class="col-8" id="services-illustration">
-            <img src={servicesIllustration} />
+          <div className="col-8" id="services-illustration">
+            <img alt="" src={servicesIllustration} />
           </div>
         </div>
       </section>

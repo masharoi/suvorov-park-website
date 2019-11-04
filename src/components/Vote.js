@@ -41,7 +41,7 @@ class Vote extends Component {
 
   handleAddOptionClicked = event => {
     event.preventDefault();
-    if (this.state.hasThirdOption == true) {
+    if (this.state.hasThirdOption === true) {
       this.setState({ hasFourthOption: true });
     } else {
       this.setState({ hasThirdOption: true });
@@ -49,11 +49,11 @@ class Vote extends Component {
   };
 
   deleteOption = () => {
-    if (this.state.hasFourthOption == true) {
+    if (this.state.hasFourthOption === true) {
       this.setState({ hasFourthOption: false });
       return;
     }
-    if (this.state.hasThirdOption == true) {
+    if (this.state.hasThirdOption === true) {
       this.setState({ hasThirdOption: false });
       return;
     }
@@ -70,8 +70,8 @@ class Vote extends Component {
       optionFour
     } = event.target;
     if (
-      optionOne.value.replace(/\s/g, "").length == 0 ||
-      optionTwo.value.replace(/\s/g, "").length == 0
+      optionOne.value.replace(/\s/g, "").length === 0 ||
+      optionTwo.value.replace(/\s/g, "").length === 0
     ) {
       this.setState({ showErrorMessage: true });
       return;
@@ -81,7 +81,7 @@ class Vote extends Component {
       { option: optionTwo.value }
     ];
     if (this.state.hasThirdOption) {
-      if (optionThree.value.replace(/\s/g, "").length == 0) {
+      if (optionThree.value.replace(/\s/g, "").length === 0) {
         this.setState({ showErrorMessage: true });
         return;
       } else {
@@ -89,7 +89,7 @@ class Vote extends Component {
       }
     }
     if (this.state.hasFourthOption) {
-      if (optionFour.value.replace(/\s/g, "").length == 0) {
+      if (optionFour.value.replace(/\s/g, "").length === 0) {
         this.setState({ showErrorMessage: true });
         return;
       } else {
@@ -100,12 +100,12 @@ class Vote extends Component {
     var hasIdentical = false;
 
     for (var i=0; i<optionsList.length; i++) {
-      if (i == optionsList.length-1) {
+      if (i === optionsList.length-1) {
         break;
       }
 
       for (var j=i+1; j<optionsList.length; j++) {
-        if (optionsList[i].option == optionsList[j].option) {
+        if (optionsList[i].option === optionsList[j].option) {
           hasIdentical = true;
           break;
         }
@@ -115,7 +115,7 @@ class Vote extends Component {
         return;
       }
     }
-    
+
     const message = { title: pollTitle.value, choices: optionsList };
     makeRequest(
       JSON.stringify(message),
@@ -156,7 +156,7 @@ class Vote extends Component {
       showErrorMessage
     } = this.state;
     return (
-      <section id="vote" class="gray-background">
+      <section id="vote" className="gray-background">
 
         <Carousel responsive={responsive}>
           <CreatePoll
@@ -177,7 +177,7 @@ class Vote extends Component {
             deleteOption={this.deleteOption}
           />
           {pollsList.map(poll => (
-            <div class="card">
+            <div className="card">
               <MyPoll
                 uniqueId={poll.id}
                 title={poll.title}
@@ -188,7 +188,7 @@ class Vote extends Component {
           ))}
         </Carousel>
         {showErrorMessage ? (
-          <h3 id="vote-error-message" class="small-size-text green-color">
+          <h3 id="vote-error-message" className="small-size-text green-color">
             Варианты не могут быть <br /> пустыми или повторяться.
           </h3>
         ) : null}

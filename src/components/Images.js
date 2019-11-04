@@ -2,7 +2,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import React from "react";
 import "../css/Images.css";
-import { Player } from 'video-react';
 
 class Images extends React.Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class Images extends React.Component {
         >
           {this.props.imagesList.map(item => (
             <div class="image-container">
-              <img class="image" src={"http://92.53.67.152" + item.url} />
+              <img alt="" class="image" src={"http://92.53.67.152" + item.url} />
             </div>
           ))}
         </Carousel>

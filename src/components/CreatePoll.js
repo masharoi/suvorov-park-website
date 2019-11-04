@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import "../css/Vote.css";
-import makeRequest from "./Utils";
 
 class CreatePoll extends Component {
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
   setVisibility = item => {
-    if (item == true) {
+    if (item === true) {
       return "show";
     } else {
       return "hide";
@@ -16,7 +16,7 @@ class CreatePoll extends Component {
   };
 
   setAddOptionVisibility = () => {
-    if (this.props.hasFourthOption == true) {
+    if (this.props.hasFourthOption === true) {
       return "hide";
     } else {
       return "show-flex";
@@ -25,11 +25,11 @@ class CreatePoll extends Component {
 
   render() {
     return (
-      <form class="card" id="new-vote-form" onSubmit={this.props.handleSubmit}>
+      <form className="card" id="new-vote-form" onSubmit={this.props.handleSubmit}>
         <div>
           <input
             id="vote-question-input"
-            class="vote-input"
+            className="vote-input"
             type="text"
             value={this.props.PollNameValue}
             onChange={this.props.handleNameChange}
@@ -38,9 +38,9 @@ class CreatePoll extends Component {
           />
         </div>
 
-        <div class="vote-option">
+        <div className="vote-option">
           <input
-            class="vote-input vote-option-inner"
+            className="vote-input vote-option-inner"
             type="text"
             value={this.props.OptionOneValue}
             onChange={this.props.handleOptOneChange}
@@ -49,9 +49,9 @@ class CreatePoll extends Component {
           />
         </div>
 
-        <div class="vote-option">
+        <div className="vote-option">
           <input
-            class="vote-input vote-option-inner "
+            className="vote-input vote-option-inner "
             type="text"
             value={this.props.OptionTwoValue}
             onChange={this.props.handleOptTwoChange}
@@ -61,50 +61,50 @@ class CreatePoll extends Component {
         </div>
 
         <div
-          class={
+          className={
             "vote-option " + this.setVisibility(this.props.hasThirdOption)
           }
         >
           <input
-            class="vote-input vote-option-inner"
+            className="vote-input vote-option-inner"
             type="text"
             value={this.props.OptionThreeValue}
             onChange={this.props.handleOptThreeChange}
             placeholder="Вариант ответа"
             name="optionThree"
           />
-          {this.props.hasFourthOption != true ? (
-            <div class="delete-option" onClick={this.props.deleteOption}>
-              <i class="fas fa-times" />
+          {this.props.hasFourthOption !== true ? (
+            <div className="delete-option" onClick={this.props.deleteOption}>
+              <i className="fas fa-times" />
             </div>
           ) : null}
         </div>
 
         <div
-          class={
+          className={
             "vote-option " + this.setVisibility(this.props.hasFourthOption)
           }
         >
           <input
-            class="vote-input vote-option-inner"
+            className="vote-input vote-option-inner"
             type="text"
             value={this.props.OptionFourValue}
             onChange={this.props.handleOptFourChange}
             placeholder="Вариант ответа"
             name="optionFour"
           />
-          <div class="delete-option" onClick={this.props.deleteOption}>
-            <i class="fas fa-times" />
+          <div className="delete-option" onClick={this.props.deleteOption}>
+            <i className="fas fa-times" />
           </div>
         </div>
 
         <div
-          class={
+          className={
             "vote-option red-color link " +
             this.setAddOptionVisibility()
           }
         >
-          <i class="fas fa-plus" />
+          <i className="fas fa-plus" />
           <div id="add-option" onClick={this.props.handleAddOptionClicked}>
             Добавить вариант
           </div>
@@ -113,7 +113,7 @@ class CreatePoll extends Component {
         <div>
           <input
             id="create-poll-btn"
-            class="button red-background white-color medium-size-text vote-button"
+            className="button red-background white-color medium-size-text vote-button"
             type="submit"
             value="Создать"
           />

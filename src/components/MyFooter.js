@@ -1,7 +1,6 @@
 import React from "react";
 import "../css/Footer.css";
 import makeRequest from "./Utils";
-import FeedbackForm from "./FeedbackForm";
 import footerIllustration from "../images/footer.svg";
 import Loader from "react-loader-spinner";
 
@@ -88,14 +87,14 @@ class MyFooter extends React.Component {
     } = this.state;
 
     const form = (
-      <div class="col-lg-4 col-md-6  col-12 form-container ">
-        <div class="contact-form-header large-size-text medium">
+      <div className="col-lg-4 col-md-6  col-12 form-container ">
+        <div className="contact-form-header large-size-text medium">
           Обратная связь
         </div>
         <div>
-          <form class="contact-form" onSubmit={this.handleSendMessage}>
+          <form className="contact-form" onSubmit={this.handleSendMessage}>
             <input
-              class={"gray-background " + this.setError(showNameFailed)}
+              className={"gray-background " + this.setError(showNameFailed)}
               type="text"
               name="userName"
               placeholder="Ваше Имя"
@@ -106,20 +105,20 @@ class MyFooter extends React.Component {
             <textarea
               onChange={this.handleMessageChanged}
               value={this.state.message}
-              class={"gray-background " + this.setError(showTextFailed)}
+              className={"gray-background " + this.setError(showTextFailed)}
               placeholder="Текст Сообщения"
               name="message"
               onBlur={this.validateMessage}
             />
-            <div class="button-container">
+            <div className="button-container">
               <input
-                class="button medium-size-text primary-button-size yellow-background green-color"
+                className="button medium-size-text primary-button-size yellow-background green-color"
                 type="submit"
                 value="Отправить"
               />
               {isLoading ? (
                 <Loader
-                  class="button-loader"
+                  className="button-loader"
                   type="Rings"
                   color="#eaa81b"
                   height={40}
@@ -143,45 +142,45 @@ class MyFooter extends React.Component {
       </div>
     );
     return (
-      <section id="footer" class="row white-color">
+      <section id="footer" className="row white-color">
         <div id="footer-illustration">
-          <img src={footerIllustration} />
+          <img alt="" src={footerIllustration} />
         </div>
-        <div class="col-lg-4 col-md-6 col-12">
-          <h2 id="contacts-main-header" class="large-size-text medium">
+        <div className="col-lg-4 col-md-6 col-12">
+          <h2 id="contacts-main-header" className="large-size-text medium">
             Контакты
           </h2>
 
-          <div class="row">
-            <p class="contacts-item col-6 col-md-12 small-size-text">
-              <span class="contacts-header medium-size-text">
+          <div className="row">
+            <p className="contacts-item col-6 col-md-12 small-size-text">
+              <span className="contacts-header medium-size-text">
                 Диспетчерская
               </span>
               <br /> 8 (499) 146-05-13 Охрана (круглосуточно) <br /> 8 (977)
               637-15-29 Губарев Виктор Михайлович
             </p>
-            <p class="contacts-item col-6 col-md-12 small-size-text">
-              <span class="contacts-header medium-size-text">Бухгалтерия</span>
+            <p className="contacts-item col-6 col-md-12 small-size-text">
+              <span className="contacts-header medium-size-text">Бухгалтерия</span>
               <br />8 (926) 538-88-46 (с 10:00 до 18:00)
             </p>
-            <p class="contacts-item col-6 col-md-12 small-size-text">
-              <span class="contacts-header medium-size-text">
+            <p className="contacts-item col-6 col-md-12 small-size-text">
+              <span className="contacts-header medium-size-text">
                 Председатель УК
               </span>
               <br />
               tsg.suvorov@mail.ru <br /> Зайцев Илья Григорьевич
             </p>
-            <p class="contacts-item col-6 col-md-12 small-size-text">
+            <p className="contacts-item col-6 col-md-12 small-size-text">
               8 (977) 282-73-75 <br />
               Рыбак Валерий Александрович
             </p>
           </div>
         </div>
         {!this.props.isHome ? form : <div />}
-        <div class="col-lg-4 col-md-6 col-12 address">
-          <h2 class="large-size-text medium">ТСЖ "Суворов Парк"</h2>
-          <div class="contacts-preview-item small-size-text">
-            <div class="contacts-header medium-size-text">Адрес:</div>
+        <div className="col-lg-4 col-md-6 col-12 address">
+          <h2 className="large-size-text medium">ТСЖ "Суворов Парк"</h2>
+          <div className="contacts-preview-item small-size-text">
+            <div className="contacts-header medium-size-text">Адрес:</div>
             <div>
               ул. Малая Филевская, д.40, корп.1, этаж 23, пом 1 <br /> 121433,
               г.Москва
