@@ -51,15 +51,16 @@
 }
 
 #forum-text {
-  height: 100%;
+  height: 180px;
   margin:0 0 20px 0;
 }
-
+#forum-button-outer {
+ height: 40px!important;
+}
 #forum-button {
-  height: 40px;
   margin:0;
   width: 100%;
-  background: transparent;
+  background: #c95501;
 }
 
 /* forum previews */

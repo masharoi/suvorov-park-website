@@ -79,10 +79,10 @@ class CreateForumTitle extends Component {
             onChange={this.handleValueChanged}
             onBlur={this.validateTitle}
           />
-          <div className="button button-container orange-background">
+          <div id="forum-button-outer" className="button button-container orange-background">
             <input
               id="forum-button"
-              className="button white-color"
+              className="white-color"
               type="submit"
               value="Создать"
             />
@@ -91,7 +91,7 @@ class CreateForumTitle extends Component {
                 className="button-loader"
                 type="Rings"
                 color="white"
-                height={40}
+                height={50}
                 width={50}
                 timeout={100000}
               />

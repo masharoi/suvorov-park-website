@@ -53,16 +53,14 @@ class ForumExpanded extends Component {
   render() {
     const messageInput = (
       <form id="comment-input" onSubmit={this.handleAddComment}>
-        <div id="comment-text-input-outer">
-          <input
-            id="comment-text-input"
-            type="text"
-            name="messageText"
-            value={this.state.value}
-            placeholder="Напишите сообщение"
-            onChange={this.handleChange}
-          />
-        </div>
+      <textarea
+        id="comment-text-input"
+        type="text"
+        name="messageText"
+        value={this.state.value}
+        placeholder="Напишите сообщение"
+        onChange={this.handleChange}
+      ></textarea>
         <div>
           <button
             id="comment-input-button"

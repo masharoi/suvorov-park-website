@@ -36,7 +36,7 @@ class ForumExpanded extends Component {
   updateWindowDimensions = () => {
     if (window.innerWidth >= 768) {
       window.localStorage.setItem("currentState", this.expanded);
-    } else if (window.localStorage.getItem("currentSelectedForum") === -1) {
+    } else if (JSON.parse(window.localStorage.getItem("currentSelectedForum")) === -1) {
       window.localStorage.setItem("currentState", this.forum);
     }
      else if (window.localStorage.getItem("currentState") !== this.forum) {
@@ -109,7 +109,7 @@ class ForumExpanded extends Component {
           "currentSelectedForum",
           this.state.forumInfo[0].id
         );
-      } else {
+      } else if (window.localStorage.getItem("isLoggedIn") !== "false") {
         forumMessages = this.state.forumInfo.filter(forum =>
           this.filterSelectedForum(forum)
         )[0].messages;
@@ -117,6 +117,7 @@ class ForumExpanded extends Component {
     } else {
       forumMessages = [];
     }
+
 
     return (
       <div>

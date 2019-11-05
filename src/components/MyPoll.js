@@ -34,6 +34,7 @@ class MyPoll extends Component {
   render() {
     const notVotedView = this.state.choices.map(choice => (
       <div
+        key={choice.id}
         className="small-size-text vote-choice active-choice"
         onClick={() => this.handleVote(choice.id)}
       >
@@ -42,7 +43,10 @@ class MyPoll extends Component {
     ));
     const votedView = this.state.choices.map(choice =>
       this.state.voted === choice.option ? (
-        <div key={choice.id} className="small-size-text vote-choice vote-selected">
+        <div
+          key={choice.id}
+          className="small-size-text vote-choice vote-selected"
+        >
           <div>
             {choice.option} <i className="fas fa-check" />
           </div>
