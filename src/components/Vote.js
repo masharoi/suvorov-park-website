@@ -5,6 +5,7 @@ import "../css/Vote.css";
 import MyPoll from "./MyPoll";
 import CreatePoll from "./CreatePoll";
 import makeRequest from "./Utils";
+import emptyPollsImage from "../images/empty-polls.svg";
 
 class Vote extends Component {
   constructor(props) {
@@ -99,12 +100,12 @@ class Vote extends Component {
 
     var hasIdentical = false;
 
-    for (var i=0; i<optionsList.length; i++) {
-      if (i === optionsList.length-1) {
+    for (var i = 0; i < optionsList.length; i++) {
+      if (i === optionsList.length - 1) {
         break;
       }
 
-      for (var j=i+1; j<optionsList.length; j++) {
+      for (var j = i + 1; j < optionsList.length; j++) {
         if (optionsList[i].option === optionsList[j].option) {
           hasIdentical = true;
           break;
@@ -155,44 +156,88 @@ class Vote extends Component {
       pollsList,
       showErrorMessage
     } = this.state;
-    return (
-      <section id="vote" className="gray-background">
 
-        <Carousel responsive={responsive}>
-          <CreatePoll
-            PollNameValue={PollNameValue}
-            OptionOneValue={OptionOneValue}
-            OptionTwoValue={OptionTwoValue}
-            OptionThreeValue={OptionThreeValue}
-            OptionFourValue={OptionFourValue}
-            handleNameChange={this.handleNameChange}
-            handleOptOneChange={this.handleOptOneChange}
-            handleOptTwoChange={this.handleOptTwoChange}
-            handleOptThreeChange={this.handleOptThreeChange}
-            handleOptFourChange={this.handleOptFourChange}
-            handleSubmit={this.handleSubmit}
-            hasFourthOption={hasFourthOption}
-            hasThirdOption={hasThirdOption}
-            handleAddOptionClicked={this.handleAddOptionClicked}
-            deleteOption={this.deleteOption}
-          />
-          {pollsList.map(poll => (
-            <div className="card">
-              <MyPoll
-                uniqueId={poll.id}
-                title={poll.title}
-                choices={poll.choices}
-                voted={poll.user_voted_for}
-              />
-            </div>
-          ))}
-        </Carousel>
-        {showErrorMessage ? (
-          <h3 id="vote-error-message" className="small-size-text green-color">
-            Варианты не могут быть <br /> пустыми или повторяться.
-          </h3>
-        ) : null}
+    const emptyPolls = (
+      <section
+        id="vote"
+        className="gray-background empty-poll row small-row-reverse"
+      >
+        <CreatePoll
+          className="col-md-4 col-12"
+          PollNameValue={PollNameValue}
+          OptionOneValue={OptionOneValue}
+          OptionTwoValue={OptionTwoValue}
+          OptionThreeValue={OptionThreeValue}
+          OptionFourValue={OptionFourValue}
+          handleNameChange={this.handleNameChange}
+          handleOptOneChange={this.handleOptOneChange}
+          handleOptTwoChange={this.handleOptTwoChange}
+          handleOptThreeChange={this.handleOptThreeChange}
+          handleOptFourChange={this.handleOptFourChange}
+          handleSubmit={this.handleSubmit}
+          hasFourthOption={hasFourthOption}
+          hasThirdOption={hasThirdOption}
+          handleAddOptionClicked={this.handleAddOptionClicked}
+          deleteOption={this.deleteOption}
+        />
+        <div
+          id="empty-polls-image-outer"
+          className="red-color large-size-text col-md-8 col-12"
+        >
+          <img alt="" id="empty-polls-image" src={emptyPollsImage} />
+          <div>
+            Пока не было создано <br /> ни одного голосования!
+          </div>
+        </div>
       </section>
+    );
+
+    return (
+      <div>
+        {pollsList.length === 0 ? (
+          emptyPolls
+        ) : (
+          <section id="vote" className="gray-background">
+            <Carousel responsive={responsive}>
+              <CreatePoll
+                PollNameValue={PollNameValue}
+                OptionOneValue={OptionOneValue}
+                OptionTwoValue={OptionTwoValue}
+                OptionThreeValue={OptionThreeValue}
+                OptionFourValue={OptionFourValue}
+                handleNameChange={this.handleNameChange}
+                handleOptOneChange={this.handleOptOneChange}
+                handleOptTwoChange={this.handleOptTwoChange}
+                handleOptThreeChange={this.handleOptThreeChange}
+                handleOptFourChange={this.handleOptFourChange}
+                handleSubmit={this.handleSubmit}
+                hasFourthOption={hasFourthOption}
+                hasThirdOption={hasThirdOption}
+                handleAddOptionClicked={this.handleAddOptionClicked}
+                deleteOption={this.deleteOption}
+              />
+              {pollsList.map(poll => (
+                <div key={poll.id} className="card">
+                  <MyPoll
+                    uniqueId={poll.id}
+                    title={poll.title}
+                    choices={poll.choices}
+                    voted={poll.user_voted_for}
+                  />
+                </div>
+              ))}
+            </Carousel>
+            {showErrorMessage ? (
+              <h3
+                id="vote-error-message"
+                className="small-size-text green-color"
+              >
+                Варианты не могут быть <br /> пустыми или повторяться.
+              </h3>
+            ) : null}
+          </section>
+        )}
+      </div>
     );
   }
 }

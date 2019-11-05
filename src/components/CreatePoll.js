@@ -4,7 +4,6 @@ import "../css/Vote.css";
 class CreatePoll extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
 
   setVisibility = item => {
@@ -24,8 +23,13 @@ class CreatePoll extends Component {
   };
 
   render() {
+
     return (
-      <form className="card" id="new-vote-form" onSubmit={this.props.handleSubmit}>
+      <form
+        className="card"
+        id="new-vote-form"
+        onSubmit={this.props.handleSubmit}
+      >
         <div>
           <input
             id="vote-question-input"
@@ -100,8 +104,7 @@ class CreatePoll extends Component {
 
         <div
           className={
-            "vote-option red-color link " +
-            this.setAddOptionVisibility()
+            "vote-option red-color link " + this.setAddOptionVisibility()
           }
         >
           <i className="fas fa-plus" />
