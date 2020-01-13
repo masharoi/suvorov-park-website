@@ -168,7 +168,7 @@ class MyFooter extends React.Component {
                 Председатель УК
               </span>
               <br />
-              tsg.suvorov@mail.ru <br /> Зайцев Илья Григорьевич
+              tsg.suvorov@mail.ru <br /> Мельникова Валентина Владимировна
             </p>
             <p className="contacts-item col-6 col-md-12 small-size-text">
               8 (977) 282-73-75 <br />

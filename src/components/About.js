@@ -4,10 +4,10 @@ import "../css/About.css";
 class About extends React.Component {
   render() {
     return (
-      <section id="about" class="yellow-background">
+      <section id="about" class="green-background yellow-color">
         <div id="about-info">
-          <h2 class="large-size-text">О нас</h2>
-          <p class="medium-size-text">
+          <h2 >О нас</h2>
+          <p >
           {this.props.text}
           </p>
         </div>

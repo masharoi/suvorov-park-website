@@ -1,9 +1,12 @@
 import React from "react";
 import "../css/Contacts.css";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
-import FeedbackForm from "./FeedbackForm";
+import About from "./About";
 
 class Contacts extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const mapData = {
@@ -38,12 +41,7 @@ class Contacts extends React.Component {
           </div>
         </div>
         <div id="contact-form-outer" class="col-12 col-lg-6">
-          <h2 class="contact-form-header large-size-text">Написать нам:</h2>
-          <FeedbackForm
-            showEmail={
-              window.localStorage.getItem("isLoggedIn") === "true" ? false : true
-            }
-          />
+        <About text={this.props.text}/>
         </div>
       </section>
     );

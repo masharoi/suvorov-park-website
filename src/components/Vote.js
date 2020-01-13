@@ -199,23 +199,6 @@ class Vote extends Component {
         ) : (
           <section id="vote" className="gray-background">
             <Carousel responsive={responsive}>
-              <CreatePoll
-                PollNameValue={PollNameValue}
-                OptionOneValue={OptionOneValue}
-                OptionTwoValue={OptionTwoValue}
-                OptionThreeValue={OptionThreeValue}
-                OptionFourValue={OptionFourValue}
-                handleNameChange={this.handleNameChange}
-                handleOptOneChange={this.handleOptOneChange}
-                handleOptTwoChange={this.handleOptTwoChange}
-                handleOptThreeChange={this.handleOptThreeChange}
-                handleOptFourChange={this.handleOptFourChange}
-                handleSubmit={this.handleSubmit}
-                hasFourthOption={hasFourthOption}
-                hasThirdOption={hasThirdOption}
-                handleAddOptionClicked={this.handleAddOptionClicked}
-                deleteOption={this.deleteOption}
-              />
               {pollsList.map(poll => (
                 <div key={poll.id} className="card">
                   <MyPoll

@@ -1,6 +1,9 @@
 #about {
   text-align: left;
-  padding: 50px 100px;
+  padding: 25px 50px;
+  border-radius: 7px;
+  border: #eaa81b solid 1px;
+  font-size:20px;
 }
 
 /* medium */

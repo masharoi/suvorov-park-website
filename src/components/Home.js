@@ -42,8 +42,7 @@ class Home extends React.Component {
             <MyNavbar isHome={true} />
             <Images imagesList={imagesData}/>
             <Video videosList={videosData}/>
-            <About text={aboutText} />
-            <Contacts />
+            <Contacts text={aboutText} />
             <MyFooter isHome={true} />
           </div>
         ) : (
