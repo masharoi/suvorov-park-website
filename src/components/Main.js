@@ -10,6 +10,7 @@ import makeRequest from "./Utils";
 import LogIn from "./LogIn";
 import EmptyPolls from "./EmptyPolls";
 import EmptyForums from "./EmptyForums";
+import AboutUser from "./AboutUser";
 import Loader from "react-loader-spinner";
 
 class Main extends React.Component {
@@ -79,6 +80,7 @@ class Main extends React.Component {
             !isServicesLoading ? (
               <div>
                 <MyNavbar isHome={false} />
+                <AboutUser/>
                 <Services servicesList={services} />
 
                 {newsList.length !== 0 ? (
@@ -87,7 +89,7 @@ class Main extends React.Component {
                   <EmptyNews />
                 )}
                 <Vote pollsList={pollsList} />
-  
+
                 {forumPreviewList.length !== 0 ? (
                   <Forum forumPreviewList={forumPreviewList} />
                 ) : (

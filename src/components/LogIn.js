@@ -23,14 +23,14 @@ class LogIn extends Component {
 
       switch (response.user) {
         case "admin":
-          window.location = "/admin/"
-          break
+          window.location = "/admin/";
+          break;
         case "resident":
-          window.location = "/profile"
-          break
+          window.location = "/profile";
+          break;
 
         default:
-          break
+          break;
       }
     }
   };
@@ -88,21 +88,17 @@ class LogIn extends Component {
     const {
       showValidationError,
       showLoginFailed,
-      showPasswordFailed,
+      showPasswordFailed
     } = this.state;
     return (
       <section id="login">
         <a href="/">
-          <i
-            id="login-back"
-            class={"fas fa-long-arrow-alt-left orange-color "}
-          />
+          <i class={"fas fa-chevron-left orange-color login-back"} />
         </a>
 
         <form
-          id="login-form"
           action={this.handleLogin}
-          class="contact-form"
+          class="login-form contact-form"
           onSubmit={this.handleLogin}
         >
           <h2 id="login-header" class="large-size-text orange-color">
@@ -110,8 +106,7 @@ class LogIn extends Component {
           </h2>
           <input
             class={
-              "login-input gray-background " +
-              this.setError(showLoginFailed)
+              "login-input gray-background " + this.setError(showLoginFailed)
             }
             type="text"
             name="login"
@@ -122,8 +117,7 @@ class LogIn extends Component {
           />
           <input
             class={
-              "login-input gray-background " +
-              this.setError(showPasswordFailed)
+              "login-input gray-background " + this.setError(showPasswordFailed)
             }
             type="password"
             name="password"
@@ -137,13 +131,23 @@ class LogIn extends Component {
               Неверный логин или пароль.
             </h3>
           ) : null}
-          <button
-            class="login-input medium-size-text primary-button-size orange-background white-color"
-            type="submit"
-            value="Отправить"
-          >
-            Войти
-          </button>
+          <div id="login-button-container">
+            <button
+              class="login-input medium-size-text primary-button-size orange-background white-color"
+              type="submit"
+              value="Отправить"
+            >
+              Войти
+            </button>
+
+            <a
+              id="forgot-pwd-btn"
+              class="medium-size-text orange-color"
+              href="/forgot-password"
+            >
+              Забыли пароль?
+            </a>
+          </div>
         </form>
       </section>
     );

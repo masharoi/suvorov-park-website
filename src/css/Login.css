@@ -6,15 +6,6 @@
   position: relative;
 }
 
-#login-form {
-  display: flex;
-  width: 400px;
-  margin: auto auto;
-  border: solid 1px  #c95501;
-  padding: 20px;
-  border-radius: 7px;
-}
-
 .login-input {
   margin-top: 10px;
   border-radius: 7px;
@@ -24,15 +15,7 @@
 #login-header {
   text-align: left;
 }
-#login-back {
-  font-size: 24px;
-  position:absolute;
-  top: 20px;
-  left: 20px;
-  cursor: pointer;
-  -webkit-transition: font-size 1s; /* Safari prior 6.1 */
-  transition: font-size 1s;
-}
+
 #login-back:hover {
   font-size: 36px;
   -webkit-transition: font-size 1s; /* Safari prior 6.1 */
@@ -41,6 +24,27 @@
 
 #login-validation {
   text-align: left;
+}
+
+#login-button-container {
+  display: flex;
+}
+
+#forgot-pwd-btn {
+  border-bottom: solid rgba(201, 85, 1, 0.3) 6px;
+  margin-left: 20px;
+  height: 19px;
+  align-self: center;
+  -webkit-transition: border-bottom 1s;
+  transition: border-bottom 1s;
+}
+
+#forgot-pwd-btn:hover {
+  text-decoration: none;
+  color: #C95501;
+  border-bottom: solid rgba(201, 85, 1, 0.3) 10px;
+  -webkit-transition: border-bottom 1s;
+  transition: border-bottom 1s;
 }
 
 /* mobile */

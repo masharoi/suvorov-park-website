@@ -6,6 +6,8 @@ import ForumExpanded from "./components/ForumExpanded";
 import Main from "./components/Main";
 import LogIn from "./components/LogIn";
 import Error from "./components/Error";
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/full-forum" component={forumExpanded} />
           <Route path="/log-in" component={logIn} />
           <Route path="/error" component={error} />
+          <Route path="/forgot-password" component={forgotPassword} />
+          <Route path="/reset-password" component={resetPassword} />
         </div>
       </Router>
     </div>
@@ -28,5 +32,7 @@ const main = () => <Main />;
 const forumExpanded = () => <ForumExpanded />;
 const logIn = () => <LogIn />;
 const error = () => <Error />;
+const forgotPassword = () => <ForgotPassword />;
+const resetPassword = () => <ResetPassword />;
 
 export default App;
