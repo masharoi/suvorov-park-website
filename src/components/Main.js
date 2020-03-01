@@ -21,9 +21,11 @@ class Main extends React.Component {
       pollsList: [],
       forumPreviewList: [],
       services: [],
+      userData: null,
       isForumLoading: true,
       isPollLoading: true,
       isNewsLoading: true,
+      isUserLoading: true,
       isServicesLoading: true
     };
 
@@ -45,6 +47,11 @@ class Main extends React.Component {
     this.setState({ services: json, isServicesLoading: false });
   };
 
+  handleUserResponse = json => {
+    console.log(json)
+    this.setState({ userData: json, isUserLoading: false });
+  };
+
   componentDidMount() {
     makeRequest(null, "get", "/api/common/news", this.handleNewsResponse);
     makeRequest(null, "get", "/api/polls/", this.handleVoteResponse);
@@ -55,6 +62,7 @@ class Main extends React.Component {
       this.handleForumPreviewResponse
     );
     makeRequest(null, "get", "/api/services/", this.handleServicesResponse);
+    makeRequest(null, "get", "/api/users/current", this.handleUserResponse);
   }
 
 
@@ -66,7 +74,9 @@ class Main extends React.Component {
       services,
       isForumLoading,
       isPollLoading,
-      isServicesLoading
+      isServicesLoading,
+      isUserLoading,
+      userData
     } = this.state;
     return (
       <div>
@@ -80,7 +90,11 @@ class Main extends React.Component {
             !isServicesLoading ? (
               <div>
                 <MyNavbar isHome={false} />
-                <AboutUser/>
+                {userData ? (
+                  <AboutUser userData={userData}/>
+                ) : (
+                  null
+                )}
                 <Services servicesList={services} />
 
                 {newsList.length !== 0 ? (

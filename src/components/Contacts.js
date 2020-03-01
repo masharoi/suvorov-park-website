@@ -22,7 +22,8 @@ class Contacts extends React.Component {
 
     var mapStyle = {
       width: "100%",
-      height: "100%"
+      height: "100%",
+      background: 'red'
     };
     return (
       <section id="contacts" class="row">

@@ -9,7 +9,7 @@
 #map {
   width: 450px;
   height: 450px;
-  background:  #7D0000;
+  background: #eae9e9;
   border-radius: 7px;
   margin: 0 auto;
   max-width: 500px;
@@ -62,6 +62,7 @@
   }
   #contacts {
     background: linear-gradient(to bottom,  #EAA81B 0%,#EAA81B 35%,#012C0B 35%,#012C0B 100%);
+    padding: 50px 0;
   }
 
   #map {
@@ -86,6 +87,7 @@
   }
   #contacts {
     background: linear-gradient(to bottom,  #EAA81B 0%,#EAA81B 35%,#012C0B 35%,#012C0B 100%);
+    padding: 50px 0;
   }
 
   #map {
@@ -99,5 +101,9 @@
   #map {
     width: 400px;
     height: 300px;
+  }
+
+  #contacts {
+    padding: 50px 0;
   }
 }
