@@ -9,7 +9,7 @@ import Error from "./components/Error";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <Router>

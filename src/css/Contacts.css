@@ -36,9 +36,8 @@
     width: 450px;
   }
   #contact-form-outer h2 {
-    color: #C95501;
     width:450px;
-    margin:40px auto 0 auto;
+    margin:40px auto 10px auto;
   }
 
 
@@ -58,9 +57,8 @@
     width: 350px;
   }
   #contact-form-outer h2 {
-    color: #C95501;
     width:350px;
-    margin:40px auto 0 auto;
+    margin:40px auto 10px auto;
   }
   #contacts {
     background: linear-gradient(to bottom,  #EAA81B 0%,#EAA81B 35%,#012C0B 35%,#012C0B 100%);
@@ -83,9 +81,8 @@
     width: 350px;
   }
   #contact-form-outer h2 {
-    color: #C95501;
     width:350px;
-    margin:40px auto 0 auto;
+    margin:40px auto 10px auto;
   }
   #contacts {
     background: linear-gradient(to bottom,  #EAA81B 0%,#EAA81B 35%,#012C0B 35%,#012C0B 100%);

@@ -1,8 +1,12 @@
 import React from "react";
 import "../css/ResetPassword.css";
 import { VALIDATION_ERROR } from "./Utils";
+import makeRequest from "./Utils";
+import { VALIDATION } from "../Constants";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
-export default class ForgotPassword extends React.Component {
+class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,12 +16,24 @@ export default class ForgotPassword extends React.Component {
       confirmPassword: "",
       showConfirmPasswordFailed: false,
       showValidationError: false,
-      isForm: true
+      showTokenError: false,
+      isForm: true,
+      showNotStrongEnoughError: false,
+      token: null
     };
+  }
+
+  componentDidMount() {
+    let params = queryString.parse(this.props.location.search);
+    console.log(params.token);
+    this.setState({ token: params.token });
   }
 
   handleResponse = response => {
     if (response === VALIDATION_ERROR) {
+      if (this.state.token) {
+        this.setState({ showTokenError: true });
+      }
       this.setState({ showValidationError: true });
     } else {
       this.setState({ isForm: false });
@@ -38,28 +54,43 @@ export default class ForgotPassword extends React.Component {
     const { newPassword, confirmPassword } = event.target;
 
     if (newPassword.value !== confirmPassword.value) {
-      console.log(newPassword);
-      console.log(confirmPassword);
       this.setState({ showValidationError: true });
       return;
     }
-    //makeHTTPRequest
-    this.handleResponse(-1);
+    let message;
+
+    if (this.state.token) {
+      message = { new_password: confirmPassword.value, code: this.state.token };
+      makeRequest(
+        JSON.stringify(message),
+        "post",
+        "/api/users/password-reset-confirm",
+        this.handleResponse
+      );
+    } else {
+      message = { new_password: confirmPassword.value };
+      makeRequest(
+        JSON.stringify(message),
+        "post",
+        "/api/users/password-change",
+        this.handleResponse
+      );
+    }
   };
 
   validatePassword = () => {
-    if (this.state.newPassword.length === 0) {
-      this.setState({ showPasswordFailed: true });
+    if (VALIDATION.test(this.state.newPassword)) {
+      this.setState({ showNotStrongEnoughError: false });
     } else {
-      this.setState({ showPasswordFailed: false });
+      this.setState({ showNotStrongEnoughError: true });
     }
   };
 
   validateConfirmPassword = () => {
-    if (this.state.confirmPassword.length === 0) {
-      this.setState({ showPasswordFailed: true });
+    if (VALIDATION.test(this.state.confirmPassword)) {
+      this.setState({ showNotStrongEnoughError: false });
     } else {
-      this.setState({ showPasswordFailed: false });
+      this.setState({ showNotStrongEnoughError: true });
     }
   };
 
@@ -85,7 +116,9 @@ export default class ForgotPassword extends React.Component {
       showValidationError,
       isForm,
       showPasswordFailed,
-      showConfirmPasswordFailed
+      showConfirmPasswordFailed,
+      showNotStrongEnoughError,
+      showTokenError
     } = this.state;
     return (
       <section id="reset-password">
@@ -125,9 +158,30 @@ export default class ForgotPassword extends React.Component {
               onChange={this.handleConfirmPasswordChanged}
               onBlur={this.validateConfirmPassword}
             />
+            {showTokenError ? (
+              <h3 class="small-size-text red-color text-left">
+                <i class="fas fa-exclamation-circle warning-icon"></i>С вашей
+                ссылкой что-то не так.{" "}
+                <a
+                  id="forgot-pwd-btn"
+                  class="medium-size-text orange-color"
+                  href="/forgot-password"
+                >
+                  Запросить новую
+                </a>
+              </h3>
+            ) : null}
             {showValidationError ? (
-              <h3 class="tiny-size-text red-color text-left">
-                Пароли не совпадают или пусты.
+              <h3 class="small-size-text red-color text-left">
+                <i class="fas fa-exclamation-circle warning-icon"></i>
+                Пароли не совпадают.
+              </h3>
+            ) : null}
+            {showNotStrongEnoughError ? (
+              <h3 class="small-size-text red-color text-left">
+                <i class="fas fa-exclamation-circle warning-icon"></i>
+                Пароль должен состоять минимум из 8 символов и содержать по
+                крайней мере одну цифру.
               </h3>
             ) : null}
             <button
@@ -151,3 +205,5 @@ export default class ForgotPassword extends React.Component {
     );
   }
 }
+
+export default withRouter(ResetPassword);

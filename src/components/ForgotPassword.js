@@ -1,19 +1,21 @@
 import React from "react";
 import "../css/ForgotPassword.css";
 import { VALIDATION_ERROR } from "./Utils";
+import makeRequest from "./Utils";
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isForm: true,
-      email: "example@mail.ru"
+      email: "",
+      showValidationError: false
     };
   }
 
   handleResponse = response => {
     if (response === VALIDATION_ERROR) {
-      // do something
+      this.setState({ showValidationError: true });
     } else {
       this.setState({ isForm: false });
     }
@@ -21,12 +23,19 @@ export default class ForgotPassword extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { login } = event.target;
-    //makeHTTPRequest
-    this.handleResponse(-1);
+    const { email } = event.target;
+    const message = { email: email.value };
+    this.setState({ email: email.value });
+    makeRequest(
+      JSON.stringify(message),
+      "post",
+      "/api/users/password-reset-request",
+      this.handleResponse
+    );
   };
+
   render() {
-    const { isForm, email } = this.state;
+    const { isForm, email, showValidationError } = this.state;
     return (
       <section id="forgot-password">
         <a href="/profile">
@@ -36,14 +45,20 @@ export default class ForgotPassword extends React.Component {
         {isForm ? (
           <form class="login-form contact-form" onSubmit={this.handleSubmit}>
             <h2 id="login-header" class="large-size-text orange-color">
-              Введите свой логин и мы отправим вам инструкции на почту.
+              Введите почту привязанную к вашему аккаунту.
             </h2>
             <input
               class={"login-input gray-background "}
               type="text"
-              name="login"
-              placeholder="логин"
+              name="email"
+              placeholder="example@mail.ru"
             />
+            {showValidationError ? (
+              <h3 class="small-size-text red-color text-left">
+              <i class="fas fa-exclamation-circle warning-icon"></i>
+                Почта не была найдена.
+              </h3>
+            ) : null}
             <button
               class="login-input medium-size-text primary-button-size orange-background white-color"
               type="submit"

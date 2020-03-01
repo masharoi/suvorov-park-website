@@ -31,6 +31,7 @@ class Home extends React.Component {
       "/api/common/general-configuration",
       this.handleResponse
     );
+
   }
 
   render() {

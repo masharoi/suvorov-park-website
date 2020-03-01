@@ -234,6 +234,10 @@ select {
 
 
 @media (max-width: 768px) {
+  .small-hide {
+    display: none;
+    background: red;
+  }
   .small-row-reverse {
     display: flex;
     flex-direction: column-reverse;
