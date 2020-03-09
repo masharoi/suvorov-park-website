@@ -60,7 +60,7 @@ class ResetPassword extends React.Component {
     let message;
 
     if (this.state.token) {
-      message = { new_password: confirmPassword.value, code: this.state.token };
+      message = { new_password: confirmPassword.value, token: this.state.token };
       makeRequest(
         JSON.stringify(message),
         "post",
@@ -139,7 +139,7 @@ class ResetPassword extends React.Component {
                 "login-input gray-background " +
                 this.setError(showPasswordFailed)
               }
-              type="text"
+              type="password"
               name="newPassword"
               placeholder="Новый пароль"
               value={newPassword}
@@ -151,7 +151,7 @@ class ResetPassword extends React.Component {
                 "login-input gray-background " +
                 this.setError(showConfirmPasswordFailed)
               }
-              type="text"
+              type="password"
               name="confirmPassword"
               placeholder="Подтвердите пароль"
               value={confirmPassword}

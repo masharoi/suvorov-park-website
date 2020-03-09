@@ -31,8 +31,8 @@ export default class AboutUser extends React.Component {
             <div id="right-inner">
               <div id="user-text">
                 {this.props.userData.first_name} {this.props.userData.patronymic},
-                <br /> добро пожаловать в ваш личный кабинет! Здесь вы можете
-                заказывать услуги ТСЖ, принимать участие в голосавании, смотреть
+                <br/> Добро пожаловать в ваш личный кабинет! <br/>
+                Здесь вы можете заказывать услуги ТСЖ, принимать участие в голосавании, смотреть
                 новости и учавствовать в форуме.
               </div>
             </div>
