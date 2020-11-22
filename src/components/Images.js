@@ -38,7 +38,7 @@ class Images extends React.Component {
         >
           {this.props.imagesList.map(item => (
             <div class="image-container">
-              <img alt="" class="image" src={"http://92.53.67.152" + item.url} />
+              <img alt="" class="image" src={item.url} />
             </div>
           ))}
         </Carousel>
